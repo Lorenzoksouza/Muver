@@ -1,4 +1,4 @@
-package com.senac.ads.experts.controller;
+package com.senac.muver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.senac.ads.experts.model.Convidados;
-import com.senac.ads.experts.services.ConvidadoService;
+import com.senac.muver.model.Master;
+import com.senac.muver.services.MasterService;
 
 @Controller
-public class ConvidadoController {
+public class MasterController {
 	
 	@Autowired
-	private ConvidadoService service;
+	private MasterService service;
 	
 	@RequestMapping(method=RequestMethod.GET , value = "/")
 	public String index() {
@@ -25,7 +25,7 @@ public class ConvidadoController {
 
 	@RequestMapping("listaconvidados")
 	public String listaConvidados(Model model) {
-		Iterable<Convidados> convidados = service.listaTodosConvidados();
+		Iterable<Master> convidados = service.listaTodosConvidados();
 		model.addAttribute("convidados",convidados);
 		
 		return "listaconvidados";
@@ -48,13 +48,13 @@ public class ConvidadoController {
 			@RequestParam("telefone") String telefone, Model model) {
 		
 		//insere no convidado os dados vindo do formulário
-		Convidados novoConvidado =  new Convidados(nome, email, telefone);
+		Master novoConvidado =  new Master(nome, email, telefone);
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoConvidado);
 		
 		//cria uma lista de convidados que será armazenada com os dados do nosso serviço que consultará 
 		//todos os convidados na base.
-		Iterable<Convidados> convidados = service.listaTodosConvidados();
+		Iterable<Master> convidados = service.listaTodosConvidados();
 		//insere no nosso model (formulário, os dados do convidado que vieram da consulta da lista)
 		model.addAttribute("convidados",convidados);
 		

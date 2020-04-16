@@ -1,8 +1,8 @@
-package com.senac.ads.experts.repository;
+package com.senac.muver.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.senac.ads.experts.model.Convidados;
+import com.senac.muver.model.Master;
 
 /**
  * interface entre o serviço e a base de dados
@@ -10,7 +10,7 @@ import com.senac.ads.experts.model.Convidados;
  * @author bruno.rafael
  *
  */
-public interface ConvidadosRepository extends CrudRepository<Convidados, Integer> {
+public interface MasterRepository extends CrudRepository<Master, Integer> {
 	
 	
 

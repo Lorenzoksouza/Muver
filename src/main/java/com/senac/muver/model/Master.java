@@ -1,4 +1,4 @@
-package com.senac.ads.experts.model;
+package com.senac.muver.model;
 
 import java.io.Serializable;
 
@@ -13,8 +13,8 @@ import lombok.Setter;
 
 //declarando que esta é uma entidade de banco
 @SuppressWarnings("serial")
-@Entity(name="convidados")
-public class Convidados implements Serializable{
+@Entity(name="master")
+public class Master implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,11 @@ public class Convidados implements Serializable{
 	@Getter @Setter
 	private String telefone;
 	
-	public Convidados () {
+	public Master () {
 		
 	}
 
-	public Convidados(String nome, String email, String telefone) {
+	public Master(String nome, String email, String telefone) {
 		this.nome = nome;
 		this.email =  email;
 		this.telefone = telefone;

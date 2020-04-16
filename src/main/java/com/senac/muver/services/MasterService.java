@@ -1,28 +1,28 @@
-package com.senac.ads.experts.services;
+package com.senac.muver.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.senac.ads.experts.model.Convidados;
-import com.senac.ads.experts.repository.ConvidadosRepository;
+import com.senac.muver.model.Master;
+import com.senac.muver.repository.MasterRepository;
 
 //declaração explícita que esta é uma de nossas classes de serviço
 @Service
-public class ConvidadoService {
+public class MasterService {
 	
 	//Injeção do repositório
 	@Autowired
-	private ConvidadosRepository repositorio;
+	private MasterRepository repositorio;
 	
 	//Serviço para listar todos os convidados da base
-	public Iterable<Convidados> listaTodosConvidados(){
+	public Iterable<Master> listaTodosConvidados(){
 		
 		//chamada ao repositório que fará a consulta com a nossa base via jpa;
 		return repositorio.findAll();
 	}
 	
 	//serviço para salvar o convidado
-	public void salvar (Convidados conv) {
+	public void salvar (Master conv) {
 		
 		//chamada ao repositório
 		repositorio.save(conv);

@@ -27,15 +27,26 @@ public class Master implements Serializable{
 	@Getter @Setter
 	private String email;
 	@Getter @Setter
-	private String telefone;
+	private String senha;
+	@Getter @Setter
+	private String contato;
+	@Getter @Setter
+	private String click;
 	
-	public Master () {
-		
+	public Master() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public Master(String nome, String email, String telefone) {
+	public Master(Integer id, String nome, String email, String senha, String contato, String click) {
+		super();
+		this.id = id;
 		this.nome = nome;
-		this.email =  email;
-		this.telefone = telefone;
+		this.email = email;
+		this.senha = senha;
+		this.contato = contato;
+		this.click = click;
 	}
+	
+	
+	
 }

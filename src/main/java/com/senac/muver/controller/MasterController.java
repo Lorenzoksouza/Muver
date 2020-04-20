@@ -45,10 +45,10 @@ public class MasterController {
 	
 	@RequestMapping(value = "salvar", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
-			@RequestParam("telefone") String telefone, Model model) {
+			@RequestParam("contato") String contato, Model model) {
 		
 		//insere no convidado os dados vindo do formulário
-		Master novoConvidado =  new Master(nome, email, telefone);
+		Master novoConvidado =  new Master();
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoConvidado);
 		

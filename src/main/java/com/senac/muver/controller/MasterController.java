@@ -25,7 +25,7 @@ public class MasterController {
 
 	@RequestMapping("listaconvidados")
 	public String listaConvidados(Model model) {
-		Iterable<Master> convidados = service.listaTodosConvidados();
+		Iterable<Master> convidados = service.listaTodos();
 		model.addAttribute("convidados",convidados);
 		
 		return "listaconvidados";
@@ -54,7 +54,7 @@ public class MasterController {
 		
 		//cria uma lista de convidados que será armazenada com os dados do nosso serviço que consultará 
 		//todos os convidados na base.
-		Iterable<Master> convidados = service.listaTodosConvidados();
+		Iterable<Master> convidados = service.listaTodos();
 		//insere no nosso model (formulário, os dados do convidado que vieram da consulta da lista)
 		model.addAttribute("convidados",convidados);
 		

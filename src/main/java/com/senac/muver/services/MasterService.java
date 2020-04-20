@@ -15,17 +15,17 @@ public class MasterService {
 	private MasterRepository repositorio;
 	
 	//Serviço para listar todos os convidados da base
-	public Iterable<Master> listaTodosConvidados(){
+	public Iterable<Master> listaTodos(){
 		
 		//chamada ao repositório que fará a consulta com a nossa base via jpa;
 		return repositorio.findAll();
 	}
 	
 	//serviço para salvar o convidado
-	public void salvar (Master conv) {
+	public void salvar (Master master) {
 		
 		//chamada ao repositório
-		repositorio.save(conv);
+		repositorio.save(master);
 	}
 
 }

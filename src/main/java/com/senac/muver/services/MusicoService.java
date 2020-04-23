@@ -1,10 +1,12 @@
 package com.senac.muver.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.senac.muver.model.Musico;
 import com.senac.muver.repository.MusicoRepository;
 
+@Service
 public class MusicoService {
 
 	//Injeção do repositório

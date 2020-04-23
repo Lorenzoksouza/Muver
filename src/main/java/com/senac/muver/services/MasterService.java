@@ -14,18 +14,27 @@ public class MasterService {
 	@Autowired
 	private MasterRepository repositorio;
 	
-	//Serviço para listar todos os convidados da base
+	//Serviço para listar todos os usuarios da base
 	public Iterable<Master> listaTodos(){
 		
 		//chamada ao repositório que fará a consulta com a nossa base via jpa;
 		return repositorio.findAll();
 	}
 	
-	//serviço para salvar o convidado
+	//serviço para salvar o usuario
 	public void salvar (Master master) {
 		
 		//chamada ao repositório
 		repositorio.save(master);
+		
 	}
+	
+	public void excluir(Master master) {
+		
+		repositorio.delete(master);
+		
+	}
+	
+	
 
 }

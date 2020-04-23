@@ -1,10 +1,12 @@
 package com.senac.muver.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.senac.muver.model.Estudio;
 import com.senac.muver.repository.EstudioRepository;
 
+@Service
 public class EstudioService {
 	
 	//Injeção do repositório

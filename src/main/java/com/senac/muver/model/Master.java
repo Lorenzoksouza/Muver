@@ -14,7 +14,7 @@ import lombok.Setter;
 //declarando que esta é uma entidade de banco
 @SuppressWarnings("serial")
 @Entity(name="master")
-public class Master implements Serializable{
+public abstract class Master implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

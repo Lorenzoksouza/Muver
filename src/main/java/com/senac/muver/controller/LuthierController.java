@@ -38,8 +38,7 @@ public class LuthierController {
 	
 	@RequestMapping(value = "salvar", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
-			@RequestParam("senha") String senha, @RequestParam("contato") String contato, @RequestParam("click") 
-			String click, @RequestParam("instrumentos") String[] instrumentos, @RequestParam("localização") String localização, 
+			@RequestParam("senha") String senha, @RequestParam("telefone") int telefone, @RequestParam("instrumentos") String[] instrumentos, @RequestParam("localização") String localização, 
 			@RequestParam("disponibilidade") Date[] disponibilidade, Model model) {
 		
 		//insere no Luthier os dados vindo do formulário

@@ -30,8 +30,8 @@ public class Estudio extends Master implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Estudio(Integer id, String nome, String email, String senha, String contato, String click) {
-		super(id, nome, email, senha, contato, click);
+	public Estudio(Integer id, String nome, String email, String senha, int telefone) {
+		super(id, nome, email, senha, telefone);
 		// TODO Auto-generated constructor stub
 	}
 	

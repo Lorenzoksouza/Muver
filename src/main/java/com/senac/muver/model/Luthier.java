@@ -32,8 +32,8 @@ public class Luthier extends Master implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Luthier(Integer id, String nome, String email, String senha, String contato, String click) {
-		super(id, nome, email, senha, contato, click);
+	public Luthier(Integer id, String nome, String email, String senha, int telefone) {
+		super(id, nome, email, senha, telefone);
 		// TODO Auto-generated constructor stub
 	}
 	

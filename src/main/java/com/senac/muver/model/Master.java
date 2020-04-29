@@ -29,22 +29,19 @@ public abstract class Master implements Serializable{
 	@Getter @Setter
 	private String senha;
 	@Getter @Setter
-	private String contato;
-	@Getter @Setter
-	private String click;
+	private int telefone;
 	
 	public Master() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Master(Integer id, String nome, String email, String senha, String contato, String click) {
+	public Master(Integer id, String nome, String email, String senha, int telefone) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.contato = contato;
-		this.click = click;
+		this.telefone = telefone;
 	}
 	
 	

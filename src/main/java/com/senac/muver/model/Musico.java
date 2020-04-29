@@ -31,8 +31,8 @@ public class Musico extends Master implements Serializable {
 		this.generoMusical = generoMusical;
 	}
 
-	public Musico(Integer id, String nome, String email, String senha, String contato, String click) {
-		super(id, nome, email, senha, contato, click);
+	public Musico(Integer id, String nome, String email, String senha, int telefone) {
+		super(id, nome, email, senha, telefone);
 		// TODO Auto-generated constructor stub
 	}
 	

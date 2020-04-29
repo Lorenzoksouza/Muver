@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.senac.muver.model.Estudio;
 import com.senac.muver.model.Luthier;
 import com.senac.muver.model.Musico;
 import com.senac.muver.services.LuthierService;
@@ -43,4 +44,21 @@ public class LuthierController {
 		
 	}
 	
+	@RequestMapping(value = "excluir")
+	public String excluir(@RequestParam("luthier") Luthier luthier, Model model) {
+		
+		service.excluir(luthier);
+		
+		return "index";
+		
+	}
+	
+	@RequestMapping(value = "alterar")
+	public String alterar(@RequestParam("luthier") Luthier luthier, Model model) {
+		
+		service.alterar(luthier);
+		
+		return "index";
+		
+	}
 }

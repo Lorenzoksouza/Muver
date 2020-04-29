@@ -3,6 +3,7 @@ package com.senac.muver.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.senac.muver.model.Estudio;
 import com.senac.muver.model.Luthier;
 import com.senac.muver.repository.LuthierRepository;
 
@@ -24,6 +25,16 @@ public class LuthierService {
 			public void salvar (Luthier luthier) {
 				
 				//chamada ao repositório
+				repositorio.save(luthier);
+			}
+			
+			public void excluir(Luthier luthier) {
+				
+				repositorio.delete(luthier);
+			}
+
+			public void alterar(Luthier luthier) {
+
 				repositorio.save(luthier);
 			}
 }

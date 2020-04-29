@@ -41,4 +41,23 @@ public class EstudioController {
 		return "index";
 		
 	}
+	
+	@RequestMapping(value = "excluir")
+	public String excluir(@RequestParam("estudio") Estudio estudio, Model model) {
+		
+		service.excluir(estudio);
+		
+		return "index";
+		
+	}
+	
+	@RequestMapping(value = "alterar")
+	public String alterar(@RequestParam("estudio") Estudio estudio, Model model) {
+		
+		service.alterar(estudio);
+		
+		return "index";
+		
+	}
+	
 }

@@ -3,6 +3,7 @@ package com.senac.muver.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.senac.muver.model.Estudio;
 import com.senac.muver.model.Musico;
 import com.senac.muver.repository.MusicoRepository;
 
@@ -24,6 +25,16 @@ public class MusicoService {
 	public void salvar (Musico musico) {
 		
 		//chamada ao repositório
+		repositorio.save(musico);
+	}
+	
+	public void excluir(Musico musico) {
+		
+		repositorio.delete(musico);
+	}
+
+	public void alterar(Musico musico) {
+
 		repositorio.save(musico);
 	}
 }

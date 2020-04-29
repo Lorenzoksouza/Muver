@@ -26,4 +26,14 @@ public class EstudioService {
 			//chamada ao repositório
 			repositorio.save(estudio);
 		}
+		
+		public void excluir(Estudio estudio) {
+			
+			repositorio.delete(estudio);
+		}
+
+		public void alterar(Estudio estudio) {
+
+			repositorio.save(estudio);
+		}
 }

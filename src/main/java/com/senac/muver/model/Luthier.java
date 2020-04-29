@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
-@Entity(name="musico")
+@Entity(name="luthier")
 public class Luthier extends Master implements Serializable {
 
 	//injetando os getters e setters via lombok

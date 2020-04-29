@@ -1,5 +1,7 @@
 package com.senac.muver.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,11 @@ public class EstudioService {
 			
 			//chamada ao repositório que fará a consulta com a nossa base via jpa;
 			return repositorio.findAll();
+		}
+		
+		public Optional<Estudio> estudioPorID(Integer id) {
+			
+			return repositorio.findById(id);
 		}
 		
 		//serviço para salvar o convidado

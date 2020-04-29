@@ -1,6 +1,7 @@
 package com.senac.muver.controller;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.senac.muver.model.Estudio;
+import com.senac.muver.model.Musico;
 import com.senac.muver.services.EstudioService;
 
 @Controller
@@ -24,6 +26,14 @@ public class EstudioController {
 		model.addAttribute("estudios",estudios);
 		
 		return "listaestudios";
+		
+	}
+	
+	@RequestMapping("listaestudioid")
+	public String estudioPorID(@RequestParam("id") Integer id, Model model) {
+		Optional<Estudio> estudioAlterar = service.estudioPorID(id);
+		
+		return "index";
 		
 	}
 	
@@ -54,7 +64,7 @@ public class EstudioController {
 	@RequestMapping(value = "alterar")
 	public String alterar(@RequestParam("estudio") Estudio estudio, Model model) {
 		
-		service.alterar(estudio);
+		service.salvar(estudio);
 		
 		return "index";
 		

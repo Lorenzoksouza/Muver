@@ -1,5 +1,7 @@
 package com.senac.muver.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,14 @@ public class MusicoController {
 		model.addAttribute("musicos",musicos);
 		
 		return "listamusicos";
+		
+	}
+	
+	@RequestMapping("listamusicoid")
+	public String musicoPorID(@RequestParam("id") Integer id, Model model) {
+		Optional<Musico> musicoAlterar = service.musicoPorID(id);
+		
+		return "index";
 		
 	}
 	
@@ -53,8 +63,9 @@ public class MusicoController {
 	@RequestMapping(value = "alterar")
 	public String alterar(@RequestParam("musico") Musico musico, Model model) {
 		
-		service.alterar(musico);
+		service.salvar(musico);		
 		
+		//alterar pagina de returno para pagina com os dados para alteração(pagina de cadastro? ou outra pagina para alteração)
 		return "index";
 		
 	}

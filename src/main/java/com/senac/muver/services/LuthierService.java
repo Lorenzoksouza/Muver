@@ -1,9 +1,10 @@
 package com.senac.muver.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.senac.muver.model.Estudio;
 import com.senac.muver.model.Luthier;
 import com.senac.muver.repository.LuthierRepository;
 
@@ -19,6 +20,11 @@ public class LuthierService {
 				
 				//chamada ao repositório que fará a consulta com a nossa base via jpa;
 				return repositorio.findAll();
+			}
+			
+			public Optional<Luthier> luthierPorID(Integer id) {
+				
+				return repositorio.findById(id);
 			}
 			
 			//serviço para salvar o convidado

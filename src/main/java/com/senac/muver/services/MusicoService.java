@@ -1,9 +1,10 @@
 package com.senac.muver.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.senac.muver.model.Estudio;
 import com.senac.muver.model.Musico;
 import com.senac.muver.repository.MusicoRepository;
 
@@ -21,6 +22,11 @@ public class MusicoService {
 		return repositorio.findAll();
 	}
 	
+	public Optional<Musico> musicoPorID(Integer id) {
+		
+		return repositorio.findById(id);
+	}
+	
 	//serviço para salvar o convidado
 	public void salvar (Musico musico) {
 		
@@ -33,8 +39,4 @@ public class MusicoService {
 		repositorio.delete(musico);
 	}
 
-	public void alterar(Musico musico) {
-
-		repositorio.save(musico);
-	}
 }

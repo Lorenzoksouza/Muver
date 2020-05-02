@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Maestrino</title>
+	<!--<link href="css/login.css" rel="stylesheet" />-->
+	<link href="../resources/static/css/principal.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+</head>
+</head>
+<body>
+
+	<nav class="navbar">
+			<ul class="navbar-nav">
+				<li class="logo">
+					<a href="/principal" class="nav-link">
+						<span class="link-text">Maestrino</span>
+						<img src="../resources/static/images/arrow.png">
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<!--href vai receber = if nao tem musico then create, else open perfil-->
+					<a href="cLuthier.html" class="nav-link">
+						<img src="../resources/static/images/arrow.png">
+						<span class="link-text">Musico</span>
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="cLuthier.html" class="nav-link">
+						<img src="../resources/static/images/arrow.png">
+						<span class="link-text">Lista</span>
+					</a>
+				</li>
+			</ul>
+	</nav>
+
+	<main>
+		<div id="caixa">
+			<div id="pesquisa">
+				<img src="../resources/static/images/lupa.png">
+				<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
+			</div>
+			<div id="filtro_Principal">
+				<div id="filtro_Estudio"><p>Estudio</p></div>
+				<div id="filtro_Luthier"><p>Luthier</p></div>			
+			</div>
+			<div id="listaUsuarios">
+				<table>
+        			<tr th:each="usuario : ${usuarios}">
+            		<td><span th:text="${usuario.nome}"></td>
+            		<td><span th:text="${usuario.seila}"></td>
+        			</tr>
+    			</table>
+			</div>
+		</div>
+	</main>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</body>
+</html>

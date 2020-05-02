@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>cadastrar luthier</title>
+	<link href="../resources/static/css/cMusico.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+</head>
+<body>
+	
+	<form action="cadastrarLuthier" method="post">
+		<div id="caixa">
+			<a id="voltar" href="cadastrar.html"><img id="img_voltar" src="../resources/static/images/arrow.png"/><p>voltar</p></a>
+		
+			<h1>Cadastrar Luthier</h1>
+			<ul>
+				<li><input type="text" name="email" placeholder="email"></li>
+				<li><input type="password" name="senha" placeholder="senha"></li>
+				<li>
+					<select id="instrumentos">
+						<option value="" disabled selected>Escolher instrumentos...</option>
+						<option value="Violao">Violão</option>
+						<option value="Guitarra">Guitarra</option>
+						<option value="Bateria">Bateria</option>
+					</select>
+				</li>
+				<li><input type="text" name="nome" placeholder="nome"></li>
+				<li><input type="url" name="localizacao" placeholder="localizacao"></li>
+				<li><input type="file" id="myFile" name="filename"></li>
+			</ul>
+			<button id="cadastrar" type="submit">Cadastrar</button>
+		</div>
+	</form>
+</body>
+</html>

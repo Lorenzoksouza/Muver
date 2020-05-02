@@ -37,7 +37,7 @@ public class EstudioController {
 		
 	}
 	
-	@RequestMapping(value = "salvar", method = RequestMethod.POST)
+	@RequestMapping(value = "salvarEstudio", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
 			@RequestParam("senha") String senha, @RequestParam("telefone") int telefone, @RequestParam("instrumentos") String[] instrumentos, @RequestParam("localização") String localização, 
 			@RequestParam("disponibilidade") Date[] disponibilidade, Model model) {
@@ -51,7 +51,7 @@ public class EstudioController {
 		
 	}
 	
-	@RequestMapping(value = "excluir")
+	@RequestMapping(value = "excluirEstudio")
 	public String excluir(@RequestParam("estudio") Estudio estudio, Model model) {
 		
 		service.excluir(estudio);
@@ -60,7 +60,7 @@ public class EstudioController {
 		
 	}
 	
-	@RequestMapping(value = "alterar")
+	@RequestMapping(value = "alterarEstudio")
 	public String alterar(@RequestParam("estudio") Estudio estudio, Model model) {
 		
 		service.salvar(estudio);

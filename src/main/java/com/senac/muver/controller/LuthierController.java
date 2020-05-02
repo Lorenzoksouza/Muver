@@ -36,7 +36,7 @@ public class LuthierController {
 		
 	}
 	
-	@RequestMapping(value = "salvar", method = RequestMethod.POST)
+	@RequestMapping(value = "salvarLuthier", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
 			@RequestParam("senha") String senha, @RequestParam("telefone") int telefone, @RequestParam("instrumentos") String[] instrumentos, @RequestParam("localização") String localização, 
 			@RequestParam("disponibilidade") Date[] disponibilidade, Model model) {
@@ -50,7 +50,7 @@ public class LuthierController {
 		
 	}
 	
-	@RequestMapping(value = "excluir")
+	@RequestMapping(value = "excluirLuthier")
 	public String excluir(@RequestParam("luthier") Luthier luthier, Model model) {
 		
 		service.excluir(luthier);
@@ -59,7 +59,7 @@ public class LuthierController {
 		
 	}
 	
-	@RequestMapping(value = "alterar")
+	@RequestMapping(value = "alterarLuthier")
 	public String alterar(@RequestParam("luthier") Luthier luthier, Model model) {
 		
 		service.alterar(luthier);

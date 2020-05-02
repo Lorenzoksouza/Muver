@@ -1,0 +1,86 @@
+* {
+padding:0;
+margin:0;
+border:0;
+}
+
+html {
+	font-family: varela round;
+	-webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body{
+	background-color: #30475e;
+}
+
+h1{
+	font-weight: lighter;
+	font-size: 3em;
+	padding-right: 130px;
+	margin-bottom: 50px;
+}
+
+label{
+	font-size: 1.5em;
+	margin-right: 30px;
+}
+
+select{
+	font-size: 1.5em;
+	background-color: #CCC;
+	padding:8px;
+	padding-left: 20px;
+	border-radius: 12px;
+	width:30%;
+	margin: 20px 0;
+	-moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
+
+button{
+	margin: 50px 0;
+}
+
+#img_voltar{
+	height: 40px;
+	width: auto;
+	float: left;
+	margin-right: 10px;
+}
+
+#voltar{
+	letter-spacing: 0.2em;
+	font-weight: bold;
+	margin-top: 10px;
+	text-decoration: none;
+	float: left;
+	text-align: left;
+}
+
+#voltar p{
+	margin-top: 10px;
+	float: right;
+}
+
+#caixa{
+	text-align: center;
+  	width: 50%;
+  	position: absolute;
+	top: 30%;
+	left: 25%;
+  	padding: 10px;
+	background-color: white;
+	border-radius: 20px;
+}
+
+#selecao{
+	text-decoration: none;
+	padding: 10px 60px;
+	font-size: 1.2em;
+	color: white;
+	background-color: #222831;
+	border-radius: 10px;
+	margin: 50px 0;
+}

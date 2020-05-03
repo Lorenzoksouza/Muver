@@ -8,36 +8,31 @@
 	--bg-secondary: #00FFBB;
 	--transition-speed: 600ms;
 }
+
+* {
+padding:0;
+margin:0;
+border:0;
+}
+
+html {
+	font-family: varela round;
+	-webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body{
+	background-color: #30475e;
+}
+
 /*referencias e configs principais*/
 
-
-body {
-	color: white;
-	background-color: #30475e;
-	margin: 0;
-	padding: 0;
-}
-
-/*barra de rolagem*/
-body::-webkit-scrollbar {
-	width: 0.30rem;
-}
-
-body::-webkit-scrollbar-track {
-	background: #312F2F;
-}
-
-body::-webkit-scrollbar-thumb {
-	background: #312F2F;
-}
-/*barra de rolagem*/
 
 /*margem pra desconsiderar o menu lateral nos calculos dos outros itens no site */
 main {
 	margin-left: 5rem;
 }
 /*margem pra desconsiderar o menu lateral nos calculos dos outros itens no site */
-
 
 /*configs barra lateral*/
 .navbar {
@@ -137,107 +132,44 @@ main {
 }
 /*configs barra lateral*/
 
+/*botao voltar*/
+#img_voltar{
+	height: 20px;
+	width: auto;
+	float: left;
+	margin-right: 10px;
+}
+
+#voltar{
+	letter-spacing: 0.2em;
+	font-weight: bold;
+	margin-top: 10px;
+	text-decoration: none;
+	float: left;
+	text-align: left;
+}
+
+#voltar p{
+	margin-top: 10px;
+	float: right;
+}
+/*botao voltar*/
+
 #caixa{
-	text-align: center;
+	text-align: left;
   	width: 70%;
-  	position: absolute;
 	top: 5%;
 	left: 10%;
   	padding: 10px;
 	background-color: white;
 	border-radius: 20px;
-
-}
-
-/* barra de pesquisa*/
-#pesquisa{
-	display: block;
-	margin-left: 40px;
-	font-size: 1em;
-	background-color: #CCC;
-	padding:8px;
-	padding-left: 20px;
-	border-radius: 20px;
-	width:90%;
-	height: 40px;
-}
-
-#pesquisa img{
-	float: left;
-	height: 30px;
-	width: auto;
-}
-
-#buscar {
-	width: 90%;
-	float: left;
-	text-align: left;
-	border: none;
-	font-size: 1em;
-	background-color: #CCC;
-	padding:8px;
-	padding-left: 20px;
-}
-/* barra de pesquisa*/
-
-/*filtro principal*/
-#filtro_Principal {
-	height: auto;
-	width: 70%;
-	margin: auto;
-}
-
-#filtro_Estudio, #filtro_Luthier{
-	margin: 10px 1px;
-	border-radius: 15px;
-	background-color: black;
-	height: 100px;
-	width: auto;
-	padding: 0 200px; 
-	text-align: center;
-
-}
-
-#filtro_Principal p{
-	padding-top: 50px;
-}
-/*
-#filtro_Estudio, #filtro_Luthier span{
-	position:absolute;                  
-	bottom:0;                          
-	left:0; 
-}*/
-
-#filtro_Estudio{
-	background: url("../images/bg_guitar.jpg");
-	background-size: 100%;
-	float: left;
-}
-
-#filtro_Luthier{
-	background: url("../images/bg_guitar.jpg");
-	background-size: 100%;
-	float: right;
-}
-/*filtro principal*/
-
-/*lista*/
-#listaUsuarios{
-	text-align: left;
-	margin-left: 4%;
-	float: left;
-	background-color: #30475e; 
-	height: auto;
-	width: 90%;
-  	padding: 10px;
-	border-radius: 20px;
 	overflow: hidden;
 	position: relative;
+
 }
 
 #img{
-	float: left;
-	position: absolute;
+	float: right;
 	top: -9999px;
 	left: -9999px;
 	right: -9999px;
@@ -246,21 +178,6 @@ main {
 	margin: auto;
 }
 
-#nome{
-	float: left;
-	font-size: 2em;
-	color: white;
+#texto_mapa{
+	float: right;
 }
-
-#nota{
-
-}
-
-#text{
-
-}
-
-#sobre{
-	
-}
-/*lista*/

@@ -13,9 +13,9 @@ public class Musico extends Master implements Serializable {
 
 	//injetando os getters e setters via lombok
 	@Getter @Setter
-	private String[] estiloMusical;
+	private String estiloMusical;
 	@Getter @Setter
-	private String[] instrumentos;
+	private String instrumentos;
 	@Getter @Setter
 	private byte[] fotoPerfil;
 	@Getter @Setter
@@ -25,7 +25,7 @@ public class Musico extends Master implements Serializable {
 	@Getter @Setter
 	private String descricao;
 	
-	public Musico(String nome, String email, String senha,String[] estiloMusical, String[] instrumentos, byte[] fotoPerfil, String linkFb, String linkIg,
+	public Musico(String nome, String email, String senha,String estiloMusical, String instrumentos, byte[] fotoPerfil, String linkFb, String linkIg,
 			String descricao) {
 		super(nome, email, senha);
 		this.estiloMusical = estiloMusical;

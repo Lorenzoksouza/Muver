@@ -7,13 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.MappedSuperclass;
 
 import lombok.Getter;
 import lombok.Setter;
 
 //declarando que esta é uma entidade de banco
 @SuppressWarnings("serial")
-@Entity(name="master")
+@MappedSuperclass
 public abstract class Master implements Serializable{
 	
 	@Id

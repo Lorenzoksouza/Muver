@@ -1,6 +1,5 @@
 package com.senac.muver.controller;
 
-import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,13 +35,14 @@ public class LuthierController {
 		
 	}
 	
-	@RequestMapping(value = "salvarLuthier", method = RequestMethod.POST)
-	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
-			@RequestParam("senha") String senha, @RequestParam("telefone") int telefone, @RequestParam("instrumentos") String[] instrumentos, @RequestParam("localização") String localização, 
-			@RequestParam("disponibilidade") Date[] disponibilidade, Model model) {
+	@RequestMapping(value = "cadastrarLuthier", method = RequestMethod.POST)
+	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("instrumentos") String instrumentos,
+			@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao, 
+			@RequestParam("fotoPerfil") byte[] fotoPerfil, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
+			@RequestParam("descricao") String descricao, Model model) {
 		
 		//insere no Luthier os dados vindo do formulário
-		Luthier novoLuthier =  new Luthier();
+		Luthier novoLuthier =  new Luthier(nome, email, senha, instrumentos, localizacao, fotoPerfil, linkFb, linkIg, descricao);
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoLuthier);
 		

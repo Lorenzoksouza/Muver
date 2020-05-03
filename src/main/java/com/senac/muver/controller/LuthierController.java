@@ -46,7 +46,7 @@ public class LuthierController {
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoLuthier);
 		
-		return "index";
+		return "login";
 		
 	}
 	

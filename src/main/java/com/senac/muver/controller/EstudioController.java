@@ -46,7 +46,7 @@ public class EstudioController {
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoEstudio);
 		
-		return "index";
+		return "login";
 		
 	}
 	

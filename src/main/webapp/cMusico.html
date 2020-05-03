@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>cadastrar musico</title>
-	<link href="../resources/static/css/cMusico.css" rel="stylesheet" />
+	<link href="css/cMusico.css" rel="stylesheet" />
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
 </head>
 <body>
@@ -13,10 +13,24 @@
 		
 			<h1>Cadastrar Musico</h1>
 			<ul>
-				<li><input type="text" name="nome" placeholder="nome"></li>
-				<li><input type="text" name="email" placeholder="email"></li>
-				<li><input type="password" name="senha" placeholder="senha"></li>
 				<li>
+					<input type="text" name="nome" placeholder="nome" required="true"  
+					oninvalid="this.setCustomValidity('Nome nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+ 					</input>
+ 				</li>
+				<li>
+					<input type="text" name="email" placeholder="email" required="true"  
+					oninvalid="this.setCustomValidity('email nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+ 				</li>
+				<li>
+					<input type="password" name="senha" placeholder="senha" required="true"  
+					oninvalid="this.setCustomValidity('senha nao pode ser vazia')"
+ 					oninput="setCustomValidity('')">
+				</li>
+				<li>
+					<!--por enquanto vamos trabalhar com selecao unica, se der tudo certo, vamos pra mais de uma -->
 					<select id="estilo">
 						<option value="" disabled selected>Escolher estilos musicais...</option>
 						<option value="Bossa">Bossa</option>
@@ -32,7 +46,10 @@
 						<option value="Bateria">Bateria</option>
 					</select>
 				</li>
-				<li><input type="file" id="myFile" name="filename"></li>
+				<li><input type="file" id="fotoPerfil" name="filename"></li>
+				<li><input type="text" name="fb" placeholder="link do facebook"></li>
+				<li><input type="text" name="ig" placeholder="link do instagram"></li>
+				<li><input type="text" name="descricao" placeholder="fale um pouco de voce..."></li>
 			</ul>
 			<button id="cadastrar" type="submit">Cadastrar</button>		
 		</div>

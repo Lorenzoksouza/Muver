@@ -13,28 +13,37 @@ public class Musico extends Master implements Serializable {
 
 	//injetando os getters e setters via lombok
 	@Getter @Setter
-	private String estiloMusical;
+	private String[] estiloMusical;
 	@Getter @Setter
-	private int idade;
+	private String[] instrumentos;
 	@Getter @Setter
-	private String generoMusical;
+	private byte[] fotoPerfil;
+	@Getter @Setter
+	private String linkFb;
+	@Getter @Setter
+	private String linkIg;
+	@Getter @Setter
+	private String descricao;
 	
+	public Musico(String nome, String email, String senha,String[] estiloMusical, String[] instrumentos, byte[] fotoPerfil, String linkFb, String linkIg,
+			String descricao) {
+		super(nome, email, senha);
+		this.estiloMusical = estiloMusical;
+		this.instrumentos = instrumentos;
+		this.fotoPerfil = fotoPerfil;
+		this.linkFb = linkFb;
+		this.linkIg = linkIg;
+		this.descricao = descricao;
+	}
 	public Musico() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Musico(String estiloMusical, int idade, String generoMusical) {
-		super();
-		this.estiloMusical = estiloMusical;
-		this.idade = idade;
-		this.generoMusical = generoMusical;
-	}
-
-	public Musico(Integer id, String nome, String email, String senha, int telefone) {
-		super(id, nome, email, senha, telefone);
+	public Musico(Integer id, String nome, String email, String senha) {
+		super(id, nome, email, senha);
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 	

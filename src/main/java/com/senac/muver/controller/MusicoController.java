@@ -36,17 +36,15 @@ public class MusicoController {
 		
 	}
 	
-	@RequestMapping(value = "salvar", method = RequestMethod.POST)
-	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
-			@RequestParam("senha") String senha, @RequestParam("telefone") int telefone, @RequestParam("estilomusical") String[] estiloMusical, @RequestParam("idade") Integer idade,
-			@RequestParam("generomusical") String generoMusical, Model model) {
+	@RequestMapping(value = "cadastrarMusico", method = RequestMethod.POST)
+	public String salvar( Model model) {
 		
 		//insere no musico os dados vindo do formulário
 		Musico novoMusico =  new Musico();
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoMusico);
 		
-		return "index";
+		return "login";
 		
 	}
 	

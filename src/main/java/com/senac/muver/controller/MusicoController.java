@@ -37,9 +37,15 @@ public class MusicoController {
 	}
 	
 	@RequestMapping(value = "cadastrarMusico", method = RequestMethod.POST)
-	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
-			@RequestParam("senha") String senha, @RequestParam("estilo") String estiloMusical, @RequestParam("instrumentos") String instrumentos, 
-			@RequestParam("fotoPerfil") byte[] fotoPerfil, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
+	public String salvar(
+			@RequestParam("nome") String nome, 
+			@RequestParam("email") String email,
+			@RequestParam("senha") String senha, 
+			@RequestParam("estilo") String estiloMusical, 
+			@RequestParam("instrumentos") String instrumentos, 
+			@RequestParam("fotoPerfil") byte[] fotoPerfil, 
+			@RequestParam("linkFb") String linkFb, 
+			@RequestParam("linkIg") String linkIg,
 			@RequestParam("descricao") String descricao, Model model) {
 		
 		//insere no musico os dados vindo do formulário

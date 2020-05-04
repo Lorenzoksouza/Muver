@@ -14,6 +14,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema maestrinodb
 -- -----------------------------------------------------
+
+DROP SCHEMA IF EXISTS `maestrinodb`;
+
 CREATE SCHEMA IF NOT EXISTS `maestrinodb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `maestrinodb` ;
 
@@ -26,8 +29,8 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`estudio` (
   `email` VARCHAR(45) NULL,
   `senha` VARCHAR(45) NULL,
   `instrumentos` VARCHAR(100) NULL,
-  `localizacao` VARCHAR(45) NULL,
-  `foto_perfil` BLOB NULL,
+  /*`localizacao` VARCHAR(45) NULL,*/
+  `foto_perfil` MEDIUMBLOB NULL,
   `link_fb` VARCHAR(45) NULL,
   `link_ig` VARCHAR(45) NULL,
   `descricao` VARCHAR(45) NULL,
@@ -45,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`luthier` (
   `senha` VARCHAR(45) NULL,
   `instrumentos` VARCHAR(100) NULL,
   `localizacao` VARCHAR(45) NULL,
-  `foto_perfil` BLOB NULL,
+  `foto_perfil` MEDIUMBLOB NULL,
   `link_fb` VARCHAR(45) NULL,
   `link_ig` VARCHAR(45) NULL,
   `descricao` VARCHAR(45) NULL,
@@ -63,10 +66,11 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`musico` (
   `senha` VARCHAR(45) NULL,
   `instrumentos` VARCHAR(100) NULL,
   `localizacao` VARCHAR(45) NULL,
-  `foto_perfil` BLOB NULL,
+  `foto_perfil` MEDIUMBLOB NULL,
   `link_fb` VARCHAR(45) NULL,
   `link_ig` VARCHAR(45) NULL,
   `descricao` VARCHAR(45) NULL,
+  `estilo_musical` VARCHAR(45) NULL,
   PRIMARY KEY (`idmusico`))
 ENGINE = InnoDB;
 

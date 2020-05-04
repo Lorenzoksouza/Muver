@@ -36,10 +36,11 @@ public class EstudioController {
 	}
 	
 	@RequestMapping(value = "cadastrarEstudio", method = RequestMethod.POST)
-	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
-			@RequestParam("senha") String senha, @RequestParam("localizacao") String localizacao, 
-			@RequestParam("fotoPerfil") byte[] fotoPerfil, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
-			@RequestParam("descricao") String descricao, Model model) {
+	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,  @RequestParam("localizacao") String localizacao, 
+		@RequestParam("fotoPerfil") byte[] fotoPerfil, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, 
+		Model model
+			) 
+	{
 		
 		//insere no estudio os dados vindo do formulário
 		Estudio novoEstudio =  new Estudio(nome, email, senha, localizacao, fotoPerfil, linkFb, linkIg, descricao);

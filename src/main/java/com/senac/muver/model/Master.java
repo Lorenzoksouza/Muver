@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 
 import lombok.Getter;
@@ -15,7 +16,8 @@ import lombok.Setter;
 
 //declarando que esta é uma entidade de banco
 @SuppressWarnings("serial")
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Master implements Serializable{
 	
 	@Id

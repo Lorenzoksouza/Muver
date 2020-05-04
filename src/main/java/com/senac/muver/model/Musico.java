@@ -3,12 +3,14 @@ package com.senac.muver.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Entity(name="musico")
+@PrimaryKeyJoinColumn(name="idmusico")
 public class Musico extends Master implements Serializable {
 
 	//injetando os getters e setters via lombok

@@ -14,6 +14,10 @@ public class MasterService {
 		return repositorio.findAll();
 	}
 
+	public Master existeUsuario(String email, String senha) {
+		return repositorio.existeUsuario(email,senha);
+	}
+
 	
 	
 }

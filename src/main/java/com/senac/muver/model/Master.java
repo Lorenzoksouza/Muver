@@ -22,10 +22,9 @@ public abstract class Master implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	//injetando os getters e setters via lombok
+	@Column(name = "idmaster")
 	@Getter @Setter
-	private Integer id;
+	private Integer idmaster;
 	@Getter @Setter
 	private String nome;
 	@Getter @Setter

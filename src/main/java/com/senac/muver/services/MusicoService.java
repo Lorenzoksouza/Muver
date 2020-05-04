@@ -15,7 +15,7 @@ public class MusicoService {
 	@Autowired
 	private MusicoRepository repositorio;
 	
-	//Serviço para listar todos os convidados da base
+	//Serviço para listar todos os musicos da base
 	public Iterable<Musico> listaTodosMusicos(){
 		
 		//chamada ao repositório que fará a consulta com a nossa base via jpa;
@@ -27,7 +27,7 @@ public class MusicoService {
 		return repositorio.findById(id);
 	}
 	
-	//serviço para salvar o convidado
+	//serviço para salvar o musico
 	public void salvar (Musico musico) {
 		
 		//chamada ao repositório

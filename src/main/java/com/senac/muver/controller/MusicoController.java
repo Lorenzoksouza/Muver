@@ -47,7 +47,7 @@ public class MusicoController {
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoMusico);
 		
-		return "login";
+		return "/login";
 		
 	}
 	

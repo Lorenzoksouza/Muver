@@ -68,12 +68,12 @@
 			-->
 
 			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
-			<div id="listaUsuarios" th:each="usuario : ${usuarios}">
-				<img id="img" th:src="${usuario_especifico.img}">
-				<span id="nome" th:text="${usuario_especifico.nome}"></span>
+			<div id="listausuario" th:each="usuario : ${usuarios}">
+				<img id="img" th:src="${usuario.img}">
+				<span id="nome" th:text="${usuario.nome}"></span>
 				<!-- nota ainda n'ao precisa -->
 				<!--<span id="nota">Nota 5,0</span>-->
-				<span id="text" th:text="${usuario_especifico.text}"></span>
+				<span id="text" th:text="${usuario.text}"></span>
 				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil-->
 				<button id="sobre" type="submit" ><a href="">SOBRE</a></button>
 			</div>

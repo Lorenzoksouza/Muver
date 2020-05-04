@@ -14,7 +14,7 @@ DROP SCHEMA IF EXISTS `maestrinodb`;
 -- -----------------------------------------------------
 -- Schema maestrinodb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `maestrinodb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `maestrinodb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci ;
 USE `maestrinodb` ;
 
 -- -----------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`estudio` (
   `localizacao` VARCHAR(200) NULL DEFAULT NULL,
   `idmaster` INT NOT NULL,
   PRIMARY KEY (`idestudio`),
-  INDEX `fk_estudio_master1_idx` (`idmaster` ASC) VISIBLE,
+  INDEX `fk_estudio_master1_idx` (`idmaster` ASC),
   CONSTRAINT `fk_estudio_master1`
     FOREIGN KEY (`idmaster`)
     REFERENCES `maestrinodb`.`master` (`idmaster`)
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`estudio` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+COLLATE = utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`luthier` (
   `localizacao` VARCHAR(200) NULL DEFAULT NULL,
   `idmaster` INT NOT NULL,
   PRIMARY KEY (`idluthier`),
-  INDEX `fk_luthier_master1_idx` (`idmaster` ASC) VISIBLE,
+  INDEX `fk_luthier_master1_idx` (`idmaster` ASC),
   CONSTRAINT `fk_luthier_master1`
     FOREIGN KEY (`idmaster`)
     REFERENCES `maestrinodb`.`master` (`idmaster`)
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`luthier` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+COLLATE = utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`musico` (
   `estilo_musical` VARCHAR(45) NULL DEFAULT NULL,
   `idmaster` INT NOT NULL,
   PRIMARY KEY (`idmusico`),
-  INDEX `fk_musico_master_idx` (`idmaster` ASC) VISIBLE,
+  INDEX `fk_musico_master_idx` (`idmaster` ASC),
   CONSTRAINT `fk_musico_master`
     FOREIGN KEY (`idmaster`)
     REFERENCES `maestrinodb`.`master` (`idmaster`)
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `maestrinodb`.`musico` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+COLLATE = utf8mb4_general_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

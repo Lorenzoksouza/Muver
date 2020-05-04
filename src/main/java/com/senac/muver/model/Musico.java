@@ -18,35 +18,17 @@ public class Musico extends Master implements Serializable {
 	private String estiloMusical;
 	@Getter @Setter
 	private String instrumentos;
-	@Getter @Setter
-	private byte[] fotoPerfil;
-	@Getter @Setter
-	private String linkFb;
-	@Getter @Setter
-	private String linkIg;
-	@Getter @Setter
-	private String descricao;
 	
 	public Musico(String nome, String email, String senha,String estiloMusical, String instrumentos, byte[] fotoPerfil, String linkFb, String linkIg,
 			String descricao) {
-		super(nome, email, senha);
+		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil);
 		this.estiloMusical = estiloMusical;
 		this.instrumentos = instrumentos;
-		this.fotoPerfil = fotoPerfil;
-		this.linkFb = linkFb;
-		this.linkIg = linkIg;
-		this.descricao = descricao;
 	}
+	
 	public Musico() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	public Musico(Integer id, String nome, String email, String senha) {
-		super(id, nome, email, senha);
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
+	}	
 	
 }

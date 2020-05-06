@@ -1,6 +1,8 @@
 package com.senac.muver.controller;
 
 import java.util.Optional;
+import java.io.File;
+import java.io.FileInputStream;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.senac.muver.model.Estudio;
-import com.senac.muver.model.Master;
 import com.senac.muver.model.Musico;
 import com.senac.muver.services.MusicoService;
 
@@ -66,12 +66,22 @@ public class MusicoController {
 	
 	@RequestMapping(value = "cadastrarMusico", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("estilo") String estiloMusical, 
-		@RequestParam("instrumentos") String instrumentos, @RequestParam("fotoPerfil") byte[] fotoPerfil, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
+		@RequestParam("instrumentos") String instrumentos, @RequestParam("fotoPerfil") File fotoPerfil, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
 		@RequestParam("descricao") String descricao, Model model
 	) {
 		
+		//Converte o arquivo File fotoPerfil que vem da tela em um byte array para salvar no db
+		byte[] fotoPerfilByte = new byte[(int)fotoPerfil.length()];
+		try {
+			FileInputStream fileInputStream = new FileInputStream(fotoPerfil);
+			fileInputStream.read(fotoPerfilByte);
+			fileInputStream.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+		
 		//insere no musico os dados vindo do formulário
-		Musico novoMusico =  new Musico(nome,email,senha,estiloMusical,instrumentos,fotoPerfil,linkFb,linkIg,descricao);
+		Musico novoMusico =  new Musico(nome,email,senha,estiloMusical,instrumentos,fotoPerfilByte,linkFb,linkIg,descricao);
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoMusico);
 		

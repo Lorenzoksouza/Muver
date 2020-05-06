@@ -1,5 +1,7 @@
 package com.senac.muver.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ public class MasterController {
 	private MasterService service;
 	
 	@RequestMapping("/listaUsuarios")
-	public ModelAndView listaUsuarios(@RequestParam("fotoPerfil") byte[] fotoPerfil, @RequestParam("nome") String nome,@RequestParam("descricao") String descricao, HttpSession session) {
+	public ModelAndView listaUsuarios(@RequestParam("fotoPerfil") File fotoPerfil, @RequestParam("nome") String nome,@RequestParam("descricao") String descricao, HttpSession session) {
 		ModelAndView mv = new ModelAndView("principal");
 		Master usuarios = service.listarUsuario(fotoPerfil, nome, descricao);
 		mv.addObject("usuarios",usuarios);

@@ -1,5 +1,7 @@
 package com.senac.muver.services;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,7 @@ public class MasterService {
 		return repositorio.existeUsuario(email,senha);
 	}
 
-	public Master listarUsuario(byte[] fotoPerfil, String nome, String descricao) {
+	public Master listarUsuario(File fotoPerfil, String nome, String descricao) {
 		return repositorio.listarUsuario(fotoPerfil,nome,descricao);
 	}
 	

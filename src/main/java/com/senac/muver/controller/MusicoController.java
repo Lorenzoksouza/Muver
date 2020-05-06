@@ -73,7 +73,7 @@ public class MusicoController {
 		//Converte o arquivo File fotoPerfil que vem da tela em um byte array para salvar no db
 		byte[] fotoPerfilByte = new byte[(int)fotoPerfil.length()];
 		try {
-			FileInputStream fileInputStream = new FileInputStream(fotoPerfil);
+			FileInputStream fileInputStream = new FileInputStream(fotoPerfil.getAbsolutePath());
 			fileInputStream.read(fotoPerfilByte);
 			fileInputStream.close();
 			} catch (Exception e) {

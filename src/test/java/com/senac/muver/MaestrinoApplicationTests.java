@@ -1,5 +1,6 @@
 package com.senac.muver;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import org.junit.jupiter.api.Test;
@@ -27,19 +28,23 @@ class MaestrinoApplicationTests {
 	
 	@Test
 	void listaMusicos() {
-		MusicoService service = new MusicoService();
+		MasterService service = new MasterService();
 		
-		Iterable<Musico> musicos = service.listaTodosMusicos();
-		musicos.forEach(new Consumer<Musico>() {
+		Iterable<Master> musicos = service.listaTodosUsuarios();
+		musicos.forEach(new Consumer<Master>() {
 			@Override
-            public void accept(Musico t) 
+            public void accept(Master t) 
             { 
-  
                 System.out.println(t); 
             } 
 		});
-		
-		
 	}
 	
+	//@Test
+	void musicoPorId() {
+		MusicoService service = new MusicoService();
+		
+		System.out.println(service.musicoPorID(5));
+		
+	}
 }

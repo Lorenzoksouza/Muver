@@ -31,7 +31,7 @@
 				</li>
 				<li>
 					<!--por enquanto vamos trabalhar com selecao unica, se der tudo certo, vamos pra mais de uma -->
-					<select id="estilo">
+					<select id="estilo" name="estilo">
 						<option value="" disabled selected>Escolher estilos musicais...</option>
 						<option value="Bossa">Bossa</option>
 						<option value="Rock">Rock</option>
@@ -39,20 +39,21 @@
 					</select>
 				</li>
 				<li>
-					<select id="instrumentos">
+					<select id="instrumentos" name="instrumentos">
 						<option value="" disabled selected>Escolher instrumentos...</option>
 						<option value="Violao">Violão</option>
 						<option value="Guitarra">Guitarra</option>
 						<option value="Bateria">Bateria</option>
 					</select>
 				</li>
-				<li><input type="file" id="fotoPerfil" name="filename"></li>
-				<li><input type="text" name="fb" placeholder="link do facebook"></li>
-				<li><input type="text" name="ig" placeholder="link do instagram"></li>
+				<li><input type="file" id="fotoPerfil" name="fotoPerfil"></li>
+				<li><input type="text" name="linkFb" placeholder="link do facebook"></li>
+				<li><input type="text" name="linkIg" placeholder="link do instagram"></li>
 				<li><input type="text" name="descricao" placeholder="fale um pouco de voce..."></li>
 			</ul>
 			<button id="cadastrar" type="submit">Cadastrar</button>		
 		</div>
 	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 </html>

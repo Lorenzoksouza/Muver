@@ -17,7 +17,8 @@ public class Musico extends Master implements Serializable {
 	@Getter @Setter
 	private String estiloMusical;
 	@Getter @Setter
-	private String instrumentos;
+	//mudei pra public pra conseguir aparecer na tela, investigar isso
+	public String instrumentos;
 	
 	public Musico(String nome, String email, String senha,String estiloMusical, String instrumentos, byte[] fotoPerfil, String linkFb, String linkIg,
 			String descricao) {

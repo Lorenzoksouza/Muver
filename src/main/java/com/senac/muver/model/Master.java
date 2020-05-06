@@ -26,7 +26,8 @@ public abstract class Master implements Serializable{
 	@Getter @Setter
 	private Integer idmaster;
 	@Getter @Setter
-	private String nome;
+	//mudei pra public pra conseguir aparecer na tela, investigar isso
+	public String nome;
 	@Getter @Setter
 	private String email;
 	@Getter @Setter
@@ -36,9 +37,11 @@ public abstract class Master implements Serializable{
 	@Getter @Setter
 	private String linkIg;
 	@Getter @Setter
-	private String descricao;
+	//mudei pra public pra conseguir aparecer na tela, investigar isso
+	public String descricao;
 	@Getter @Setter
-	private byte[] fotoPerfil;
+	//mudei pra public pra conseguir aparecer na tela, investigar isso
+	public byte[] fotoPerfil;
 	
 	public Master() {
 		// TODO Auto-generated constructor stub

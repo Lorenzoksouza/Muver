@@ -16,17 +16,39 @@ public class LoginController {
 	
 	@Autowired
 	private MasterService service;
-
+	
+	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
+	public String cadastro(){
+		return "/cadastrar";
+	}
+	
+	@RequestMapping(value="/cMusico", method=RequestMethod.GET)
+	public String cMusico(){
+		return "/cMusico";
+	}
+	
+	@RequestMapping(value="/cLuthier", method=RequestMethod.GET)
+	public String cLuthier(){
+		return "/cLuthier";
+	}
+	
+	@RequestMapping(value="/cEstudio", method=RequestMethod.GET)
+	public String cEstudio(){
+		return "/cEstudio";
+	}
+	
 	@RequestMapping("loginForm")
 	public String loginForm() {
 		return "login";
 	}
 	
-	@RequestMapping(value = "logar", method = RequestMethod.POST)
+	@RequestMapping(value = "/principal", method = RequestMethod.POST)
 	public String logar(@RequestParam("email") String email, @RequestParam("senha") String senha, HttpSession session) {
 		
 		Master master = service.existeUsuario(email,senha);
 		System.out.println(master);
-		return null;
+		return "principal";
 	}
+	
+	
 }

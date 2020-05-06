@@ -22,17 +22,20 @@ public class MusicoController {
 
 	@Autowired
 	private MusicoService service;
-
-	@RequestMapping("/listaMusicosPrincipal")
+	
+	
+	//teste de metodo para realizar a listagem dem musicos
+	/*@RequestMapping("/listaMusicosPrincipal")
 	public ModelAndView listaUsuarios() {
 		ModelAndView mv = new ModelAndView("principal");
 		Iterable<Musico> usuarios = service.listaTodosMusicos();
 		mv.addObject("usuarios",usuarios);
 		
 		return mv;
-	}
+	} */
 	
 	
+	//metodo pra talvez pegar o perfil o usuario TESTE
 	@RequestMapping(value = "/perfilMusico", method = RequestMethod.GET)
 	public ModelAndView perfilUsuarios() {
 		ModelAndView mv = new ModelAndView("perfil");
@@ -41,11 +44,13 @@ public class MusicoController {
 		
 		return mv;
 	}
+
 	
 	@RequestMapping("/listamusicos")
 	public String listaMusicos(Model model) {
 		Iterable<Musico> musicos = service.listaTodosMusicos();
 		model.addAttribute("musicos",musicos);
+		
 		
 		return "listamusicos";
 		

@@ -15,11 +15,14 @@ public class MasterService {
 	public Iterable<Master> listaTodosUsuarios(){
 		return repositorio.findAll();
 	}
+	
 
 	public Master existeUsuario(String email, String senha) {
 		return repositorio.existeUsuario(email,senha);
 	}
 
-	
+	public Master listarUsuario(byte[] fotoPerfil, String nome, String descricao) {
+		return repositorio.listarUsuario(fotoPerfil,nome,descricao);
+	}
 	
 }

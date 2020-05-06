@@ -49,4 +49,6 @@ public class LoginController {
 		System.out.println(master);
 		return "principal";
 	}
+	
+	
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.senac.muver.model.Master;
 import com.senac.muver.model.Musico;
 import com.senac.muver.repository.MusicoRepository;
 
@@ -39,4 +40,5 @@ public class MusicoService {
 		repositorio.delete(musico);
 	}
 
+	
 }

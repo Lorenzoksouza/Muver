@@ -69,16 +69,14 @@
 
 			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
 			<div id="listaUsuarios" th:each="usuario : ${usuarios}">
-				<!-- <img id="img" th:src="${usuario.img}">  -->
-					<span id="nome" th:text="${usuario.instrumentos}"></span>
-				<!--   <span id="nome" th:text="${usuario.nome}"></span> --> 
+				<img id="img" th:src="${usuario.img}">
+				<span id="nome" th:text="${usuario.nome}"></span>
 				<!-- nota ainda n'ao precisa -->
 				<!--<span id="nota">Nota 5,0</span>-->
-				
-				<!--  <span id="descricao" th:text="${usuario.descricao}"></span> -->  
+				<span id="descricao" th:text="${usuario.descricao}"></span> 
 				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil-->
 				<!-- <form action="/perfilMusico" method="get"> -->
-					<button id="sobre" type="submit"><a href="/perfilMusico"></a></button>
+					<button id="sobre" type="submit"><a href="/perfilMusico">aaaaa</a></button>
 				<!--  </form> -->
 			</div>
 		</div>

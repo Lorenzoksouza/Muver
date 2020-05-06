@@ -46,20 +46,24 @@
 
 	<main>
 		<!-- aqui no th:each tem que passar o usuario de acordo com o botao sobre da tela principal -->
-		<div id="caixa" th:each="usuario_especifico : ${usuarioX}">
+		<div id="caixa" th:each="usuario : ${usuarios}">
 			<a id="voltar" href="principal.html"><img id="img_voltar" src="images/arrow.png"/></a>
 			<form action="editar" method="post">	
+				
+				<span id="nome" th:text="${usuario.instrumentos}"></span>
+				<!-- 
 				<img id="img" th:src="${usuario_especifico.img}">
-				<span id="nome" th:text="${usuario_especifico.nome}"></span>
+				<span id="nome" th:text="${usuario_especifico.nome}"></span>-->
 				<!-- nota ainda n'ao precisa -->
 				<!-- <span id="nota" th:text="${usuario_especifico.nota}">Nota 5,0</span> -->
+				<!--
 				<span id="text" th:text="${usuario_especifico.text}"></span>
 				<span id="facebook" th:text="${usuario_especifico.fb}"></span>
 				<span id="instagram" th:text="${usuario_especifico.ig}"></span>
 				<div id="mapa">
 					<p id="texto_mapa">Mapa:</p>				
 					<span id="url_mapa" th:text="${usuario_especifico.urlmapa}"></span>
-				</div>
+				</div>  -->
 				<!-- botão só pode aparecer se tiver o mesmo id ou algo que identifique o mesmo usuario com o do perfil logado -->
 				<!-- levar para tela de cadastro com os campos preenchidos -->
 				<button id="edicao" type="submit">EDICAO</button>

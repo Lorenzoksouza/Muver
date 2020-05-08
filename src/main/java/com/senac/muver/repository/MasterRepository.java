@@ -1,7 +1,5 @@
 package com.senac.muver.repository;
 
-import java.io.File;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,7 +12,7 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	
 	
 	@Query(value = "SELECT * FROM master as m WHERE m.id = ?1", nativeQuery = true )
-	Master listarUsuario(File fotoPerfil, String nome, String descricao);
+	Master listarUsuario(String nome, String descricao);
 	//native query
 	/*
 	@Query(value = "SELECT * FROM tarefas t WHERE t.status = ?1 AND t.operador IS NULL ORDER BY RAND() LIMIT 1", nativeQuery = true)

@@ -20,10 +20,10 @@ public class MasterController {
 	@Autowired
 	private MasterService service;
 	
-	@RequestMapping("/listaUsuarios")
-	public ModelAndView listaUsuarios(@RequestParam("fotoPerfil") File fotoPerfil, @RequestParam("nome") String nome,@RequestParam("descricao") String descricao, HttpSession session) {
+	@RequestMapping("/pesquisaUserLogin")
+	public ModelAndView pesquisaUserLogin(@RequestParam("nome") String nome,@RequestParam("descricao") String descricao, HttpSession session) {
 		ModelAndView mv = new ModelAndView("principal");
-		Master usuarios = service.listarUsuario(fotoPerfil, nome, descricao);
+		Master usuarios = service.listarUsuario(nome, descricao);
 		mv.addObject("usuarios",usuarios);
 		return mv;
 	}

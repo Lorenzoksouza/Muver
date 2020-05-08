@@ -18,13 +18,6 @@ class MaestrinoApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
-	//@Test
-	void existeUsuario() {
-		MasterService service = new MasterService();
-		Master master = service.existeUsuario("teste@teste", "teste");
-		System.out.println(master);
-	}
 	
 	@Test
 	void listaMusicos() {

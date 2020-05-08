@@ -23,8 +23,8 @@ public class MasterService {
 		return repositorio.existeUsuario(email,senha);
 	}
 
-	public Master listarUsuario(File fotoPerfil, String nome, String descricao) {
-		return repositorio.listarUsuario(fotoPerfil,nome,descricao);
+	public Master listarUsuario(String nome, String descricao) {
+		return repositorio.listarUsuario(nome,descricao);
 	}
 	
 }

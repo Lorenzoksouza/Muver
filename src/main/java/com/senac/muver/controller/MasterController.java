@@ -20,7 +20,7 @@ public class MasterController {
 	@Autowired
 	private MasterService service;
 	
-	@RequestMapping("/pesquisaUserLogin")
+	@RequestMapping("/listaUsuarios")
 	public ModelAndView pesquisaUserLogin(@RequestParam("nome") String nome,@RequestParam("descricao") String descricao, HttpSession session) {
 		ModelAndView mv = new ModelAndView("principal");
 		Master usuarios = service.listarUsuario(nome, descricao);

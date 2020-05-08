@@ -1,8 +1,8 @@
 package com.senac.muver.controller;
 
-import java.util.Optional;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -70,10 +70,9 @@ public class MusicoController {
 		@RequestParam("descricao") String descricao, Model model
 	) {
 		
-		//Converte o arquivo File fotoPerfil que vem da tela em um byte array para salvar no db
-		byte[] fotoPerfilByte = new byte[(int)fotoPerfil.length()];
+		byte[] fotoPerfilByte = new byte[(int) fotoPerfil.length()];
 		try {
-			FileInputStream fileInputStream = new FileInputStream(fotoPerfil.getAbsolutePath());
+			FileInputStream fileInputStream = new FileInputStream(fotoPerfil);
 			fileInputStream.read(fotoPerfilByte);
 			fileInputStream.close();
 			} catch (Exception e) {

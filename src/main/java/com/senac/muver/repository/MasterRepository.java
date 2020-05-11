@@ -7,11 +7,11 @@ import com.senac.muver.model.Master;
 
 public interface MasterRepository extends CrudRepository<Master, Integer> {
 
-	@Query(value = "SELECT * FROM Master as m WHERE m.email = ?1 and m.senha = ?2", nativeQuery = true)
+	@Query("SELECT m FROM Master m WHERE m.email = ?1 and m.senha = ?2")
 	Master existeUsuario(String email, String senha);
 	
 	
-	@Query(value = "SELECT * FROM master as m WHERE m.id = ?1", nativeQuery = true )
+	@Query(value = "SELECT * FROM Master as m WHERE m.id = ?1", nativeQuery = true )
 	Master listarUsuario(String nome, String descricao);
 	//native query
 	/*

@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
+import org.springframework.util.Assert;
 
 import com.senac.muver.model.Master;
 import com.senac.muver.model.Musico;
@@ -19,7 +20,7 @@ class MaestrinoApplicationTests {
 	void contextLoads() {
 	}
 	
-	@Test
+	//@Test
 	void listaMusicos() {
 		MasterService service = new MasterService();
 		
@@ -39,5 +40,13 @@ class MaestrinoApplicationTests {
 		
 		System.out.println(service.musicoPorID(5));
 		
+	}
+	
+	@Test
+	void existeUsuario() {
+		MasterService service = new MasterService();
+		
+		Master m = service.existeUsuario("teste@teste", "teste");
+		Assert.notNull(m,"erro");
 	}
 }

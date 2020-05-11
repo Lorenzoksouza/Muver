@@ -21,9 +21,9 @@ public class MasterController {
 	private MasterService service;
 	
 	@RequestMapping("/listaUsuarios")
-	public ModelAndView pesquisaUserLogin(@RequestParam("nome") String nome,@RequestParam("descricao") String descricao, HttpSession session) {
+	public ModelAndView listagemDeUsuarios(HttpSession session) {
 		ModelAndView mv = new ModelAndView("principal");
-		Master usuarios = service.listarUsuario(nome, descricao);
+		Master usuarios = service.listarUsuario();
 		mv.addObject("usuarios",usuarios);
 		return mv;
 	}

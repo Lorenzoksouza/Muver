@@ -16,7 +16,7 @@ import com.senac.muver.services.MusicoService;
 @SpringBootTest
 class MaestrinoApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 	
@@ -42,7 +42,7 @@ class MaestrinoApplicationTests {
 		
 	}
 	
-	@Test
+	//@Test
 	void existeUsuario() {
 		MasterService service = new MasterService();
 		

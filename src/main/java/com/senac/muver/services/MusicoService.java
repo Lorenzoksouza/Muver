@@ -17,7 +17,7 @@ public class MusicoService {
 	private MusicoRepository repositorio;
 	
 	//Serviço para listar todos os musicos da base
-	public Iterable<Musico> listaTodosMusicos(){
+	public Iterable<Musico> listaTodosMusicos(){ 
 		
 		//chamada ao repositório que fará a consulta com a nossa base via jpa;
 		return repositorio.findAll();

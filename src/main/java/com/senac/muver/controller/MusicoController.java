@@ -2,8 +2,10 @@ package com.senac.muver.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senac.muver.model.Musico;
@@ -66,18 +70,19 @@ public class MusicoController {
 	
 	@RequestMapping(value = "cadastrarMusico", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("estilo") String estiloMusical, 
-		@RequestParam("instrumentos") String instrumentos, @RequestParam("fotoPerfil") File fotoPerfil, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
-		@RequestParam("descricao") String descricao, Model model
+		@RequestParam("instrumentos") String instrumentos, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
+		@RequestParam("descricao") String descricao, HttpServletRequest request, Model model
 	) {
 		
-		byte[] fotoPerfilByte = new byte[(int) fotoPerfil.length()];
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
+		
+		byte[] fotoPerfilByte = null;
 		try {
-			FileInputStream fileInputStream = new FileInputStream(fotoPerfil);
-			fileInputStream.read(fotoPerfilByte);
-			fileInputStream.close();
-			} catch (Exception e) {
+			fotoPerfilByte = multipartFile.getBytes();
+		} catch (IOException e) {
 			e.printStackTrace();
-			}
+		}
 		
 		//insere no musico os dados vindo do formulário
 		Musico novoMusico =  new Musico(nome,email,senha,estiloMusical,instrumentos,fotoPerfilByte,linkFb,linkIg,descricao);

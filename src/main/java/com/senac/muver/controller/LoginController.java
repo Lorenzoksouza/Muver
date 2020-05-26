@@ -42,7 +42,7 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/principal", method = RequestMethod.POST)
+	@RequestMapping(value = "logar", method = RequestMethod.POST)
 	public String logar(@RequestParam("email") String email, @RequestParam("senha") String senha, HttpSession session) {
 		
 		Master master = service.existeUsuario(email,senha);

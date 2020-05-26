@@ -57,26 +57,44 @@
 				<div id="filtro_Luthier"><p>Luthier</p></div>			
 			</div>
 		
+			<div id ="listausuarios">
+				<table>
+					<thead>
+					   <tr>
+						<th>Id</th>
+						<th>Nome</th>
+					   </tr>
+					</thead>
+					<tbody>
+						<tr th:each="usuario: ${usuarios}">
+		    				<td th:text="${usuario.idmaster}" />
+		   					<td th:text="${usuario.nome}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
 
 			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
-			<div id="listaUsuarios" th:each="usuario : ${usuarios}">
+			<div id="listausuarios" th:each="usuario : ${usuarios}">
 				<form id="form" action="/maestrino-0.0.1-SNAPSHOT/perfil" method="get">
-				<div id="imgCover">
-					<img id="img" th:src="${usuario.img}">
-				</div>
+			<!--TODO esta dando erro no como a imagem vem para a tela rever isso -->
+<!-- 				<div id="imgCover"> -->
+<!-- 					<img id="img" th:src="${usuario.fotoperfil}"> -->
+<!-- 				</div> -->
 				<span id="nome" th:text="${usuario.nome}"></span>
 				
 				<span id="descricao" th:text="${usuario.descricao}"></span>
 				<span id="nota"></span> 
 
-				<span id="idUsuario" th:text="${usuario.id}"></span>
-				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil-->
-				<!-- <form action="/perfilMusico" method="get"> -->
+				<span id="idUsuario" th:text="${usuario.idmaster}"></span>
+			<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
+<!-- 				<form action="/perfilMusico" method="get"> -->
 					
 						
-					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button>
-					</form>				
-				<!--  </form> -->
+<!-- 					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button> -->
+<!-- 					</form>				 -->
+<!-- 				 </form> -->
 			</div>
 		</div>
 	</main>

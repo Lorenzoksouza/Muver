@@ -26,5 +26,10 @@ public class MasterService {
 	public Master listarUsuario() {
 		return repositorio.listarUsuario();
 	}
+
+
+	public Iterable<Master> listaUsuariosSemMusico() {
+		return repositorio.listaUsuariosSemMusico();
+	}
 	
 }

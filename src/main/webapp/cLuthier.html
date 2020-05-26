@@ -8,17 +8,28 @@
 </head>
 <body>
 	
-	<form action="cadastrarLuthier" method="post">
+	<form action="/maestrino-0.0.1-SNAPSHOT/cSucesso" method="post">
 		<div id="caixa">
-			<a id="voltar" href="cadastrar.html"><img id="img_voltar" src="../resources/static/images/arrow.png"/><p>voltar</p></a>
+			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/cadastrar"><img id="img_voltar" src="images/arrow.png"/><p>voltar</p></a>
 		
 			<h1>Cadastrar Luthier</h1>
 			<ul>
-				<li><input type="text" name="nome" placeholder="nome"></li>
-				<li><input type="text" name="email" placeholder="email"></li>
-				<li><input type="password" name="senha" placeholder="senha"></li>
+				<li><input type="text" name="nome" placeholder="nome" required="true"  
+					oninvalid="this.setCustomValidity('Nome nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+ 				</li>
+				<li><input type="text" name="email" placeholder="email" required="true"  
+					oninvalid="this.setCustomValidity('email nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+ 				</li>
+				<li><input type="password" name="senha" placeholder="senha" required="true"  
+					oninvalid="this.setCustomValidity('senha nao pode ser vazia')"
+ 					oninput="setCustomValidity('')">
+				</li>
 				<li>
-					<select id="instrumentos" name="instrumentos">
+					<select id="instrumentos" name="instrumentos" required="true"  
+					oninvalid="this.setCustomValidity('Um instrumento deve ser selecionado')"
+ 					oninput="setCustomValidity('')">
 						<option value="" disabled selected>Escolher instrumentos...</option>
 						<option value="Violao">Violão</option>
 						<option value="Guitarra">Guitarra</option>

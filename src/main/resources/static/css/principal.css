@@ -235,6 +235,15 @@ main {
 	position: relative;
 }
 
+/*img perfil*/
+#imgCover{
+	top: 90px;
+	right: 120px;
+	height: auto;
+	width: 40%;
+	position: relative;
+}
+
 #img{
 	float: left;
 	position: absolute;
@@ -245,22 +254,42 @@ main {
 	height: 200px;
 	margin: auto;
 }
+/*img perfil*/
 
 #nome{
+	margin-left: 290px;
 	float: left;
 	font-size: 2em;
 	color: white;
+	display:block;
+	text-align: left;
 }
 
 #nota{
-
+	margin-top: 60px;
+	float: left;
+	margin-left: 290px;
+	clear: left;
+	display: block;
+	font-size: 30px;
 }
 
 #descricao{
-
+	float: left;
+	display:block;
+	clear: left;
+	margin-left: 290px;
 }
 
 #sobre{
-	
+	border-style: none;
+	color: white;
+	background-color: #f2a365;
+	float: right;
+	display:block;
+	margin: 20px 60px ;
+	font-size: 40px;
+	border-radius: 10px;
+	padding: 10px 20px;
 }
 /*lista*/

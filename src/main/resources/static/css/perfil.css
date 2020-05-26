@@ -157,9 +157,10 @@ main {
 
 #caixa{
 	text-align: left;
-  	width: 70%;
+  	width: 65%;
 	top: 5%;
-	left: 10%;
+	left: 15%;
+	bottom: -100px;
   	padding: 10px;
 	background-color: white;
 	border-radius: 20px;
@@ -181,3 +182,141 @@ main {
 #texto_mapa{
 	float: right;
 }
+
+#nome{
+	float: left;
+	display: inline-block;
+	font-size: 80px;
+	margin-left: 20px;
+}
+
+#nota{
+	float: left;
+	display: inline-block;
+	font-size: 30px;
+	clear: left;
+	margin-left: 115px;
+}
+
+#imagem{
+	float: right;
+	position: relative;
+	right: 178px;
+	bottom: 200px;
+}
+
+#imagem img{
+	float: right;
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	right: -9999px;
+	bottom: -9999px;
+	height: 250px;
+	margin: auto;
+}
+
+#descricao{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	float: left;
+	display: inline-block;
+	font-size: 15px;
+	clear: left;
+	margin-left: 115px;
+}
+
+#instrumentos{
+	margin-top: 40px;
+	float: left;
+	display: inline-block;
+	font-size: 15px;
+	clear: left;
+	margin-left: 115px;
+}
+
+#instrumentos span{
+	float: left;
+	clear: left;
+}
+
+#instrumentos img{
+	margin-top: 10px;
+	float: left;
+	display: inline-block;
+	font-size: 15px;
+	clear: left;
+	margin-left: 10px;
+	height: 30px;
+}
+
+#instrumentos #nomes{
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+#Disponibilidade{
+	margin-top: 80px;
+	float: left;
+	clear: left;
+	display: inline-block;
+	margin-left: 115px;
+	margin-bottom: 20px;
+}
+
+#Disponibilidade span{
+	float: left;
+	clear: left;
+}
+
+#Disponibilidade img{
+	margin-top: 20px;
+	float: left;
+	clear: left;
+	display: inline-block;
+	height: 300px;
+}
+
+#analises {
+	margin-top: -80px;
+	margin-right: 340px;
+	float: right;
+	clear: right;
+}
+
+#analises span{
+	margin: 10px;
+	padding-right: 10px;
+	float: right;
+	clear: right;
+}
+
+
+#analises img{
+	height: 40px;
+	margin-right: 12px;
+	float: right;
+	clear: right;
+}
+
+#gMaps{
+	float: right;
+	clear: right;
+	margin-top: 40px;
+	margin-right: 80px;
+}
+
+#gMaps span{
+	float: right;
+	clear: right;
+	margin-right: 300px;
+}
+
+#gMaps img{
+	margin-top: 30px;
+	float: right;
+	clear: right;
+	height: 300px;
+	margin-bottom: 40px;
+}
+

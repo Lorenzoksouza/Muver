@@ -7,9 +7,9 @@
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
 </head>
 <body>
-	<form action="cadastrarMusico" method="post" enctype="multipart/form-data">
+	<form action="/maestrino-0.0.1-SNAPSHOT/cSucesso" method="post">
 		<div id="caixa">
-			<a id="voltar" href="cadastrar.html"><img id="img_voltar" src="../resources/static/images/arrow.png"/><p>voltar</p></a>
+			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/cadastrar"><img id="img_voltar" src="images/arrow.png"/><p>voltar</p></a>
 		
 			<h1>Cadastrar Musico</h1>
 			<ul>
@@ -31,7 +31,9 @@
 				</li>
 				<li>
 					<!--por enquanto vamos trabalhar com selecao unica, se der tudo certo, vamos pra mais de uma -->
-					<select id="estilo" name="estilo">
+					<select id="estilo" name="estilo" required="true"  
+					oninvalid="this.setCustomValidity('Um estilo musical deve ser selecionado')"
+ 					oninput="setCustomValidity('')">
 						<option value="" disabled selected>Escolher estilos musicais...</option>
 						<option value="Bossa">Bossa</option>
 						<option value="Rock">Rock</option>
@@ -39,19 +41,17 @@
 					</select>
 				</li>
 				<li>
-					<select id="instrumentos" name="instrumentos">
+					<select id="instrumentos" name="instrumentos" required="true"  
+					oninvalid="this.setCustomValidity('Um instrumento deve ser selecionado')"
+ 					oninput="setCustomValidity('')">
 						<option value="" disabled selected>Escolher instrumentos...</option>
 						<option value="Violao">Violão</option>
 						<option value="Guitarra">Guitarra</option>
 						<option value="Bateria">Bateria</option>
 					</select>
 				</li>
-				<li><input type="file" id="fotoPerfil" name="fotoPerfil"></li>
-				<li><input type="text" name="linkFb" placeholder="link do facebook"></li>
-				<li><input type="text" name="linkIg" placeholder="link do instagram"></li>
-				<li><input type="text" name="descricao" placeholder="fale um pouco de voce..."></li>
 			</ul>
-			<button id="cadastrar" type="submit" value="Upload">Cadastrar</button>		
+			<button id="cadastrar" type="submit">Cadastrar</button>		
 		</div>
 	</form>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

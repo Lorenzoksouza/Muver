@@ -8,22 +8,24 @@
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
 </head>
 <body>
-	<form action="/principal" method="post">
+	<form action="/maestrino-0.0.1-SNAPSHOT/login" method="post">
 		<div id="caixa">
 				<h1>LOGIN</h1>
 				<li>
 					<ul>
-						<input id="email" type="mail" name="email" placeholder="email">
+						<input id="email" type="mail" name="email" placeholder="email" required="true"  
+					oninvalid="this.setCustomValidity('Login nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
 					</ul>
 					<ul>
-						<input id="senha" type="password" name="senha" placeholder="senha">
+						<input id="senha" type="password" name="senha" placeholder="senha" required="true"  
+					oninvalid="this.setCustomValidity('Senha nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
 					</ul>
 				</li>
-				<button id="login"><a href="/listaUsuarios" >ENTRAR C/ LOGIN</a></button>
-				<!--caso precisar tem uma opcao que abre direto o principal sem precisar ter nada -->
-				<button id="login" type="submit">ENTRAR S/ LOGIN</button>
+				<button id="login" type="submit">ENTRAR</button>
 	</form>	
-				<button><a href="/maestrino-0.0.1-SNAPSHOT/cadastrar" >Cadastrar</a></button>
+				<button><a href="/maestrino-0.0.1-SNAPSHOT/cadastrar" >Não possui conta? Clique aqui</a></button>
 		</div>
 	
 </body>

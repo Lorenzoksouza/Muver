@@ -1,0 +1,43 @@
+* {
+padding:0;
+margin:0;
+border:0;
+}
+
+html {
+	font-family: varela round;
+	-webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+
+body{
+	background-color: #30475e;
+}	
+
+#caixa{
+	text-align: center;
+  	width: 50%;
+  	position: absolute;
+	top: 30%;
+	left: 25%;
+  	padding: 10px;
+	background-color: white;
+	border-radius: 20px;
+
+}
+
+img {
+	height: auto;
+	width: 40%;
+	margin-bottom: 30px;
+ 	display: inline-block;
+ 	margin-top: 20px;
+}
+
+span{
+	text-align: center;
+  	display:block;
+  	margin-bottom: 20px;
+  	font-size: 20px;
+}

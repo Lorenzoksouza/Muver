@@ -85,7 +85,7 @@ public class MusicoController {
 		}
 		
 		//insere no musico os dados vindo do formulário
-		Musico novoMusico =  new Musico(nome,email,senha,estiloMusical,instrumentos,fotoPerfilByte,linkFb,linkIg,descricao);
+		Musico novoMusico =  new Musico(nome,email,senha,estiloMusical,instrumentos,fotoPerfilByte,linkFb,linkIg,descricao,"musico");
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoMusico);
 		

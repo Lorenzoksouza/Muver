@@ -56,7 +56,7 @@ public class LuthierController {
 		}
 		
 		//insere no Luthier os dados vindo do formulário
-		Luthier novoLuthier =  new Luthier(nome, email, senha, instrumentos, localizacao, fotoPerfilByte, linkFb, linkIg, descricao);
+		Luthier novoLuthier =  new Luthier(nome, email, senha, instrumentos, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"luthier");
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoLuthier);
 		

@@ -14,7 +14,7 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m")
 	Master listarUsuario();
 
-	@Query("SELECT m FROM Master m where m.tipoUsuario = ?1 or m.tipoUsuario = ?2")
+	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier'")
 	Iterable<Master> listaUsuariosSemMusico();
 	
 	//native query

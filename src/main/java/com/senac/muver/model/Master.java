@@ -42,13 +42,15 @@ public abstract class Master implements Serializable{
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
 	public byte[] fotoPerfil;
+	@Getter @Setter
+	private String tipoUsuario;
 	
 	public Master() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Master(String nome, String email, String senha, String linkFb, String linkIg, String descricao,
-			byte[] fotoPerfil) {
+			byte[] fotoPerfil, String tipoUsuario) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -57,6 +59,7 @@ public abstract class Master implements Serializable{
 		this.linkIg = linkIg;
 		this.descricao = descricao;
 		this.fotoPerfil = fotoPerfil;
+		this.tipoUsuario = tipoUsuario;
 	}
 
 }

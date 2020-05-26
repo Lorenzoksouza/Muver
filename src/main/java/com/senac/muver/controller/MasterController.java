@@ -24,7 +24,6 @@ public class MasterController {
 	
 	@GetMapping("/principal")
 	public ModelAndView listaUsuarios() {
-		System.out.println("veio aqui");
 		ModelAndView mv = new ModelAndView("/principal"); 
 		mv.addObject("usuarios", service.listaUsuariosSemMusico());
 		return mv;

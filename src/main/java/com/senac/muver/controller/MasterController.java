@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,11 +22,11 @@ public class MasterController {
 	@Autowired
 	private MasterService service;
 	
-	@RequestMapping("/listaUsuarios")
-	public ModelAndView listagemDeUsuarios(HttpSession session) {
-		ModelAndView mv = new ModelAndView("principal");
-		Master usuarios = service.listarUsuario();
-		mv.addObject("usuarios",usuarios);
+	@GetMapping("/principal")
+	public ModelAndView listaUsuarios() {
+		System.out.println("veio aqui");
+		ModelAndView mv = new ModelAndView("/principal"); 
+		mv.addObject("usuarios", service.listaUsuariosSemMusico());
 		return mv;
 	}
 	

@@ -21,8 +21,8 @@ public class Luthier extends Master implements Serializable {
 	private String localizacao;
 	
 	public Luthier(String nome, String email, String senha, String instrumentos, String localizacao, byte[] fotoPerfil, String linkFb, String linkIg,
-			String descricao) {
-		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil);
+			String descricao, String tipoUsuario) {
+		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario);
 		this.instrumentos = instrumentos;
 		this.localizacao = localizacao;
 	}

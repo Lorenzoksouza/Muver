@@ -21,8 +21,8 @@ public class Musico extends Master implements Serializable {
 	public String instrumentos;
 	
 	public Musico(String nome, String email, String senha,String estiloMusical, String instrumentos, byte[] fotoPerfil, String linkFb, String linkIg,
-			String descricao) {
-		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil);
+			String descricao, String tipoUsuario) {
+		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario);
 		this.estiloMusical = estiloMusical;
 		this.instrumentos = instrumentos;
 	}

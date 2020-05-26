@@ -56,7 +56,7 @@ public class EstudioController {
 		}
 		
 		//insere no estudio os dados vindo do formulário
-		Estudio novoEstudio =  new Estudio(nome, email, senha, localizacao, fotoPerfilByte, linkFb, linkIg, descricao);
+		Estudio novoEstudio =  new Estudio(nome, email, senha, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"estudio");
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoEstudio);
 		

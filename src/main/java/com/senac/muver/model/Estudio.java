@@ -19,8 +19,8 @@ public class Estudio extends Master implements Serializable {
 	private String localizacao;
 	
 	public Estudio(String nome, String email, String senha, String localizacao, byte[] fotoPerfil, String linkFb, String linkIg,
-			String descricao) {
-		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil);
+			String descricao, String tipoUsuario) {
+		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario);
 		this.localizacao = localizacao;
 	}
 	

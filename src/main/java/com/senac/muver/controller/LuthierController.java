@@ -45,22 +45,24 @@ public class LuthierController {
 		@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, 
 		@RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
 		
+		/*
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
-		
+		*/
 		byte[] fotoPerfilByte = null;
+		/*
 		try {
 			fotoPerfilByte = multipartFile.getBytes();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		//insere no Luthier os dados vindo do formulário
 		Luthier novoLuthier =  new Luthier(nome, email, senha, instrumentos, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"luthier");
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoLuthier);
 		
-		return "login";
+		return "/cSucesso";
 		
 	}
 	

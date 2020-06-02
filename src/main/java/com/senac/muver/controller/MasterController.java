@@ -26,6 +26,8 @@ public class MasterController {
 	public ModelAndView listaUsuarios() {
 		ModelAndView mv = new ModelAndView("/principal"); 
 		mv.addObject("usuarios", service.listaUsuariosSemMusico());
+		System.out.println("PASSEI AQUI");
+		System.out.println(mv);
 		return mv;
 	}
 	

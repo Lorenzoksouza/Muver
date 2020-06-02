@@ -14,7 +14,7 @@
 			<ul class="navbar-nav">
 				<li class="logo">
 					<!-- testar href apnes com /principal-->
-					<a href="principal.html" class="nav-link">
+					<a href="/maestrino-0.0.1-SNAPSHOT/principal" class="nav-link">
 						<span class="link-text">Maestrino</span>
 						<!-- LOCAL <img src="../resources/static/images/arrow.png"> -->
 						<!-- PROJETO <img src="images/arrow.png"> -->
@@ -24,25 +24,16 @@
 
 				<li class="nav-item">
 					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-					<a href="cMusico.html" class="nav-link">
+					<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
 						<img src="images/arrow.png">
-						<span class="link-text">Musico</span>
+						<span class="link-text">Perfil</span>
 					</a>
 				</li>
 
 				<li class="nav-item">
-					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-					<a href="cLuthier.html" class="nav-link">
+					<a href="/maestrino-0.0.1-SNAPSHOT/logout" class="nav-link">
 						<img src="images/arrow.png">
-						<span class="link-text">Luthier</span>
-					</a>
-				</li>
-
-				<li class="nav-item">
-					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-					<a href="cEstudio.html" class="nav-link">
-						<img src="images/arrow.png">
-						<span class="link-text">Estudio</span>
+						<span class="link-text">Logout</span>
 					</a>
 				</li>
 			</ul>
@@ -51,36 +42,70 @@
 	<main>
 		<div id="caixa">
 			<!-- ainda tentando entender a melhor pratica pra esse campo de pesquisa-->
-			<!--
-			<form action="pesquisar" method="post">
+			
+			<form action="#" method="post">
 				<div id="pesquisa">
 					<img src="images/lupa.png">
 					<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
 				</div>
 			</form>
-			-->	
+				
 			<!-- deixar desativado por enquanto -->
-			<!--
+			
 			<div id="filtro_Principal">
 				<div id="filtro_Estudio"><p>Estudio</p></div>
 				<div id="filtro_Luthier"><p>Luthier</p></div>			
 			</div>
-			-->
+		
+			<div id ="listausuarios">
+				<table>
+					<thead>
+					   <tr>
+						<th>Id</th>
+						<th>Nome</th>
+					   </tr>
+					</thead>
+					<tbody>
+						<tr th:each="usuario: ${usuarios}">
+		    				<td th:text="${usuario.idmaster}" />
+		   					<td th:text="${usuario.nome}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
 
 			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
-			<div id="listaUsuarios" th:each="usuario : ${usuarios}">
-				<img id="img" th:src="${usuario.img}">
+			<div id="listausuarios" th:each="usuario : ${usuarios}">
+				<form id="form" action="/maestrino-0.0.1-SNAPSHOT/perfil" method="get">
+			<!--TODO esta dando erro no como a imagem vem para a tela rever isso -->
+<!-- 				<div id="imgCover"> -->
+<!-- 					<img id="img" th:src="${usuario.fotoperfil}"> -->
+<!-- 				</div> -->
 				<span id="nome" th:text="${usuario.nome}"></span>
-				<!-- nota ainda n'ao precisa -->
-				<!--<span id="nota">Nota 5,0</span>-->
-				<span id="descricao" th:text="${usuario.descricao}"></span> 
-				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil-->
-				<!-- <form action="/perfilMusico" method="get"> -->
-					<button id="sobre" type="submit"><a href="/perfilMusico">aaaaa</a></button>
-				<!--  </form> -->
+				
+				<span id="descricao" th:text="${usuario.descricao}"></span>
+				<span id="nota"></span> 
+
+				<span id="idUsuario" th:text="${usuario.idmaster}"></span>
+			<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
+<!-- 				<form action="/perfilMusico" method="get"> -->
+					
+						
+<!-- 					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button> -->
+<!-- 					</form>				 -->
+<!-- 				 </form> -->
 			</div>
 		</div>
 	</main>
+<!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
+	<script type="text/javascript">
+		function perfilUrl() {
+			var htmlId = document.getElementById("idUsuario").text;
+			var htmlPerfil = "perfil?User=" + htmlId;
+			document.getElementById("form").action = htmlPerfil;  
+		}
+	</script> 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 

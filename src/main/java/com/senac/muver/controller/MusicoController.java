@@ -74,22 +74,23 @@ public class MusicoController {
 		@RequestParam("descricao") String descricao, HttpServletRequest request, Model model
 	) {
 		
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		/*MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
-		
+		*/
 		byte[] fotoPerfilByte = null;
+		/*
 		try {
 			fotoPerfilByte = multipartFile.getBytes();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		//insere no musico os dados vindo do formulário
 		Musico novoMusico =  new Musico(nome,email,senha,estiloMusical,instrumentos,fotoPerfilByte,linkFb,linkIg,descricao,"musico");
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoMusico);
 		
-		return "/login";
+		return "/cSucesso";
 		
 	}
 

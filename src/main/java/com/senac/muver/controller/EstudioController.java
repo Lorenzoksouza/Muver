@@ -44,23 +44,24 @@ public class EstudioController {
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
 			@RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, 
 			@RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
-		
+		/*
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
-		
+		*/
 		byte[] fotoPerfilByte = null;
+		/*
 		try {
 			fotoPerfilByte = multipartFile.getBytes();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		//insere no estudio os dados vindo do formulário
 		Estudio novoEstudio =  new Estudio(nome, email, senha, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"estudio");
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoEstudio);
 		
-		return "login";
+		return "/cSucesso";
 		
 	}
 	

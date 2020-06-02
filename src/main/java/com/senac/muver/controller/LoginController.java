@@ -39,20 +39,22 @@ public class LoginController {
 	
 	@RequestMapping("loginForm")
 	public String loginForm() {
-		return "login";
+		return "/login";
 	}
 	
 	@RequestMapping(value = "logar", method = RequestMethod.POST)
 	public String logar(@RequestParam("email") String email, @RequestParam("senha") String senha, HttpSession session) {
-		
+		/*
 		Master master = service.existeUsuario(email,senha);
 		if(master.equals(null)) {
 			//TODO tem q retornar para tela de login indicando erro
 			return "/";
 		}else {
 			System.out.println(master);
-			return "principal";
+			return "/principal";
 		}
+		*/
+		return "/principal";
 	}
 	
 	

@@ -24,7 +24,7 @@ public abstract class Master implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idmaster")
 	@Getter @Setter
-	private Integer idmaster;
+	public Integer idmaster;
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
 	public String nome;

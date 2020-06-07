@@ -61,7 +61,7 @@ public class LoginController {
 		}
 		*/
 		System.out.println("logar pra principal");
-		return "/principal.html";
+		return "redirect:principal";
 	}
 	
 	

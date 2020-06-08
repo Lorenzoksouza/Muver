@@ -26,10 +26,21 @@ public class MasterController {
 	public ModelAndView listaUsuarios() {
 		ModelAndView mv = new ModelAndView("/principal"); 
 		mv.addObject("usuarios", service.listaUsuariosSemMusico());
-		System.out.println("PASSEI AQUI");
-		System.out.println(mv);
 		return mv;
 	}
 	
+//TODO	@GetMapping("")
+	public ModelAndView listaEstudios() {
+		ModelAndView mv = new ModelAndView("/principal"); 
+		mv.addObject("estudios", service.listaEstudios());
+		return mv;
+	}
+	
+//TODO	@GetMapping("")
+	public ModelAndView listaLuthiers() {
+		ModelAndView mv = new ModelAndView("/principal"); 
+		mv.addObject("luthiers", service.listaLuthiers());
+		return mv;
+	}
 	
 }

@@ -31,5 +31,15 @@ public class MasterService {
 	public Iterable<Master> listaUsuariosSemMusico() {
 		return repositorio.listaUsuariosSemMusico();
 	}
+
+
+	public Object listaEstudios() {
+		return repositorio.listaEstudios();
+	}
+
+
+	public Object listaLuthiers() {
+		return repositorio.listaLuthiers();
+	}
 	
 }

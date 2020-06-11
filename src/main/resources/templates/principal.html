@@ -56,7 +56,7 @@
 				<div id="filtro_Estudio"><p>Estudio</p></div>
 				<div id="filtro_Luthier"><p>Luthier</p></div>			
 			</div>
-		
+			<!-- teste
 			<div id ="listausuarios">
 				<table>
 					<thead>
@@ -73,7 +73,7 @@
 					</tbody>
 				</table>
 			</div>
-
+			-->
 
 			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
 			<div id="listausuarios" th:each="usuario : ${usuarios}">
@@ -87,21 +87,21 @@
 				<span id="descricao" th:text="${usuario.descricao}"></span>
 				<span id="nota"></span> 
 
-				<span id="idUsuario" th:text="${usuario.idmaster}"></span>
+				<span id="idUsuario" th:value="${usuario.idmaster}" th:text="${usuario.idmaster}"></span>
 			<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
 <!-- 				<form action="/perfilMusico" method="get"> -->
 					
-						
-<!-- 					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button> -->
+				<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button>
 <!-- 					</form>				 -->
-<!-- 				 </form> -->
+ 				</form>
 			</div>
 		</div>
 	</main>
 <!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
 	<script type="text/javascript">
-		function perfilUrl() {
-			var htmlId = document.getElementById("idUsuario").text;
+			function perfilUrl() {
+			var htmlId = document.getElementById("idUsuario").value;
+			alert("valor: " + idid);
 			var htmlPerfil = "perfil?User=" + htmlId;
 			document.getElementById("form").action = htmlPerfil;  
 		}

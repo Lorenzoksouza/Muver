@@ -101,8 +101,8 @@
 <!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
 	<script type="text/javascript">
 		function perfilUrl() {
-			var htmlId = document.getElementById("idUsuario").text;
-			var htmlPerfil = "perfil?User=" + htmlId;
+			var htmlNome = document.getElementById("nome").text;
+			var htmlPerfil = "perfil?nome=" + htmlNome;
 			document.getElementById("form").action = htmlPerfil;  
 		}
 	</script> 

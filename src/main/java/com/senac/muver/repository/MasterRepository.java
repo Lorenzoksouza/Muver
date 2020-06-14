@@ -23,8 +23,8 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'luthier'")
 	Iterable<Master> listaLuthiers();
 	
-	@Query("SELECT m FROM Master m where m.nome = 'Ben10'")
-	Iterable<Master> PerfilNome();
+	@Query("SELECT m FROM Master m where m.nome = ?1")
+	Iterable<Master> PerfilNome(String id);
 	
 	//native query
 	/*

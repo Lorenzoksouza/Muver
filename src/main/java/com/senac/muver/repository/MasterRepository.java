@@ -23,6 +23,9 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'luthier'")
 	Iterable<Master> listaLuthiers();
 	
+	@Query("SELECT m FROM Master m where m.nome = 'Ben10'")
+	Iterable<Master> PerfilNome();
+	
 	//native query
 	/*
 	@Query(value = "SELECT * FROM tarefas t WHERE t.status = ?1 AND t.operador IS NULL ORDER BY RAND() LIMIT 1", nativeQuery = true)

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+	<!--<link href="css/login.css" rel="stylesheet" />-->
+	<link href="css/login.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+</head>
+<body>
+	<form action="/maestrino-0.0.1-SNAPSHOT/logar" method="post">
+		<div id="caixa">
+				<h1>LOGIN</h1>
+				<li>
+					<ul>
+						<input id="email" type="mail" name="email" placeholder="email" required="true"  
+					oninvalid="this.setCustomValidity('Login nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+					</ul>
+					<ul>
+						<input id="senha" type="password" name="senha" placeholder="senha" required="true"  
+					oninvalid="this.setCustomValidity('Senha nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+					</ul>
+				</li>
+				<button id="login" type="submit">ENTRAR</button>
+	</form>	
+				<button><a href="/maestrino-0.0.1-SNAPSHOT/cadastrar" >Não possui conta? Clique aqui</a></button>
+		</div>
+	
+</body>
+</html>

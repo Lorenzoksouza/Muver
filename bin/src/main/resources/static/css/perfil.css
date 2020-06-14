@@ -1,0 +1,322 @@
+/*referencias e configs principais*/
+:root {
+	font-size: 16px;
+	font-family: 'Varela Round';
+	--text-primary: #b6b6b6;
+	--text-secondary: #ececec;
+	--bg-primary: #222831;
+	--bg-secondary: #00FFBB;
+	--transition-speed: 600ms;
+}
+
+* {
+padding:0;
+margin:0;
+border:0;
+}
+
+html {
+	font-family: varela round;
+	-webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body{
+	background-color: #30475e;
+}
+
+/*referencias e configs principais*/
+
+
+/*margem pra desconsiderar o menu lateral nos calculos dos outros itens no site */
+main {
+	margin-left: 5rem;
+}
+/*margem pra desconsiderar o menu lateral nos calculos dos outros itens no site */
+
+/*configs barra lateral*/
+.navbar {
+	z-index: 9999;
+	width: 5rem;
+	height: 100vh;
+	position: fixed;
+	background-color: var(--bg-primary);
+	transition: width 200ms ease;
+}
+
+.navbar-nav{
+	list-style: none;
+	padding: 0;
+	margin:0;
+	display: flex;
+	flex-direction: column;
+	align-items: center; 
+}
+
+.nav-item{
+	width: 100%;
+}
+
+
+.nav-link {
+	display: flex;
+	align-items: center;
+	height: 5rem;
+	color: var(--text-primary);
+	text-decoration: none;
+	filter: grayscale(100%) opacity(0.7);
+	transition: var(--transition-speed);
+}
+
+.nav-link:hover{
+	filter: grayscale(0%) opacity(1);
+	background: #f2a365;
+	color: white;
+}
+
+.link-text {
+	display: none;
+	margin-left: 1rem;
+}
+
+.nav-link img{
+	width: 2rem;
+	min-width: 2rem;
+	margin: 0 1.5rem;
+}
+
+.navbar:hover{
+	width: 16rem;
+}
+
+.navbar:hover .link-text{
+	display: block;
+}
+
+.fa-primary{
+	color: #ff7eee;
+}
+
+
+.fa-secondary{
+	color: #00b38f;
+}
+
+.fa-primary,
+.fa-secondary{
+	transition: var(--transition-speed);
+}
+
+
+.logo{
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 1rem;
+	text-align: center;
+	color: var(--text-secondary);
+	background: var(--bg-primary);
+	font-size: 1.5rem;
+	letter-spacing: 0.3ch; 
+	width: 100%;
+}
+
+.logo img{
+	height: 2.5rem;
+	width: 4.5rem;
+	transform: rotate(0deg);
+	transition: transform var(--transition-speed);
+}
+
+.navbar:hover .logo img {
+	transform: rotate(-360deg);
+}
+/*configs barra lateral*/
+
+/*botao voltar*/
+#img_voltar{
+	height: 20px;
+	width: auto;
+	float: left;
+	margin-right: 10px;
+}
+
+#voltar{
+	letter-spacing: 0.2em;
+	font-weight: bold;
+	margin-top: 10px;
+	text-decoration: none;
+	float: left;
+	text-align: left;
+}
+
+#voltar p{
+	margin-top: 10px;
+	float: right;
+}
+/*botao voltar*/
+
+#caixa{
+	text-align: left;
+  	width: 65%;
+	top: 5%;
+	left: 15%;
+	bottom: -100px;
+  	padding: 10px;
+	background-color: white;
+	border-radius: 20px;
+	overflow: hidden;
+	position: relative;
+
+}
+
+#img{
+	float: right;
+	top: -9999px;
+	left: -9999px;
+	right: -9999px;
+	bottom: -9999px;
+	height: 200px;
+	margin: auto;
+}
+
+#texto_mapa{
+	float: right;
+}
+
+#nome{
+	float: left;
+	display: inline-block;
+	font-size: 80px;
+	margin-left: 20px;
+}
+
+#nota{
+	float: left;
+	display: inline-block;
+	font-size: 30px;
+	clear: left;
+	margin-left: 115px;
+}
+
+#imagem{
+	float: right;
+	position: relative;
+	right: 178px;
+	bottom: 200px;
+}
+
+#imagem img{
+	float: right;
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	right: -9999px;
+	bottom: -9999px;
+	height: 250px;
+	margin: auto;
+}
+
+#descricao{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	float: left;
+	display: inline-block;
+	font-size: 15px;
+	clear: left;
+	margin-left: 115px;
+}
+
+#instrumentos{
+	margin-top: 40px;
+	float: left;
+	display: inline-block;
+	font-size: 15px;
+	clear: left;
+	margin-left: 115px;
+}
+
+#instrumentos span{
+	float: left;
+	clear: left;
+}
+
+#instrumentos img{
+	margin-top: 10px;
+	float: left;
+	display: inline-block;
+	font-size: 15px;
+	clear: left;
+	margin-left: 10px;
+	height: 30px;
+}
+
+#instrumentos #nomes{
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+#Disponibilidade{
+	margin-top: 80px;
+	float: left;
+	clear: left;
+	display: inline-block;
+	margin-left: 115px;
+	margin-bottom: 20px;
+}
+
+#Disponibilidade span{
+	float: left;
+	clear: left;
+}
+
+#Disponibilidade img{
+	margin-top: 20px;
+	float: left;
+	clear: left;
+	display: inline-block;
+	height: 300px;
+}
+
+#analises {
+	margin-top: -80px;
+	margin-right: 340px;
+	float: right;
+	clear: right;
+}
+
+#analises span{
+	margin: 10px;
+	padding-right: 10px;
+	float: right;
+	clear: right;
+}
+
+
+#analises img{
+	height: 40px;
+	margin-right: 12px;
+	float: right;
+	clear: right;
+}
+
+#gMaps{
+	float: right;
+	clear: right;
+	margin-top: 40px;
+	margin-right: 80px;
+}
+
+#gMaps span{
+	float: right;
+	clear: right;
+	margin-right: 300px;
+}
+
+#gMaps img{
+	margin-top: 30px;
+	float: right;
+	clear: right;
+	height: 300px;
+	margin-bottom: 40px;
+}
+

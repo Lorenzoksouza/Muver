@@ -222,7 +222,7 @@ main {
 /*filtro principal*/
 
 /*lista*/
-#form{
+#listausuarios{
 	text-align: left;
 	margin-left: 4%;
 	float: left;
@@ -234,6 +234,7 @@ main {
 	overflow: hidden;
 	position: relative;
 	color: black;
+	margin-bottom: 20px;
 }
 
 /*img perfil*/

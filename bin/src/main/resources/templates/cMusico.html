@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>cadastrar musico</title>
+	<link href="css/cMusico.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+</head>
+<body>
+	<form action="/maestrino-0.0.1-SNAPSHOT/cSucesso" method="post">
+		<div id="caixa">
+			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/cadastrar"><img id="img_voltar" src="images/arrow.png"/><p>voltar</p></a>
+		
+			<h1>Cadastrar Musico</h1>
+			<ul>
+				<li>
+					<input type="text" name="nome" placeholder="nome" required="true"  
+					oninvalid="this.setCustomValidity('Nome nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+ 					</input>
+ 				</li>
+				<li>
+					<input type="text" name="email" placeholder="email" required="true"  
+					oninvalid="this.setCustomValidity('email nao pode ser vazio')"
+ 					oninput="setCustomValidity('')">
+ 				</li>
+				<li>
+					<input type="password" name="senha" placeholder="senha" required="true"  
+					oninvalid="this.setCustomValidity('senha nao pode ser vazia')"
+ 					oninput="setCustomValidity('')">
+				</li>
+				<li>
+					<!--por enquanto vamos trabalhar com selecao unica, se der tudo certo, vamos pra mais de uma -->
+					<select id="estilo" name="estilo" required="true"  
+					oninvalid="this.setCustomValidity('Um estilo musical deve ser selecionado')"
+ 					oninput="setCustomValidity('')">
+						<option value="" disabled selected>Escolher estilos musicais...</option>
+						<option value="Bossa">Bossa</option>
+						<option value="Rock">Rock</option>
+						<option value="Funk">Funk</option>
+					</select>
+				</li>
+				<li>
+					<select id="instrumentos" name="instrumentos" required="true"  
+					oninvalid="this.setCustomValidity('Um instrumento deve ser selecionado')"
+ 					oninput="setCustomValidity('')">
+						<option value="" disabled selected>Escolher instrumentos...</option>
+						<option value="Violao">Violão</option>
+						<option value="Guitarra">Guitarra</option>
+						<option value="Bateria">Bateria</option>
+					</select>
+				</li>
+			</ul>
+			<button id="cadastrar" type="submit">Cadastrar</button>		
+		</div>
+	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</body>
+</html>

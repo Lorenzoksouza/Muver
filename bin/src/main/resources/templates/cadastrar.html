@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>cadastro</title>
+	<link href="css/cadastrar.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+</head>
+<body>
+	<div id="caixa">
+		<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/login"><img id="img_voltar" src="images/arrow.png"/><p>Voltar</a>
+		
+		<h1>Cadastro</h1>
+
+		<label>TIPO DO PERFIL:</label>
+		
+		<select id="perfis" onchange="tipoUsuario()">
+			<option value="" disabled selected>Escolha uma opção...</option>
+			<option value="/maestrino-0.0.1-SNAPSHOT/cMusico" >Musico</option>
+			<option value="/maestrino-0.0.1-SNAPSHOT/cLuthier">Luthier</option>
+			<option value="/maestrino-0.0.1-SNAPSHOT/cEstudio">Estudio</option>
+		</select>
+		</br>
+		</br>		
+
+		<button><a id="selecao" href="#">CADASTRAR</a></button>
+	
+		<script type="text/javascript">
+			function tipoUsuario() {
+				var e = document.getElementById("perfis");
+				var result = e.options[e.selectedIndex].value;
+				document.getElementById("selecao").href = result;
+			}
+		</script>
+	</div>
+</body>
+</html>

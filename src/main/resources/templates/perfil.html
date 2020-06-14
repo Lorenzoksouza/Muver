@@ -39,13 +39,13 @@
 
 	<main>
 		<!-- aqui no th:each tem que passar o usuario de acordo com o botao sobre da tela principal -->
-		<div id="caixa" th:each="usuario : ${usuarios}">
+		<div id="caixa" th:each="usuario : ${usuario}">
 			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/principal"><img id="img_voltar" src="images/arrow.png"/>voltar</a>
 			<form action="editar" method="post">	
 				
 				<span id="nome" th:text="${usuario.nome}"></span>
 
-				<span id="nota" th:text="${usuario.nota}"></span>
+				<!--<span id="nota" th:text="${usuario.nota}"></span>-->
 
 				<!--<button id="Chat">Conversar</button>-->
 				
@@ -53,7 +53,7 @@
 
 				<div id="instrumentos">
 					<span>Intrumentos:</span>
-					<span th:text="${usuario.instrumentos}"></span>
+					<!--  <span th:text="${usuario.instrumentos}"></span> -->
 				</div>
 
 				<div id="Disponibilidade">
@@ -61,7 +61,7 @@
 				</div>
 
 				<div id="imagem">
-					<img id="img" th:src="${usuario.imagem}">
+					<!--<img id="img" th:src="${usuario.imagem}">-->
 				</div>
 
 				<!--ver como fazer as analises-->	

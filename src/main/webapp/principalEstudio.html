@@ -53,8 +53,8 @@
 			<!-- deixar desativado por enquanto -->
 			
 			<div id="filtro_Principal">
-				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principalEstudio">Estudio</a></div>
-				<div id="filtro_Luthier"><a href="/maestrino-0.0.1-SNAPSHOT/principalLuthier">Luthier</a></div>			
+				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principal">Estudio</a></div>
+				<div id="filtro_Luthier"><a>Luthier</a></div>			
 			</div>
 			<!-- teste
 			<div id ="listausuarios">
@@ -78,7 +78,7 @@
 			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
 			<div id="listausuarios" th:each="usuario : ${usuarios}">
 				<!--  <form id="form" action="/maestrino-0.0.1-SNAPSHOT/perfil" method="get"> -->
-	
+				<form id="form" action="/perfil" method="get">
 			<!--TODO esta dando erro no como a imagem vem para a tela rever isso -->
 <!-- 				<div id="imgCover"> -->
 <!-- 					<img id="img" th:src="${usuario.fotoperfil}"> -->
@@ -92,14 +92,13 @@
 				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
 	<!-- 				<form action="/perfilMusico" method="get"> -->
 						
-					<div id="sobre"><a href="/maestrino-0.0.1-SNAPSHOT/perfil">Sobre</a></div>
+					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button>
 	<!-- 					</form>				 -->
- 		
+ 				</form>
 			</div>
 		</div>
 	</main>
 <!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
-	<!-- 
 	<script type="text/javascript">
 			function perfilUrl() {
 			var htmlId = document.getElementById("idUsuario").value;
@@ -108,7 +107,7 @@
 			document.getElementById("form").action = htmlPerfil;  
 		}
 	</script> 
-	 -->
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 </body>

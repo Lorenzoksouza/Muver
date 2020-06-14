@@ -41,5 +41,10 @@ public class MasterService {
 	public Object listaLuthiers() {
 		return repositorio.listaLuthiers();
 	}
+
+
+	public Object perfilNome() {
+		return repositorio.PerfilNome();
+	}
 	
 }

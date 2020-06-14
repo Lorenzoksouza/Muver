@@ -29,17 +29,17 @@ public class MasterController {
 		return mv;
 	}
 	
-//TODO	@GetMapping("")
+	@GetMapping("/principalEstudio")
 	public ModelAndView listaEstudios() {
-		ModelAndView mv = new ModelAndView("/principal"); 
-		mv.addObject("estudios", service.listaEstudios());
+		ModelAndView mv = new ModelAndView("/principalEstudio"); 
+		mv.addObject("usuarios", service.listaEstudios());
 		return mv;
 	}
 	
-//TODO	@GetMapping("")
+	@GetMapping("/principalLuthier")
 	public ModelAndView listaLuthiers() {
-		ModelAndView mv = new ModelAndView("/principal"); 
-		mv.addObject("luthiers", service.listaLuthiers());
+		ModelAndView mv = new ModelAndView("/principalLuthier"); 
+		mv.addObject("usuarios", service.listaLuthiers());
 		return mv;
 	}
 	

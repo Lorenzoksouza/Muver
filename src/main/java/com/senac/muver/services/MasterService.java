@@ -43,8 +43,8 @@ public class MasterService {
 	}
 
 
-	public Object perfilNome(String id) {
-		return repositorio.PerfilNome(id);
+	public Object perfilNome(String nome) {
+		return repositorio.PerfilNome(nome);
 	}
 	
 }

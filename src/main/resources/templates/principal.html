@@ -53,8 +53,8 @@
 			<!-- deixar desativado por enquanto -->
 			
 			<div id="filtro_Principal">
-				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principalEstudio">Estudio</a></div>
-				<div id="filtro_Luthier"><a href="/maestrino-0.0.1-SNAPSHOT/principalLuthier">Luthier</a></div>			
+				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principalEstudio"><p>Estudio</p></a></div>
+				<div id="filtro_Luthier"><a href="/maestrino-0.0.1-SNAPSHOT/principalLuthier"><p>Luthier</p></a></div>			
 			</div>
 			<!-- teste
 			<div id ="listausuarios">
@@ -91,10 +91,16 @@
 					<span id="idUsuario" th:value="${usuario.idmaster}"></span>
 				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
 	<!-- 				<form action="/perfilMusico" method="get"> -->
+						<!-- "/maestrino-0.0.1-SNAPSHOT/perfil?id=${usuario.idmaster} -->
+						<!-- th:href="@{/maestrino-0.0.1-SNAPSHOT/perfil?nome={nome}(nome=${usuario.nome})}" -->
+						<!-- <a th:href="@{/category/edit/{id}(id=${category.idCategory})}">view</a> -->
+						<!--  <div id="sobre"><a href="/maestrino-0.0.1-SNAPSHOT/perfil">Sobre</a></div> -->
+					
 						
-					<div id="sobre"><a href="/maestrino-0.0.1-SNAPSHOT/perfil?id=idmaster">Sobre</a></div>
-	<!-- 					</form>				 -->
- 		
+	
+					<div id="sobre"><a th:href="@{/perfil/{nome}(nome=${usuario.nome})}">Sobre</a></div>
+	<!-- 					</form>					 -->
+ 					
 			</div>
 		</div>
 	</main>

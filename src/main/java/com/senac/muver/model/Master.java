@@ -61,5 +61,6 @@ public abstract class Master implements Serializable{
 		this.fotoPerfil = fotoPerfil;
 		this.tipoUsuario = tipoUsuario;
 	}
-
+	
+		
 }

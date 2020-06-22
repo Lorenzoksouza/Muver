@@ -1,6 +1,7 @@
 package com.senac.muver.services;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class MasterService {
 	}
 
 
-	public Iterable<Master> listaUsuariosSemMusico() {
+	public ArrayList<Master> listaUsuariosSemMusico() {
 		return repositorio.listaUsuariosSemMusico();
 	}
 

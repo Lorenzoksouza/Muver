@@ -1,5 +1,7 @@
 package com.senac.muver.repository;
 
+import java.util.ArrayList;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -17,7 +19,7 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	Master listarUsuario();
 
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier'")
-	Iterable<Master> listaUsuariosSemMusico();
+	ArrayList<Master> listaUsuariosSemMusico();
 
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio'")
 	Iterable<Master> listaEstudios();

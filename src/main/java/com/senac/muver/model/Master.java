@@ -33,9 +33,9 @@ public abstract class Master implements Serializable{
 	@Getter @Setter
 	private String senha;
 	@Getter @Setter
-	private String linkFb;
+	public String linkFb;
 	@Getter @Setter
-	private String linkIg;
+	public String linkIg;
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
 	public String descricao;

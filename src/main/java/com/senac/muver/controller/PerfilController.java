@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.senac.muver.model.Master;
 import com.senac.muver.model.Musico;
@@ -33,5 +34,20 @@ public class PerfilController {
 		mv.addObject("usuarios", service.perfilNome(nome));
 		return mv;
 	 }
+	
+    
+    @RequestMapping("/facebook.com/{linkFb}")
+    public RedirectView faceRedirect(@PathVariable String linkFb) {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://facebook.com.br/" + linkFb);
+        return redirectView;
+    }
+    
+    @RequestMapping("/instagram.com/{linkIg}")
+    public RedirectView instaRedirect(@PathVariable String linkIg) {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://instagram.com.br/" + linkIg);
+        return redirectView;
+    }
 	
 }

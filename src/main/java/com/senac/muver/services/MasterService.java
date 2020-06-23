@@ -1,6 +1,5 @@
 package com.senac.muver.services;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,17 +33,17 @@ public class MasterService {
 	}
 
 
-	public Object listaEstudios() {
+	public ArrayList<Master> listaEstudios() {
 		return repositorio.listaEstudios();
 	}
 
 
-	public Object listaLuthiers() {
+	public ArrayList<Master> listaLuthiers() {
 		return repositorio.listaLuthiers();
 	}
 
 
-	public Object perfilNome(String nome) {
+	public Master perfilNome(String nome) {
 		return repositorio.PerfilNome(nome);
 	}
 	

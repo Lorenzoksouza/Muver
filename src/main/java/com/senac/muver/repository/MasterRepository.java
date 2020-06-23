@@ -7,8 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.senac.muver.model.Master;
 
-import antlr.collections.List;
-
 public interface MasterRepository extends CrudRepository<Master, Integer> {
 
 	@Query("SELECT m FROM Master m WHERE m.email = ?1 and m.senha = ?2")
@@ -22,13 +20,13 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	ArrayList<Master> listaUsuariosSemMusico();
 
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio'")
-	Iterable<Master> listaEstudios();
+	ArrayList<Master> listaEstudios();
 
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'luthier'")
-	Iterable<Master> listaLuthiers();
+	ArrayList<Master> listaLuthiers();
 	
 	@Query("SELECT m FROM Master m where m.nome = :nome")
-	Iterable<Master> PerfilNome(String nome);
+	Master PerfilNome(String nome);
 	
 	
 	

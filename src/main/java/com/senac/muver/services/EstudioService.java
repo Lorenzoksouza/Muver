@@ -1,5 +1,6 @@
 package com.senac.muver.services;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,14 @@ public class EstudioService {
 		public Optional<Estudio> estudioPorID(Integer id) {
 			
 			return repositorio.findById(id);
+		}
+		
+		public ArrayList<Estudio> listaEstudios() {
+			return repositorio.listaEstudios();
+		}
+		
+		public Estudio perfilPorNomeEstudio(String nome) {
+			return repositorio.perfilPorNomeEstudio(nome);
 		}
 		
 		//serviço para salvar o convidado

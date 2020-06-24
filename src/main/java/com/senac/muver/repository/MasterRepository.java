@@ -12,21 +12,11 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m WHERE m.email = ?1 and m.senha = ?2")
 	Master existeUsuario(String email, String senha);
 	
-	
 	@Query("SELECT m FROM Master m")
 	Master listarUsuario();
 
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier'")
 	ArrayList<Master> listaUsuariosSemMusico();
-
-	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio'")
-	ArrayList<Master> listaEstudios();
-
-	@Query("SELECT m FROM Master m where m.tipoUsuario = 'luthier'")
-	ArrayList<Master> listaLuthiers();
-	
-	@Query("SELECT m FROM Master m where m.nome = :nome")
-	Master PerfilNome(String nome);
 	
 	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier'")
 	ArrayList<Master> pesquisaNome(String nome);

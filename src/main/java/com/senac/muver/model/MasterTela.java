@@ -17,15 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Getter;
 import lombok.Setter;
 
-//declarando que esta é uma entidade de banco
 @SuppressWarnings("serial")
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class MasterTela implements Serializable{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idmaster")
 	@Getter @Setter
 	public Integer idmaster;
 	@Getter @Setter
@@ -44,13 +38,17 @@ public class MasterTela implements Serializable{
 	public File fotoPerfil;
 	@Getter @Setter
 	private String tipoUsuario;
+	@Getter @Setter
+	private String instrumentos;
+	@Getter @Setter
+	private String estiloMusical;
 	
 	public MasterTela() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MasterTela(String nome, String email, String senha, String linkFb, String linkIg, String descricao,
-			File fotoPerfil, String tipoUsuario) {
+			File fotoPerfil, String tipoUsuario, String instrumentos, String estiloMusical) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -60,6 +58,8 @@ public class MasterTela implements Serializable{
 		this.descricao = descricao;
 		this.fotoPerfil = fotoPerfil;
 		this.tipoUsuario = tipoUsuario;
+		this.instrumentos = instrumentos;
+		this.estiloMusical = estiloMusical;
 	}
 	
 		

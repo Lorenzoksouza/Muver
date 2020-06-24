@@ -1,7 +1,5 @@
 package com.senac.muver.controller;
 
-import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +10,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.senac.muver.model.Master;
-import com.senac.muver.model.MasterTela;
-import com.senac.muver.services.MasterService;
+import com.senac.muver.util.ConvertMasterTela;
+import com.senac.muver.model.Estudio;
+import com.senac.muver.model.Luthier;
+import com.senac.muver.model.Musico;
+import com.senac.muver.services.EstudioService;
+import com.senac.muver.services.LuthierService;
+import com.senac.muver.services.MusicoService;
 
 @Controller
 public class PerfilController {
-	
 
 	@Autowired
-	private MasterService service;
-
+	private MusicoService serviceMusico;
+	@Autowired
+	private EstudioService serviceEstudio;
+	@Autowired
+	private LuthierService serviceLuthier;
+	
+	private ConvertMasterTela convert = new ConvertMasterTela();
 	
 	@GetMapping("/perfil/{nome}")
 	public ModelAndView perfilNome(@PathVariable String nome, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("/perfil");
-		Master usuario = service.perfilNome(nome);
-		mv.addObject("usuarios", converteMasterEmMasterTela(usuario));
+//		para teste
+		String tipoUsuario1 = "luthier";
+		switch (tipoUsuario1) {
+			case "musico":{
+				Musico m = serviceMusico.perfilPorNomeMusico(nome);
+				mv.addObject("usuarios", convert.converteMusicoEmMasterTela(m));
+				break;
+			}
+			case "estudio":{
+				Estudio e = serviceEstudio.perfilPorNomeEstudio(nome);
+				mv.addObject("usuarios", convert.converteEstudioEmMasterTela(e));
+				break;
+			}
+			case "luthier":{
+				Luthier l = serviceLuthier.perfilPorNomeLuthier(nome);
+				mv.addObject("usuarios", convert.converteLuthierEmMasterTela(l));
+				break;
+			}
+		}
 		return mv;
 	 }
 	
@@ -46,34 +69,4 @@ public class PerfilController {
         redirectView.setUrl("http://instagram.com.br/" + linkIg);
         return redirectView;
     }
-
-    private MasterTela converteMasterEmMasterTela(Master usuario) {
-		
-			MasterTela mt = new MasterTela();
-//			try { 
-//				InputStream initialStream =new ByteArrayInputStream(usuario.getFotoPerfil());
-//					    File targetFile = new File("src/main/resources/static/images/fotoPerfil" + usuario.getIdmaster() + ".tmp");
-//					    OutputStream outStream = new FileOutputStream(targetFile);
-//					 
-//					    byte[] buffer = new byte[8 * 1024];
-//					    int bytesRead;
-//					    while ((bytesRead = initialStream.read(buffer)) != -1) {
-//					        outStream.write(buffer, 0, bytesRead);
-//					    }
-//					    IOUtils.closeQuietly(initialStream);
-//					    IOUtils.closeQuietly(outStream);
-//		        } catch (Exception e) { 
-//		           e.printStackTrace(); 
-//		        }
-			mt.setFotoPerfil(new File("../images/fotoPerfil" + usuario.getIdmaster() + ".tmp"));
-			mt.setNome(usuario.getNome());
-			mt.setDescricao(usuario.getDescricao());
-			mt.setLinkFb(usuario.getLinkFb());
-			mt.setLinkIg(usuario.getLinkIg());
-			mt.setTipoUsuario(usuario.getTipoUsuario());
-			mt.setEmail(usuario.getEmail());
-			
-		return  mt;
-	}
-    
 }

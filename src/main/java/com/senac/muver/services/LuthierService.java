@@ -1,5 +1,6 @@
 package com.senac.muver.services;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,14 @@ public class LuthierService {
 			public Optional<Luthier> luthierPorID(Integer id) {
 				
 				return repositorio.findById(id);
+			}
+			
+			public ArrayList<Luthier> listaLuthiers() {
+				return repositorio.listaLuthiers();
+			}
+			
+			public Luthier perfilPorNomeLuthier(String nome) {
+				return repositorio.perfilPorNomeLuthier(nome);
 			}
 			
 			//serviço para salvar o convidado

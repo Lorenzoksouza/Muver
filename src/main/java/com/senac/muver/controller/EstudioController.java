@@ -1,6 +1,7 @@
 package com.senac.muver.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,13 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.senac.muver.util.ConvertMasterTela;
 import com.senac.muver.model.Estudio;
+import com.senac.muver.model.Luthier;
+import com.senac.muver.model.MasterTela;
 import com.senac.muver.services.EstudioService;
 
 @Controller
@@ -22,6 +28,8 @@ public class EstudioController {
 
 	@Autowired
 	private EstudioService service;
+	
+	private ConvertMasterTela convert = new ConvertMasterTela();
 	
 	@RequestMapping("listaestudios")
 	public String listaEstudios(Model model) {
@@ -38,6 +46,19 @@ public class EstudioController {
 		
 		return "index";
 		
+	}
+	
+	@GetMapping("/principalEstudio")
+	public ModelAndView listaEstudios() {
+		ModelAndView mv = new ModelAndView("/principalEstudio"); 
+		ArrayList<Estudio> listaUsuarios = service.listaEstudios();
+		ArrayList<MasterTela> listaMt = new ArrayList<MasterTela>();
+		for (Estudio es : listaUsuarios) {
+			MasterTela mt = convert.converteEstudioEmMasterTela(es);
+			listaMt.add(mt);
+		}
+		mv.addObject("usuarios", listaMt);
+		return mv;
 	}
 	
 	@RequestMapping(value = "cadastrarEstudio", method = RequestMethod.POST)

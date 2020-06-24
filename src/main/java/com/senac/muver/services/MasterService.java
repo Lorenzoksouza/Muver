@@ -18,7 +18,6 @@ public class MasterService {
 		return repositorio.findAll();
 	}
 	
-
 	public Master existeUsuario(String email, String senha) {
 		return repositorio.existeUsuario(email,senha);
 	}
@@ -27,26 +26,10 @@ public class MasterService {
 		return repositorio.listarUsuario();
 	}
 
-
 	public ArrayList<Master> listaUsuariosSemMusico() {
 		return repositorio.listaUsuariosSemMusico();
 	}
 
-
-	public ArrayList<Master> listaEstudios() {
-		return repositorio.listaEstudios();
-	}
-
-
-	public ArrayList<Master> listaLuthiers() {
-		return repositorio.listaLuthiers();
-	}
-
-
-	public Master perfilNome(String nome) {
-		return repositorio.PerfilNome(nome);
-	}
-	
 	public ArrayList<Master> pesquisaNome(String nome) {
 		return repositorio.pesquisaNome(nome);
 	}

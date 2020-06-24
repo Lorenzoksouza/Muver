@@ -68,6 +68,11 @@ public class PerfilController {
 			mt.setFotoPerfil(new File("../images/fotoPerfil" + usuario.getIdmaster() + ".tmp"));
 			mt.setNome(usuario.getNome());
 			mt.setDescricao(usuario.getDescricao());
+			mt.setLinkFb(usuario.getLinkFb());
+			mt.setLinkIg(usuario.getLinkIg());
+			mt.setTipoUsuario(usuario.getTipoUsuario());
+			mt.setEmail(usuario.getEmail());
+			
 		return  mt;
 	}
     

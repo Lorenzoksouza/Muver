@@ -14,6 +14,7 @@ import javax.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
+
 //declarando que esta é uma entidade de banco
 @SuppressWarnings("serial")
 @Entity

@@ -28,7 +28,12 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m where m.nome = :nome")
 	Master PerfilNome(String nome);
 	
+	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier'")
+	ArrayList<Master> pesquisaNome(String nome);
 	
+	
+	//@Query("SELECT m FROM Master m where m.nome = %:nome%")
+	//ArrayList<Master> listaPesquisa(String pesquisa);
 	
 	//native query
 	/*

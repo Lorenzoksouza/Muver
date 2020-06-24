@@ -14,22 +14,17 @@
 		
 			<h1>Cadastrar Luthier</h1>
 			<ul>
-				<li><input type="text" name="nome" placeholder="nome" required="true"  
-					oninvalid="this.setCustomValidity('Nome nao pode ser vazio')"
- 					oninput="setCustomValidity('')">
+				<li>
+					<input type="text" name="nome" placeholder="nome" minlength="5" required="true">
  				</li>
-				<li><input type="text" name="email" placeholder="email" required="true"  
-					oninvalid="this.setCustomValidity('email nao pode ser vazio')"
- 					oninput="setCustomValidity('')">
+				<li>
+					<input type="email" name="email" placeholder="email" required="true">
  				</li>
-				<li><input type="password" name="senha" placeholder="senha" required="true"  
-					oninvalid="this.setCustomValidity('senha nao pode ser vazia')"
- 					oninput="setCustomValidity('')">
+				<li>
+					<input type="password" name="senha" placeholder="senha" minlength="6" required="true">
 				</li>
 				<li>
-					<select id="instrumentos" name="instrumentos" required="true"  
-					oninvalid="this.setCustomValidity('Um instrumento deve ser selecionado')"
- 					oninput="setCustomValidity('')">
+					<select id="instrumentos" name="instrumentos" required="true">
 						<option value="" disabled selected>Escolher instrumentos...</option>
 						<option value="Violao">Violão</option>
 						<option value="Guitarra">Guitarra</option>

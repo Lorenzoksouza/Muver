@@ -7,10 +7,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senac.muver.model.Master;
@@ -53,6 +58,25 @@ public class MasterController {
 		
 		return mv;
 	}
+	
+	
+	@RequestMapping("/pesquisa")
+	public ModelAndView perfilNome( @RequestParam(required = false) String pesquisa, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("/principal");
+		ArrayList<Master> usuario = service.pesquisaNome(pesquisa);
+		mv.addObject("usuarios", converteMasterEmMasterTela(usuario));
+		return mv;
+	 }
+	
+	
+	/*@RequestMapping("/principal/{pesquisa}")
+	public ModelAndView pesquisa(@PathVariable String pesquisa, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("/principal");
+		ArrayList<Master> listaPesquisa = service.listaPesquisa(pesquisa);
+		mv.addObject("usuarios", converteMasterEmMasterTela(listaPesquisa));
+		return mv;
+	 }
+	*/
 	
 	private ArrayList<MasterTela> converteMasterEmMasterTela(ArrayList<Master> listaUsuarios) {
 		

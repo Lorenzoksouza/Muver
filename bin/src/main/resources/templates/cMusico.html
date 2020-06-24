@@ -7,11 +7,11 @@
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
 </head>
 <body>
-	<form action="/maestrino-0.0.1-SNAPSHOT/cSucesso" method="post">
+	<form action="cadastrarMusico" method="post" enctype="multipart/form-data">
 		<div id="caixa">
 			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/cadastrar"><img id="img_voltar" src="images/arrow.png"/><p>voltar</p></a>
 		
-			<h1>Cadastrar Musico</h1>
+			<h1>Cadastrar MuSsico</h1>
 			<ul>
 				<li>
 					<input type="text" name="nome" placeholder="nome" required="true"  
@@ -50,6 +50,11 @@
 						<option value="Bateria">Bateria</option>
 					</select>
 				</li>
+				<li><input type="text" name="localizacao" placeholder="localizacao"></li>
+				<li><input type="file" id="fotoPerfil" name="fotoPerfil"></li>
+				<li><input type="text" name="linkFb" placeholder="link do facebook"></li>
+				<li><input type="text" name="linkIg" placeholder="link do instagram"></li>
+				<li><input type="text" name="descricao" placeholder="fale um pouco de voce..."></li>
 			</ul>
 			<button id="cadastrar" type="submit">Cadastrar</button>		
 		</div>

@@ -14,23 +14,18 @@
 		
 			<h1>Cadastrar Estúdio</h1>
 			<ul>
-				<li><input type="text" name="nome" placeholder="nome" required="true"  
-					oninvalid="this.setCustomValidity('Nome nao pode ser vazio')"
- 					oninput="setCustomValidity('')">
+				<li>
+					<input type="text" name="nome" placeholder="nome" minlength="5" required="true">
  				</li>
-				<li><input type="text" name="email" placeholder="email" required="true"  
-					oninvalid="this.setCustomValidity('email nao pode ser vazio')"
- 					oninput="setCustomValidity('')">
+				<li>
+					<input type="email" name="email" placeholder="email" required="true">
  				</li>
-				<li><input type="password" name="senha" placeholder="senha" required="true"  
-					oninvalid="this.setCustomValidity('senha nao pode ser vazia')"
- 					oninput="setCustomValidity('')">
+				<li>
+					<input type="password" name="senha" placeholder="senha" minlength="6" required="true">
 				</li>
 				<li>
 					<!--por enquanto vamos trabalhar com selecao unica, se der tudo certo, vamos pra mais de uma -->
-					<select id="estilo" name="estilo" required="true"  
-					oninvalid="this.setCustomValidity('Um estilo musical deve ser selecionado')"
- 					oninput="setCustomValidity('')">
+					<select id="estilo" name="estilo" required="true">
 						<option value="" disabled selected>Escolher estilos musicais...</option>
 						<option value="Bossa">Bossa</option>
 						<option value="Rock">Rock</option>

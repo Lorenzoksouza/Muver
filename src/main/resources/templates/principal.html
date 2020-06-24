@@ -25,26 +25,37 @@
 				<li class="nav-item">
 					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
 					<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
-						<img src="images/arrow.png">
-						<span class="link-text" id="username">Temporario</span>
+						<img src="images/edit.png">
+						<span class="link-text" id="username">Editar perfil</span>
 					</a>
 				</li>
 
 				<li class="nav-item">
-					<a href="/maestrino-0.0.1-SNAPSHOT/logout" class="nav-link">
-						<img src="images/arrow.png">
+					<a href="/maestrino-0.0.1-SNAPSHOT/login" class="nav-link">
+						<img src="images/logout.png">
 						<span class="link-text">Logout</span>
 					</a>
 				</li>
+				
+				<li class="nav-item">
+					<a href="/maestrino-0.0.1-SNAPSHOT/sobre" class="nav-link">
+						<img src="images/sobre.png">
+						<span class="link-text">Sobre</span>
+					</a>
+				</li>
+				
 			</ul>
+			
+			
 	</nav>
 
 	<main>
 		<div id="caixa">
 			<!-- ainda tentando entender a melhor pratica pra esse campo de pesquisa-->
 			
-			<form action="#" method="post">
+			<form action="/maestrino-0.0.1-SNAPSHOT/pesquisa" method="post">
 				<div id="pesquisa">
+					<!-- passar o texto da pesquisa para a consulta -->
 					<img src="images/lupa.png">
 					<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
 				</div>

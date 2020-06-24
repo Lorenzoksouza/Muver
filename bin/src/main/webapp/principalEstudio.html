@@ -26,7 +26,7 @@
 					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
 					<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
 						<img src="images/arrow.png">
-						<span class="link-text">Perfil</span>
+						<span class="link-text" id="username">Temporario</span>
 					</a>
 				</li>
 
@@ -53,10 +53,10 @@
 			<!-- deixar desativado por enquanto -->
 			
 			<div id="filtro_Principal">
-				<div id="filtro_Estudio"><p>Estudio</p></div>
-				<div id="filtro_Luthier"><p>Luthier</p></div>			
+				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principal">Estudio</a></div>
+				<div id="filtro_Luthier"><a>Luthier</a></div>			
 			</div>
-		
+			<!-- teste
 			<div id ="listausuarios">
 				<table>
 					<thead>
@@ -73,36 +73,37 @@
 					</tbody>
 				</table>
 			</div>
-
+			-->
 
 			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
 			<div id="listausuarios" th:each="usuario : ${usuarios}">
-				<form id="form" action="/maestrino-0.0.1-SNAPSHOT/perfil" method="get">
+				<!--  <form id="form" action="/maestrino-0.0.1-SNAPSHOT/perfil" method="get"> -->
+				<form id="form" action="/perfil" method="get">
 			<!--TODO esta dando erro no como a imagem vem para a tela rever isso -->
 <!-- 				<div id="imgCover"> -->
 <!-- 					<img id="img" th:src="${usuario.fotoperfil}"> -->
 <!-- 				</div> -->
-				<span id="nome" th:text="${usuario.nome}"></span>
-				
-				<span id="descricao" th:text="${usuario.descricao}"></span>
-				<span id="nota"></span> 
-
-				<span id="idUsuario" th:text="${usuario.idmaster}"></span>
-			<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
-<!-- 				<form action="/perfilMusico" method="get"> -->
+					<span id="nome" th:text="${usuario.nome}"></span>
 					
+					<span id="descricao" th:text="${usuario.descricao}"></span>
+					<span id="nota"></span> 
+	
+					<span id="idUsuario" th:value="${usuario.idmaster}"></span>
+				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
+	<!-- 				<form action="/perfilMusico" method="get"> -->
 						
-<!-- 					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button> -->
-<!-- 					</form>				 -->
-<!-- 				 </form> -->
+					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button>
+	<!-- 					</form>				 -->
+ 				</form>
 			</div>
 		</div>
 	</main>
 <!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
 	<script type="text/javascript">
-		function perfilUrl() {
-			var htmlNome = document.getElementById("nome").text;
-			var htmlPerfil = "perfil?nome=" + htmlNome;
+			function perfilUrl() {
+			var htmlId = document.getElementById("idUsuario").value;
+			alert("valor: " + idid);
+			var htmlPerfil = "perfilwww?User=" + htmlId;
 			document.getElementById("form").action = htmlPerfil;  
 		}
 	</script> 

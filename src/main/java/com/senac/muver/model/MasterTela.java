@@ -3,17 +3,6 @@ package com.senac.muver.model;
 import java.io.File;
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,16 +28,16 @@ public class MasterTela implements Serializable{
 	@Getter @Setter
 	private String tipoUsuario;
 	@Getter @Setter
-	private String instrumentos;
+	private Instrumento[] instrumentos;
 	@Getter @Setter
-	private String estiloMusical;
+	private EstiloMusical[] estiloMusical;
 	
 	public MasterTela() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MasterTela(String nome, String email, String senha, String linkFb, String linkIg, String descricao,
-			File fotoPerfil, String tipoUsuario, String instrumentos, String estiloMusical) {
+			File fotoPerfil, String tipoUsuario, Instrumento[] instrumentos, EstiloMusical[] estiloMusical) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -60,7 +49,5 @@ public class MasterTela implements Serializable{
 		this.tipoUsuario = tipoUsuario;
 		this.instrumentos = instrumentos;
 		this.estiloMusical = estiloMusical;
-	}
-	
-		
+	}	
 }

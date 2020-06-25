@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senac.muver.util.ConvertMasterTela;
+import com.senac.muver.model.Estudio;
+import com.senac.muver.model.Luthier;
 import com.senac.muver.model.Master;
 import com.senac.muver.model.MasterTela;
+import com.senac.muver.model.Musico;
 import com.senac.muver.services.MasterService;
 
 @Controller
@@ -40,20 +43,19 @@ public class MasterController {
 	}
 	
 	@RequestMapping("/pesquisa")
-	public ModelAndView perfilNome( @RequestParam(required = false) String pesquisa, HttpServletRequest request) {
+	public ModelAndView perfilNome( @RequestParam(required = false) String pesquisa, @RequestParam(required = false) String tipo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("/principal");
-		ArrayList<Master> usuarios = service.pesquisaNome(pesquisa);
-		mv.addObject("usuarios", convert.converteListaMasterEmMasterTela(usuarios));
+		
+		if (tipo == "tipoEstudio") {
+			ArrayList<Master> usuarios = service.pesquisaTipoEstudio(pesquisa);
+			mv.addObject("usuarios", convert.converteListaMasterEmMasterTela(usuarios));
+		} else {
+			ArrayList<Master> usuarios = service.pesquisaNome(pesquisa);
+			mv.addObject("usuarios", convert.converteListaMasterEmMasterTela(usuarios));
+		}
+		
 		return mv;
 	 }
 	
-	/*@RequestMapping("/principal/{pesquisa}")
-	public ModelAndView pesquisa(@PathVariable String pesquisa, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("/principal");
-		ArrayList<Master> listaPesquisa = service.listaPesquisa(pesquisa);
-		mv.addObject("usuarios", converteMasterEmMasterTela(listaPesquisa));
-		return mv;
-	 }
-	*/
 	
 }

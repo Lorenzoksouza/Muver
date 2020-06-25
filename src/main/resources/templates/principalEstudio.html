@@ -68,13 +68,10 @@
 					<img id="img" th:src="${usuario.fotoPerfil}">
 				</div>
 					<span id="nome" th:text="${usuario.nome}"></span>
-					
+					<span id="tipoUsuario" th:text="${usuario.tipoUsuario}"></span>
 					<span id="descricao" th:text="${usuario.descricao}"></span>
 					<span id="nota"></span> 
-	
-					<span id="idUsuario" th:value="${usuario.idmaster}"></span>
-				
-					<div id="sobre"><a th:href="@{/perfil/{nome}(nome=${usuario.nome})}">Sobre</a></div>
+					<div id="sobre"><a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">Sobre</a></div>
 			</div>
 		</div>
 	</main>

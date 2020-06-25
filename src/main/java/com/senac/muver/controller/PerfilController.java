@@ -30,12 +30,12 @@ public class PerfilController {
 	
 	private ConvertMasterTela convert = new ConvertMasterTela();
 	
-	@GetMapping("/perfil/{nome}")
-	public ModelAndView perfilNome(@PathVariable String nome, HttpServletRequest request) {
+	@GetMapping("/perfil/{tipoUsuario}/{nome}")
+	public ModelAndView perfilNome(@PathVariable String tipoUsuario, @PathVariable String nome, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("/perfil");
-//		para teste
-		String tipoUsuario1 = "luthier";
-		switch (tipoUsuario1) {
+		//para teste
+		//String tipoUsuario1 = "luthier";
+		switch (tipoUsuario) {
 			case "musico":{
 				Musico m = serviceMusico.perfilPorNomeMusico(nome);
 				mv.addObject("usuarios", convert.converteMusicoEmMasterTela(m));

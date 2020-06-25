@@ -34,6 +34,10 @@ public class MasterService {
 		return repositorio.pesquisaNome(nome);
 	}
 	
+	public ArrayList<Master> pesquisaTipoEstudio(String nome) {
+		return repositorio.pesquisaTipoEstudio(nome);
+	}
+	
 	//public ArrayList<Master> listaPesquisa(String pesquisa) {
 	//	return repositorio.listaPesquisa(pesquisa);
 	//}

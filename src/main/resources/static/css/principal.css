@@ -241,10 +241,10 @@ main {
 
 /*img perfil*/
 #imgCover{
-	top: 90px;
+	top: 100px;
 	right: 120px;
 	height: auto;
-	width: 40%;
+	width: 45%;
 	position: relative;
 }
 
@@ -255,25 +255,35 @@ main {
 	left: -9999px;
 	right: -9999px;
 	bottom: -9999px;
-	height: 200px;
+	height: 225px;
 	margin: auto;
-	padding-right:90px;
+	padding-right:100px;
 }
 /*img perfil*/
 
 #nome{
 	color: white;
-	margin-left: 290px;
+	margin-left: 250px;
 	float: left;
 	font-size: 2em;
 	display:block;
 	text-align: left;
+	margin-bottom: 5px;
+}
+
+#tipoUsuario{
+	color: white;
+	float: left;
+	display:block;
+	clear: left;
+	margin-left: 250px;
+	margin-bottom: 10px;
 }
 
 #nota{
 	margin-top: 60px;
 	float: left;
-	margin-left: 290px;
+	margin-left: 250px;
 	clear: left;
 	display: block;
 	font-size: 30px;
@@ -284,7 +294,7 @@ main {
 	float: left;
 	display:block;
 	clear: left;
-	margin-left: 290px;
+	margin-left: 250px;
 }
 
 #sobre{

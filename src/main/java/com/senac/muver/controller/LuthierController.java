@@ -85,6 +85,18 @@ public class LuthierController {
 		
 	}
 	
+	@GetMapping("cLuthier")
+	public String arrayController (Model model) {
+		String[] instrumentos = {
+			"Violao", "Baixo", "Guitarra"	
+		};
+		
+		model.addAttribute("instrumentos", instrumentos);
+		return "cLuthier";
+	}
+	
+	
+	
 	@RequestMapping(value = "excluirLuthier")
 	public String excluir(@RequestParam("luthier") Luthier luthier, Model model) {
 		

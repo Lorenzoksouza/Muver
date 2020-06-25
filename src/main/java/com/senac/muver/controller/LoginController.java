@@ -28,11 +28,13 @@ public class LoginController {
 		return "/cMusico";
 	}
 	
+	
+	/*
 	@RequestMapping(value="/cLuthier", method=RequestMethod.GET)
 	public String cLuthier(){
 		return "/cLuthier";
 	}
-	
+	*/
 	@RequestMapping(value="/cEstudio", method=RequestMethod.GET)
 	public String cEstudio(){
 		return "/cEstudio";

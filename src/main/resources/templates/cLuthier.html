@@ -5,6 +5,11 @@
 	<title>cadastrar luthier</title>
 	<link href="css/cMusico.css" rel="stylesheet" />
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 </head>
 <body>
 	
@@ -23,22 +28,31 @@
 				<li>
 					<input type="password" name="senha" placeholder="senha" minlength="6" required="true">
 				</li>
+				
 				<li>
-					<select id="instrumentos" name="instrumentos" required="true">
+					<select id="instrumentos" name="instrumentos" required="true"  multiple class="chosen-select">
 						<option value="" disabled selected>Escolher instrumentos...</option>
-						<option value="Violao">Violão</option>
-						<option value="Guitarra">Guitarra</option>
-						<option value="Bateria">Bateria</option>
+						<option th:text="${instrumentos[0]}" th:value="1"></option>
+						<option th:text="${instrumentos[1]}" th:value="2"></option>
+						<option th:text="${instrumentos[2]}" th:value="3"></option>
 					</select>
 				</li>
-				<li><input type="text" name="localizacao" placeholder="localizacao"></li>
+			<li><input type="text" name="localizacao" placeholder="localizacao"></li>
 				<li><input type="file" id="fotoPerfil" name="fotoPerfil"></li>
 				<li><input type="text" name="linkFb" placeholder="link do facebook"></li>
 				<li><input type="text" name="linkIg" placeholder="link do instagram"></li>
-				<li><input type="text" name="descricao" placeholder="fale um pouco de voce..."></li>
+				<li><input type="text" name="descricao" placeholder="fale um pouco de voce..."></li>  
+				
 			</ul>
 			<button id="cadastrar" type="submit">Cadastrar</button>
 		</div>
 	</form>
+	
+	<script type="text/javascript">
+	$(".chosen-select").chosen({
+		  no_results_text: "Não foram encontrados valores"
+		})
+	</script>
+	
 </body>
 </html>

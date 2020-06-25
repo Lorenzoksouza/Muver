@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.senac.muver.model.EstiloMusical;
+import com.senac.muver.model.Instrumento;
 import com.senac.muver.model.Musico;
 import com.senac.muver.services.MusicoService;
 
@@ -66,10 +68,10 @@ public class MusicoController {
 	}
 	
 	@RequestMapping(value = "cadastrarMusico", method = RequestMethod.POST)
-	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("estilo") String estiloMusical, 
-		@RequestParam("instrumentos") String instrumentos, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg,
-		@RequestParam("descricao") String descricao, HttpServletRequest request, Model model
-	) {
+	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha, 
+			@RequestParam("estilo") EstiloMusical[] estiloMusical, @RequestParam("instrumentos") Instrumento[] instrumentos, 
+			@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, 
+			HttpServletRequest request, Model model) {
 		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");

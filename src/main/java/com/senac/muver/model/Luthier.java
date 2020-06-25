@@ -1,12 +1,9 @@
 package com.senac.muver.model;
 
-import java.io.FileInputStream;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
-
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,11 +15,11 @@ public class Luthier extends Master implements Serializable {
 
 	//injetando os getters e setters via lombok
 	@Getter @Setter
-	private String instrumentos;
+	private Instrumento[] instrumentos;
 	@Getter @Setter
 	private String localizacao;
 	
-	public Luthier(String nome, String email, String senha, String instrumentos, String localizacao, byte[] fotoPerfil, String linkFb, String linkIg,
+	public Luthier(String nome, String email, String senha, Instrumento[] instrumentos, String localizacao, byte[] fotoPerfil, String linkFb, String linkIg,
 			String descricao, String tipoUsuario) {
 		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario);
 		this.instrumentos = instrumentos;

@@ -33,8 +33,6 @@ public class PerfilController {
 	@GetMapping("/perfil/{tipoUsuario}/{nome}")
 	public ModelAndView perfilNome(@PathVariable String tipoUsuario, @PathVariable String nome, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("/perfil");
-		//para teste
-		//String tipoUsuario1 = "luthier";
 		switch (tipoUsuario) {
 			case "musico":{
 				Musico m = serviceMusico.perfilPorNomeMusico(nome);

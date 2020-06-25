@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senac.muver.util.ConvertMasterTela;
+import com.senac.muver.model.Instrumento;
 import com.senac.muver.model.Luthier;
 import com.senac.muver.model.MasterTela;
 import com.senac.muver.services.LuthierService;
@@ -61,7 +62,7 @@ public class LuthierController {
 	}
 	
 	@RequestMapping(value = "cadastrarLuthier", method = RequestMethod.POST)
-	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("instrumentos") String instrumentos,
+	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("instrumentos") Instrumento[] instrumentos,
 		@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, 
 		@RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
 		

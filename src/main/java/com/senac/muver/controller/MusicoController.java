@@ -69,7 +69,7 @@ public class MusicoController {
 	
 	@RequestMapping(value = "cadastrarMusico", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha, 
-			@RequestParam("estilo") EstiloMusical[] estiloMusical, @RequestParam("instrumentos") Instrumento[] instrumentos, 
+			@RequestParam("estilo") String[] estilosMusicais, @RequestParam("instrumentos") String[] instrumentos, 
 			@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, 
 			HttpServletRequest request, Model model) {
 		
@@ -84,8 +84,22 @@ public class MusicoController {
 			e.printStackTrace();
 		}
 		
+		Instrumento[] instrumentosArray = new Instrumento[instrumentos.length];
+		for(int i = 0; i < instrumentos.length; i++) {
+			Instrumento instrumento = new Instrumento();
+			instrumento.setNome(instrumentos[i]);
+			instrumentosArray[i] = instrumento;
+		}
+		
+		EstiloMusical[] estiloMusicalArray = new EstiloMusical[estilosMusicais.length];
+		for(int i = 0; i < estilosMusicais.length; i++) {
+			EstiloMusical estiloMusical = new EstiloMusical();
+			estiloMusical.setNome(instrumentos[i]);
+			estiloMusicalArray[i] = estiloMusical;
+		}
+		
 		//insere no musico os dados vindo do formulário
-		Musico novoMusico =  new Musico(nome,email,senha,estiloMusical,instrumentos,fotoPerfilByte,linkFb,linkIg,descricao,"musico");
+		Musico novoMusico =  new Musico(nome,email,senha,estiloMusicalArray,instrumentosArray,fotoPerfilByte,linkFb,linkIg,descricao,"musico");
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoMusico);
 		

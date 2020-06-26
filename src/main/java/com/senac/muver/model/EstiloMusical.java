@@ -2,19 +2,20 @@ package com.senac.muver.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OrderColumn;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Entity(name="estilo_musical")
-@PrimaryKeyJoinColumn(name="idestilo_musical")
 public class EstiloMusical implements Serializable {
 
 	@Id
@@ -24,6 +25,10 @@ public class EstiloMusical implements Serializable {
 	public Integer idestiloMusical;
 	@Getter @Setter
 	public String nome;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@Getter @Setter
+	@OrderColumn
+	public Musico[] musico;
 	
 	public EstiloMusical() {
 		super();

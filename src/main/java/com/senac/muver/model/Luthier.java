@@ -2,10 +2,12 @@ package com.senac.muver.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -21,9 +23,9 @@ public class Luthier extends Master implements Serializable {
 	@Getter @Setter
 	public Integer idluthier;
 	@Getter @Setter
-	//@OneToMany(mappedBy="luthier")
-	@OneToMany
-	@OrderColumn(name="list_index")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "luthier_instrumento", joinColumns = @JoinColumn(name = "idluthier"), inverseJoinColumns = @JoinColumn(name = "idinstrumento"))
+	@OrderColumn
 	private Instrumento[] instrumentos;
 	@Getter @Setter
 	private String localizacao;

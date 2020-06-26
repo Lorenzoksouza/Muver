@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -20,7 +21,8 @@ public class Luthier extends Master implements Serializable {
 	@Getter @Setter
 	public Integer idluthier;
 	@Getter @Setter
-	@OneToMany(mappedBy="luthier")
+	//@OneToMany(mappedBy="luthier")
+	@OneToMany
 	@OrderColumn(name="list_index")
 	private Instrumento[] instrumentos;
 	@Getter @Setter

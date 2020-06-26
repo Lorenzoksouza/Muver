@@ -25,8 +25,8 @@ public class Instrumento implements Serializable{
 	public Integer idinstrumento;
 	@Getter @Setter
 	public String nome;
-	@Getter @Setter
-	public String intrumento_order;
+	//@Getter @Setter
+	//public String intrumento_order;
 	
 	public Instrumento() {
 	

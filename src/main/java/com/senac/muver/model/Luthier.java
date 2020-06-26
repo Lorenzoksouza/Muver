@@ -2,7 +2,10 @@ package com.senac.muver.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import lombok.Getter;
@@ -12,9 +15,13 @@ import lombok.Setter;
 @Entity(name="luthier")
 @PrimaryKeyJoinColumn(name="idluthier")
 public class Luthier extends Master implements Serializable {
-
-	//injetando os getters e setters via lombok
+	
+	@Column(name = "idluthier", insertable = false, updatable = false)
 	@Getter @Setter
+	public Integer idluthier;
+	@Getter @Setter
+	@OneToMany(mappedBy="luthier")
+	@OrderColumn(name="list_index")
 	private Instrumento[] instrumentos;
 	@Getter @Setter
 	private String localizacao;

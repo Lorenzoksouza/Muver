@@ -2,37 +2,39 @@ package com.senac.muver.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Entity(name="instrumento")
-@PrimaryKeyJoinColumn(name="idinstrumento")
 public class Instrumento implements Serializable{
 
+	@ManyToOne
+    @JoinColumn(name="idluthier", nullable=false, insertable = false, updatable = false)
+    private Luthier luthier;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idinstrumento")
 	@Getter @Setter
-	public Integer idInstrumento;
+	public Integer idinstrumento;
 	@Getter @Setter
 	public String nome;
+	@Getter @Setter
+	public String intrumento_order;
 	
 	public Instrumento() {
-		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	
-	public Instrumento(Integer idInstrumento, String nome) {
+	public Instrumento(Integer idinstrumento, String nome) {
 		super();
-		this.idInstrumento = idInstrumento;
+		this.idinstrumento = idinstrumento;
 		this.nome = nome;
 	}
 }

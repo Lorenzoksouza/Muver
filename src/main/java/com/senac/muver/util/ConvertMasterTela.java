@@ -89,7 +89,7 @@ public class ConvertMasterTela {
 	        } catch (Exception e) { 
 	           e.printStackTrace(); 
 	        }
-		mt.setInstrumentos(l.getInstrumentos());
+//		mt.setInstrumentos(l.getInstrumentos());
 		mt.setFotoPerfil(new File("images/fotoPerfil" + l.getIdmaster() + ".tmp"));
 		mt.setNome(l.getNome());
 		mt.setDescricao(l.getDescricao());

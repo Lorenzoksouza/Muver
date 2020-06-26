@@ -62,23 +62,28 @@ public class LuthierController {
 	}
 	
 	@RequestMapping(value = "cadastrarLuthier", method = RequestMethod.POST)
-	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("instrumentos") Instrumento[] instrumentos,
+	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("instrumentos") String[] instrumentos,
 		@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, 
 		@RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
 		
 		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
-		
 		byte[] fotoPerfilByte = null;
-		
 		try {
 			fotoPerfilByte = multipartFile.getBytes();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		Luthier novoLuthier =  new Luthier(nome, email, senha, instrumentos, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"luthier");
+		Instrumento[] instrumentosArray = new Instrumento[instrumentos.length];
+		for(int i = 0; i < instrumentos.length; i++) {
+			Instrumento instrumento = new Instrumento();
+			instrumento.setNome(instrumentos[i]);
+			instrumentosArray[i] = instrumento;
+		}
+		
+		Luthier novoLuthier =  new Luthier(nome, email, senha, instrumentosArray, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"luthier");
 		service.salvar(novoLuthier);
 		
 		return "/cSucesso";

@@ -11,32 +11,41 @@
 <body>
 
 	<nav class="navbar">
-			<ul class="navbar-nav">
-				<li class="logo">
-					<!-- testar href apnes com /principal-->
-					<a href="/maestrino-0.0.1-SNAPSHOT/principal" class="nav-link">
-						<span class="link-text">Maestrino</span>
-						<!-- LOCAL <img src="../resources/static/images/arrow.png"> -->
-						<!-- PROJETO <img src="images/arrow.png"> -->
-						<img src="images/arrow.png">
-					</a>
-				</li>
+		<ul class="navbar-nav">
+			<li class="logo">
+				<!-- testar href apnes com /principal-->
+				<a href="/maestrino-0.0.1-SNAPSHOT/principal" class="nav-link">
+					<span class="link-text">Maestrino</span>
+					<!-- LOCAL <img src="../resources/static/images/arrow.png"> -->
+					<!-- PROJETO <img src="images/arrow.png"> -->
+					<img src="images/arrow.png">
+				</a>
+			</li>
 
-				<li class="nav-item">
-					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-					<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
-						<img src="images/arrow.png">
-						<span class="link-text" id="username">Temporario</span>
-					</a>
-				</li>
+			<li class="nav-item">
+				<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
+				<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
+					<img src="images/edit.png">
+					<span class="link-text" id="username">Editar perfil</span>
+				</a>
+			</li>
 
-				<li class="nav-item">
-					<a href="/maestrino-0.0.1-SNAPSHOT/logout" class="nav-link">
-						<img src="images/arrow.png">
-						<span class="link-text">Logout</span>
-					</a>
-				</li>
-			</ul>
+			<li class="nav-item">
+				<a href="/maestrino-0.0.1-SNAPSHOT/login" class="nav-link">
+					<img src="images/logout.png">
+					<span class="link-text">Logout</span>
+				</a>
+			</li>
+			
+			<li class="nav-item">
+				<a href="/maestrino-0.0.1-SNAPSHOT/sobre" class="nav-link">
+					<img src="images/sobre.png">
+					<span class="link-text">Sobre</span>
+				</a>
+			</li>
+			
+		</ul>
+			
 	</nav>
 
 	<main>
@@ -49,64 +58,24 @@
 					<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
 				</div>
 			</form>
-				
-			<!-- deixar desativado por enquanto -->
-			
 			<div id="filtro_Principal">
-				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principal">Estudio</a></div>
-				<div id="filtro_Luthier"><a>Luthier</a></div>			
+				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principal"><p>Todos</p></a></div>
+				<div id="filtro_Luthier"><a href="/maestrino-0.0.1-SNAPSHOT/principalLuthier"><p>Luthier</p></a></div>			
 			</div>
-			<!-- teste
-			<div id ="listausuarios">
-				<table>
-					<thead>
-					   <tr>
-						<th>Id</th>
-						<th>Nome</th>
-					   </tr>
-					</thead>
-					<tbody>
-						<tr th:each="usuario: ${usuarios}">
-		    				<td th:text="${usuario.idmaster}" />
-		   					<td th:text="${usuario.nome}" />
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			-->
-
-			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
-			<div id="listausuarios" th:each="usuario : ${usuarios}">
-				<!--  <form id="form" action="/maestrino-0.0.1-SNAPSHOT/perfil" method="get"> -->
-				<form id="form" action="/perfil" method="get">
-			<!--TODO esta dando erro no como a imagem vem para a tela rever isso -->
-<!-- 				<div id="imgCover"> -->
-<!-- 					<img id="img" th:src="${usuario.fotoperfil}"> -->
-<!-- 				</div> -->
+			
+		<div id="listausuarios" th:each="usuario : ${usuarios}">
+				<div id="imgCover">
+					<img id="img" th:src="${usuario.fotoPerfil}">
+				</div>
 					<span id="nome" th:text="${usuario.nome}"></span>
-					
+					<span id="tipoUsuario" th:text="${usuario.tipoUsuario}"></span>
 					<span id="descricao" th:text="${usuario.descricao}"></span>
 					<span id="nota"></span> 
-	
-					<span id="idUsuario" th:value="${usuario.idmaster}"></span>
-				<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
-	<!-- 				<form action="/perfilMusico" method="get"> -->
-						
-					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button>
-	<!-- 					</form>				 -->
- 				</form>
+					<div id="sobre"><a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">Sobre</a></div>
 			</div>
 		</div>
 	</main>
-<!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
-	<script type="text/javascript">
-			function perfilUrl() {
-			var htmlId = document.getElementById("idUsuario").value;
-			alert("valor: " + idid);
-			var htmlPerfil = "perfilwww?User=" + htmlId;
-			document.getElementById("form").action = htmlPerfil;  
-		}
-	</script> 
+	
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 

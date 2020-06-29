@@ -2,6 +2,9 @@ package com.senac.muver.repository;
 
 import java.util.ArrayList;
 
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -18,11 +21,22 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier'")
 	ArrayList<Master> listaUsuariosSemMusico();
 	
+	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio'")
+	ArrayList<Master> listaUsuariosEstudios();
+	
+	@Query("SELECT m FROM Master m where m.tipoUsuario = 'luthier'")
+	ArrayList<Master> listaUsuariosLuthiers();
+	
 	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario != 'musico'")
 	ArrayList<Master> pesquisaNome(String nome);
 	
 	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario = 'estudio'")
 	ArrayList<Master> pesquisaTipoEstudio(String nome);
+	
+	@Query("SELECT m FROM Master m WHERE m.nome = :nome")
+	Master findByLogin(String nome);
+	
+	
 	
 	//@Query("SELECT m FROM Master m where m.nome = %:nome%")
 	//ArrayList<Master> listaPesquisa(String pesquisa);

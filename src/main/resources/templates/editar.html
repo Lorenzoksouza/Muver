@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Maestrino</title>
+	<!--<link href="css/login.css" rel="stylesheet" />-->
+	<link th:href="@{/css/perfil.css}" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+	<div id="caixa" th:each="usuario : ${usuarios}">
+		
+		<main th:if="${usuario.tipoUsuario == 'luthier'}">
+		<form th:action=@{/alterarLuthier} method="post" enctype="multipart/form-data">	
+			<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}">
+			
+			<input id="email" type="text" name="email" placeholder="email" th:value="${usuario.email}">
+			
+			<input id="senha" type="password" name="senha" placeholder="senha" th:value="${usuario.senha}">
+			
+			<select id="instrumentos" name="instrumentos" required="true"  multiple class="chosen-select">
+						<option value="" disabled selected>Escolher instrumentos...</option>
+						<option th:text="${instrumentos[0]}"></option>
+						<option th:text="${instrumentos[1]}"></option>
+						<option th:text="${instrumentos[2]}"></option>
+			</select>
+			
+			<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" th:value="${usuario.localizacao}">
+			
+			<input id="linkFb" type="text" name="linkFb" placeholder="linkFb" th:value="${usuario.linkFb}">
+			
+			<input id="linkIg" type="text" name="linkIg" placeholder="linkIg" th:value="${usuario.linkIg}">
+			
+			<input id="descricao" type="text" name="descricao" placeholder="descricao" th:value="${usuario.descricao}">
+			
+			<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="fotoPerfil" th:value="${usuario.descricao}">
+			
+			
+			<button id="alterar" type="submit">Alterar</button>
+		</form>
+		</main>
+		
+		<main th:if="${usuario.tipoUsuario == 'estudio'}">
+		<form th:action=@{/alterarEstudio} method="post" enctype="multipart/form-data">
+			<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}">
+			
+			<input id="email" type="text" name="email" placeholder="email" th:value="${usuario.email}">
+			
+			<input id="senha" type="password" name="senha" placeholder="senha" th:value="${usuario.senha}">
+			
+			<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" th:value="${usuario.localizacao}">
+			
+			<input id="linkFb" type="text" name="linkFb" placeholder="linkFb" th:value="${usuario.linkFb}">
+			
+			<input id="linkIg" type="text" name="linkIg" placeholder="linkIg" th:value="${usuario.linkIg}">
+			
+			<input id="descricao" type="text" name="descricao" placeholder="descricao" th:value="${usuario.descricao}">
+			
+			<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="fotoPerfil" th:value="${usuario.descricao}">
+			
+			
+			<button id="alterar" type="submit">Alterar</button>
+		</form>
+		<form th:action="@{excluir}" method="post">
+			<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}">
+			<button id="excluir" type="submit">Excluir</button>
+		</form>
+		</main>
+		
+		<main th:if="${usuario.tipoUsuario == 'musico'}">
+		<form th:action=@{/alterarMusico} method="post" enctype="multipart/form-data">
+			<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}">
+			
+			<input id="email" type="text" name="email" placeholder="email" th:value="${usuario.email}">
+			
+			<input id="senha" type="password" name="senha" placeholder="senha" th:value="${usuario.senha}">
+			
+			<select id="instrumentos" name="instrumentos"  multiple class="chosen-select">
+						<option value="" disabled selected>Escolher instrumentos...</option>
+						<option th:text="${instrumentos[0]}"></option>
+						<option th:text="${instrumentos[1]}"></option>
+						<option th:text="${instrumentos[2]}"></option>
+			</select>
+			
+			
+			<select id="estilo" name="estilo" multiple class="chosen-select">
+						<option value="" disabled selected>Escolher estilos musicais...</option>
+						<option th:text="${estilo[0]}"></option>
+						<option th:text="${estilo[1]}"></option>
+						<option th:text="${estilo[2]}"></option>
+						
+			</select>
+			
+			<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" th:value="${usuario.localizacao}">
+			
+			<input id="linkFb" type="text" name="linkFb" placeholder="linkFb" th:value="${usuario.linkFb}">
+			
+			<input id="linkIg" type="text" name="linkIg" placeholder="linkIg" th:value="${usuario.linkIg}">
+			
+			<input id="descricao" type="text" name="descricao" placeholder="descricao" th:value="${usuario.descricao}">
+			
+			<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="fotoPerfil" th:value="${usuario.descricao}">
+		
+			<button id="alterar" type="submit">Alterar</button>
+		</form>
+		</main>
+		
+	</div>
+	
+	<script type="text/javascript">
+	$(".chosen-select").chosen({
+		  no_results_text: "Não foram encontrados valores"
+		})
+	</script>
+	
+</body>
+</html>

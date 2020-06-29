@@ -13,7 +13,7 @@ import javax.persistence.OrderColumn;
 
 import lombok.Getter;
 import lombok.Setter;
-
+/*
 @SuppressWarnings("serial")
 @Entity(name="instrumento")
 public class Instrumento implements Serializable{
@@ -46,3 +46,4 @@ public class Instrumento implements Serializable{
 		this.nome = nome;
 	}
 }
+*/

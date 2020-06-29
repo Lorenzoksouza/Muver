@@ -13,14 +13,14 @@ import javax.persistence.OrderColumn;
 
 import lombok.Getter;
 import lombok.Setter;
-
+/*
 @SuppressWarnings("serial")
 @Entity(name="estilo_musical")
 public class EstiloMusical implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idestilo_musical")
+	@Column(name = "idestilomusical")
 	@Getter @Setter
 	public Integer idestiloMusical;
 	@Getter @Setter
@@ -29,6 +29,8 @@ public class EstiloMusical implements Serializable {
 	@Getter @Setter
 	@OrderColumn
 	public Musico[] musico;
+	
+	
 	
 	public EstiloMusical() {
 		super();
@@ -41,3 +43,4 @@ public class EstiloMusical implements Serializable {
 		this.nome = nome;
 	}
 }
+*/

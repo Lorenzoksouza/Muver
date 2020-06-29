@@ -24,7 +24,7 @@ public class ConvertMasterTela {
 			MasterTela mt = new MasterTela();
 			try { 
 				InputStream initialStream =new ByteArrayInputStream(m.getFotoPerfil());
-					    File targetFile = new File("src/main/resources/static/images/fotoPerfil" + m.getIdmaster() + ".tmp");
+					    File targetFile = new File("src/main/resources/static/images/photos/" + m.getNome() + ".png");
 					    OutputStream outStream = new FileOutputStream(targetFile);
 					 
 					    byte[] buffer = new byte[8 * 1024];
@@ -32,7 +32,7 @@ public class ConvertMasterTela {
 					    while ((bytesRead = initialStream.read(buffer)) != -1) {
 					        outStream.write(buffer, 0, bytesRead);
 					    }
-					    mt.setFotoPerfil(new File("images/fotoPerfil" + m.getIdmaster() + ".tmp"));
+					    mt.setFotoPerfil(new File("images/photos/" + m.getNome() + ".png"));
 					    IOUtils.closeQuietly(initialStream);
 					    IOUtils.closeQuietly(outStream);
 		        } catch (Exception e) { 
@@ -49,7 +49,7 @@ public class ConvertMasterTela {
 		MasterTela mt = new MasterTela();
 		try { 
 			InputStream initialStream =new ByteArrayInputStream(usuario.getFotoPerfil());
-				    File targetFile = new File("src/main/resources/static/images/fotoPerfil" + usuario.getIdmaster() + ".tmp");
+				    File targetFile = new File("src/main/resources/static/images/photos/" + usuario.getNome() + ".png");
 				    OutputStream outStream = new FileOutputStream(targetFile);
 				 
 				    byte[] buffer = new byte[8 * 1024];
@@ -62,7 +62,7 @@ public class ConvertMasterTela {
 	        } catch (Exception e) { 
 	           e.printStackTrace(); 
 	        }
-		mt.setFotoPerfil(new File("images/fotoPerfil" + usuario.getIdmaster() + ".tmp"));
+		mt.setFotoPerfil(new File("images/photos/" + usuario.getNome() + ".png"));
 		mt.setNome(usuario.getNome());
 		mt.setDescricao(usuario.getDescricao());
 		mt.setLinkFb(usuario.getLinkFb());
@@ -76,7 +76,7 @@ public class ConvertMasterTela {
 		MasterTela mt = new MasterTela();
 		try { 
 			InputStream initialStream =new ByteArrayInputStream(l.getFotoPerfil());
-				    File targetFile = new File("src/main/resources/static/images/fotoPerfil" + l.getIdmaster() + ".tmp");
+				    File targetFile = new File("src/main/resources/static/images/photos/" + l.getNome() + ".png");
 				    OutputStream outStream = new FileOutputStream(targetFile);
 				 
 				    byte[] buffer = new byte[8 * 1024];
@@ -89,8 +89,8 @@ public class ConvertMasterTela {
 	        } catch (Exception e) { 
 	           e.printStackTrace(); 
 	        }
-//		mt.setInstrumentos(l.getInstrumentos());
-		mt.setFotoPerfil(new File("images/fotoPerfil" + l.getIdmaster() + ".tmp"));
+		mt.setInstrumentos(l.getInstrumento());
+		mt.setFotoPerfil(new File("images/photos/" + l.getNome() + ".png"));
 		mt.setNome(l.getNome());
 		mt.setDescricao(l.getDescricao());
 		mt.setLinkFb(l.getLinkFb());
@@ -104,7 +104,7 @@ public class ConvertMasterTela {
 		MasterTela mt = new MasterTela();
 		try { 
 			InputStream initialStream =new ByteArrayInputStream(es.getFotoPerfil());
-				    File targetFile = new File("src/main/resources/static/images/fotoPerfil" + es.getIdmaster() + ".tmp");
+				    File targetFile = new File("src/main/resources/static/images/photos/" + es.getNome() + ".png");
 				    OutputStream outStream = new FileOutputStream(targetFile);
 				 
 				    byte[] buffer = new byte[8 * 1024];
@@ -117,13 +117,14 @@ public class ConvertMasterTela {
 	        } catch (Exception e) { 
 	           e.printStackTrace(); 
 	        }
-		mt.setFotoPerfil(new File("images/fotoPerfil" + es.getIdmaster() + ".tmp"));
+		mt.setFotoPerfil(new File("images/photos/" + es.getNome() + ".png"));
 		mt.setNome(es.getNome());
 		mt.setDescricao(es.getDescricao());
 		mt.setLinkFb(es.getLinkFb());
 		mt.setLinkIg(es.getLinkIg());
 		mt.setTipoUsuario(es.getTipoUsuario());
 		mt.setEmail(es.getEmail());
+		mt.setLocalizacao(es.getLocalizacao());
 		return mt;
 	}
 
@@ -132,7 +133,7 @@ public class ConvertMasterTela {
 		MasterTela mt = new MasterTela();
 		try { 
 			InputStream initialStream =new ByteArrayInputStream(m.getFotoPerfil());
-				    File targetFile = new File("src/main/resources/static/images/fotoPerfil" + m.getIdmaster() + ".tmp");
+				    File targetFile = new File("src/main/resources/static/images/photos/" + m.getNome() + ".png");
 				    OutputStream outStream = new FileOutputStream(targetFile);
 				 
 				    byte[] buffer = new byte[8 * 1024];
@@ -145,9 +146,9 @@ public class ConvertMasterTela {
 	        } catch (Exception e) { 
 	           e.printStackTrace(); 
 	        }
-		mt.setInstrumentos(m.getInstrumentos());
+		mt.setInstrumentos(m.getInstrumento());
 		mt.setEstiloMusical(m.getEstiloMusical());
-		mt.setFotoPerfil(new File("images/fotoPerfil" + m.getIdmaster() + ".tmp"));
+		mt.setFotoPerfil(new File("images/photos/" + m.getNome() + ".png"));
 		mt.setNome(m.getNome());
 		mt.setDescricao(m.getDescricao());
 		mt.setLinkFb(m.getLinkFb());

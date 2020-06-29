@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Maestrino</title>
@@ -14,27 +14,49 @@
 			<ul class="navbar-nav">
 				<li class="logo">
 					<!-- testar href apnes com /principal-->
-					<a href="/maestrino-0.0.1-SNAPSHOT/principal" class="nav-link">
-						<span class="link-text">Maestrino</span>
-						<!-- LOCAL <img src="../resources/static/images/arrow.png"> -->
-						<!-- PROJETO <img src="images/arrow.png"> -->
-						<img src="images/arrow.png">
-					</a>
+					<form th:action="@{/principal}" method="post">
+						<button type="submit" class="nav-link">
+							<span class="link-text" th:text="${#authentication.getPrincipal().getUsername()}">MAESTRINO</span>
+							<img th:src="'images/photos/' + ${#authentication.getPrincipal().getUsername()} + '.png'"> 
+						</button>
+					</form>
+					
 				</li>
 
 				<li class="nav-item">
 					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-					<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
+					<!-- 
+					<div id="sobre"><a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">Sobre</a></div>
+					
+					<a th:href="@{'/editar/' + ${#authentication.getPrincipal().getTipoUsuario()} + '/' + ${#authentication.getPrincipal().getUsername()}}" class="nav-link">
 						<img src="images/edit.png">
 						<span class="link-text" id="username">Editar perfil</span>
-					</a>
+					</a> 
+					
+					-->
+					<!-- 
+					
+					 -->
+					<form th:action="@{'/editar/' + ${#authentication.getPrincipal().getTipoUsuario()} + '/' + ${#authentication.getPrincipal().getUsername()}}" method="post">
+						<button type="submit" class="nav-link">
+							<img src="images/edit.png">
+							<span class="link-text">Editar perfil</span>
+						</button>
+					</form>
+					 
 				</li>
 
 				<li class="nav-item">
-					<a href="/maestrino-0.0.1-SNAPSHOT/login" class="nav-link">
+					<!-- <a href="/maestrino-0.0.1-SNAPSHOT/login" class="nav-link">
 						<img src="images/logout.png">
 						<span class="link-text">Logout</span>
-					</a>
+					</a> -->
+					<form th:action="@{/logout}" method="post">
+						<button type="submit" class="nav-link">
+							<img src="images/logout.png">
+							<span class="link-text">Logout</span>
+						</button>
+					</form>
 				</li>
 				
 				<li class="nav-item">
@@ -79,8 +101,24 @@
 			</form>
 				
 			<div id="filtro_Principal">
-				<div id="filtro_Estudio"><a href="/maestrino-0.0.1-SNAPSHOT/principalEstudio"><p>Estudio</p></a></div>
-				<div id="filtro_Luthier"><a href="/maestrino-0.0.1-SNAPSHOT/principalLuthier"><p>Luthier</p></a></div>			
+				
+					<!--<a href="/maestrino-0.0.1-SNAPSHOT/principalEstudio">
+						<p>Estudio</p>
+					</a> -->
+				<form th:action="@{/Estudios}" method="post" id="form-estudio">
+					<button type="submit" class="filtro">
+						<div id="filtro_Estudio">
+							<p>Estudios</p>
+						</div>
+					</button>
+				</form>
+				<form th:action="@{/Luthiers}" method="post" id="form-luthier">
+					<button type="submit" class="filtro">
+					<div id="filtro_Luthier">
+						<p>Luthiers</p>
+					</div>
+					</button>
+				</form>			
 			</div>
 
 			<div id="listausuarios" th:each="usuario : ${usuarios}">

@@ -28,7 +28,9 @@
 				<li>
 					<input type="password" name="senha" placeholder="senha" minlength="6" required="true">
 				</li>
-				
+				<!--
+				<li><input type="text" name="instrumentos"></li>
+				  -->
 				<li>
 					<select id="instrumentos" name="instrumentos" required="true"  multiple class="chosen-select">
 						<option value="" disabled selected>Escolher instrumentos...</option>
@@ -37,7 +39,8 @@
 						<option th:text="${instrumentos[2]}"></option>
 					</select>
 				</li>
-			<li><input type="text" name="localizacao" placeholder="localizacao"></li>
+				
+				<li><input type="text" name="localizacao" placeholder="localizacao"></li>
 				<li><input type="file" id="fotoPerfil" name="fotoPerfil"></li>
 				<li><input type="text" name="linkFb" placeholder="link do facebook"></li>
 				<li><input type="text" name="linkIg" placeholder="link do instagram"></li>

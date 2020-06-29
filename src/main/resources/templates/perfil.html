@@ -9,58 +9,26 @@
 </head>
 <body>
 
-	<nav class="navbar">
-		<ul class="navbar-nav">
-			<li class="logo">
-				<!-- testar href apnes com /principal-->
-				<a href="/maestrino-0.0.1-SNAPSHOT/principal" class="nav-link">
-					<span class="link-text">Maestrino</span>
-					<!-- LOCAL <img src="../resources/static/images/arrow.png"> -->
-					<!-- PROJETO <img src="images/arrow.png"> -->
-					<img th:src="@{/images/arrow.png}">
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-				<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
-					<img th:src="@{/images/edit.png}">
-					<span class="link-text" id="username">Editar perfil</span>
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<a href="/maestrino-0.0.1-SNAPSHOT/login" class="nav-link">
-					<img th:src="@{/images/logout.png}">
-					<span class="link-text">Logout</span>
-				</a>
-			</li>
-			
-			<li class="nav-item">
-				<a href="/maestrino-0.0.1-SNAPSHOT/sobre" class="nav-link">
-					<img th:src="@{/images/sobre.png}">
-					<span class="link-text">Sobre</span>
-				</a>
-			</li>
-			
-		</ul>
-			
-	</nav>
-
 	<main>
 	
 		<!-- aqui no th:each tem que passar o usuario de acordo com o botao sobre da tela principal -->
 		<div id="caixa" th:each="usuario : ${usuarios}">
-			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/principal"><img id="img_voltar" th:src="@{/images/arrow.png}"/>voltar</a>
-			
+			<form th:action="@{/principal}" method="post">
+					<button type="submit"><img alt="img_voltar" th:src="@{/images/arrow.png}">Voltar</button>
+			</form>
 			<!-- PERFIL LUTHIER -->
 			<main th:if="${usuario.tipoUsuario == 'luthier'}">
 								
+					<div id="imagem">
+						<!-- <img th:src="@{'/images/photos/avatar.png'}" -->
+						<img id="img" th:src="${usuario.fotoPerfil}">
+					</div>
+					
 					<span id="nome" th:text="${usuario.nome}">teste</span>
 					
-					<span id="facebook"><a th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
+					<span id="facebook"><a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
 					
-					<span id="instagram"><a th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
+					<span id="instagram"><a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
 	
 					<!--<span id="nota" th:text="${usuario.nota}"></span>-->
 	
@@ -70,16 +38,14 @@
 	
 					<div id="instrumentos">
 						<span>Instrumentos:</span>
-						<!-- <span th:text="${usuario.instrumentos}"></span> -->
+						<span th:text=${usuario.instrumentos}></span>
 					</div>
 	
 					<div id="Disponibilidade">
 						<span>Disponibilidade:</span>
 					</div>
 	
-					<div id="imagem">
-						<img id="img" th:src="${usuario.fotoPerfil}">
-					</div>
+					
 	
 					<!--ver como fazer as analises-->	
 					<div id="analises">
@@ -116,15 +82,17 @@
 				
 					<span id="nome" th:text="${usuario.nome}">teste</span>
 					
-					<span id="facebook"><a th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
+					<span id="facebook"><a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
 					
-					<span id="instagram"><a th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
+					<span id="instagram"><a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
 	
 					<!--<span id="nota" th:text="${usuario.nota}"></span>-->
 	
 					<span id="Chat"><a th:href="'mailto:' + ${usuario.email}">Conversar</a></span>
 					
 					<span id="descricao" th:text="${usuario.descricao}">teste</span>
+					
+					
 	
 					<div id="Disponibilidade">
 						<span>Disponibilidade:</span>

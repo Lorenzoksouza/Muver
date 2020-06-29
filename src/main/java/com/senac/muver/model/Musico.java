@@ -23,23 +23,31 @@ public class Musico extends Master implements Serializable {
 	@Column(name = "idmusico", insertable = false, updatable = false)
 	@Getter @Setter
 	public Integer idmusico;
+	/*
 	@Getter @Setter
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "musico_instrumento", joinColumns = @JoinColumn(name = "idmusico"), inverseJoinColumns = @JoinColumn(name = "instrumentoid"))
+	@JoinTable(name = "musico_instrumento", joinColumns = @JoinColumn(name = "id_musico"), inverseJoinColumns = @JoinColumn(name = "idinstrumento"))
 	@OrderColumn
 	public Instrumento[] instrumentos;
+	*/
+	@Getter @Setter
+	public String instrumento;
+	/*
 	@Getter @Setter
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "musico_instrumento", joinColumns = @JoinColumn(name = "idmusico"), inverseJoinColumns = @JoinColumn(name = "instrumentoid"))
 	@OrderColumn
 	private EstiloMusical[] estiloMusical;
+	*/
+	@Getter @Setter
+	public String estiloMusical;
 	
 	
-	public Musico(String nome, String email, String senha, EstiloMusical[] estiloMusical, Instrumento[] instrumentos, byte[] fotoPerfil, String linkFb, String linkIg,
+	public Musico(String nome, String email, String senha, /*EstiloMusical[] estiloMusical , Instrumento[] instrumentos,*/String estiloMusical, String instrumento, byte[] fotoPerfil, String linkFb, String linkIg,
 			String descricao, String tipoUsuario) {
 		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario);
 		this.estiloMusical = estiloMusical;
-		this.instrumentos = instrumentos;
+		this.instrumento = instrumento;
 	}
 	
 	public Musico() {

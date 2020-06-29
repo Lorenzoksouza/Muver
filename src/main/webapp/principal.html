@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Maestrino</title>
@@ -14,99 +14,149 @@
 			<ul class="navbar-nav">
 				<li class="logo">
 					<!-- testar href apnes com /principal-->
-					<a href="/maestrino-0.0.1-SNAPSHOT/principal" class="nav-link">
-						<span class="link-text">Maestrino</span>
-						<!-- LOCAL <img src="../resources/static/images/arrow.png"> -->
-						<!-- PROJETO <img src="images/arrow.png"> -->
-						<img src="images/arrow.png">
-					</a>
+					<form th:action="@{/principal}" method="post">
+						<button type="submit" class="nav-link">
+							<span class="link-text" th:text="${#authentication.getPrincipal().getUsername()}">MAESTRINO</span>
+							<img th:src="'images/photos/' + ${#authentication.getPrincipal().getUsername()} + '.png'"> 
+						</button>
+					</form>
+					
 				</li>
 
 				<li class="nav-item">
 					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-					<a href="/maestrino-0.0.1-SNAPSHOT/perfil" class="nav-link">
-						<img src="images/arrow.png">
-						<span class="link-text">Perfil</span>
-					</a>
+					<!-- 
+					<div id="sobre"><a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">Sobre</a></div>
+					
+					<a th:href="@{/editar/{tipoUsuario}/{nome}(tipoUsuario=${#authentication.getPrincipal().getTipoUsuario()}, nome=${#authentication.getPrincipal().getUsername()}}" class="nav-link">
+						<img src="images/edit.png">
+						<span class="link-text" id="username">Editar perfil</span>
+					</a> 
+					
+					-->
+					<!-- 
+					
+					 -->
+					<form th:action="@{'/editar/' + ${#authentication.getPrincipal().getTipoUsuario()} + '/' + ${#authentication.getPrincipal().getUsername()}}" method="post">
+						<button type="submit" class="nav-link">
+							<img src="images/edit.png">
+							<span class="link-text">Editar perfil</span>
+						</button>
+					</form>
+					 
 				</li>
 
 				<li class="nav-item">
-					<a href="/maestrino-0.0.1-SNAPSHOT/logout" class="nav-link">
-						<img src="images/arrow.png">
+					<!-- <a href="/maestrino-0.0.1-SNAPSHOT/login" class="nav-link">
+						<img src="images/logout.png">
 						<span class="link-text">Logout</span>
+					</a> -->
+					<form th:action="@{/logout}" method="post">
+						<button type="submit" class="nav-link">
+							<img src="images/logout.png">
+							<span class="link-text">Logout</span>
+						</button>
+					</form>
+				</li>
+				
+				<li class="nav-item">
+					<a href="/maestrino-0.0.1-SNAPSHOT/sobre" class="nav-link">
+						<img src="images/sobre.png">
+						<span class="link-text">Sobre</span>
 					</a>
 				</li>
+				
 			</ul>
+			
+			
 	</nav>
 
 	<main>
 		<div id="caixa">
 			<!-- ainda tentando entender a melhor pratica pra esse campo de pesquisa-->
 			
-			<form action="#" method="post">
+			<!-- 
+				pesquisa basica padrao
+				
+			<form action="/maestrino-0.0.1-SNAPSHOT/pesquisa" method="post">
 				<div id="pesquisa">
 					<img src="images/lupa.png">
 					<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
 				</div>
 			</form>
-				
-			<!-- deixar desativado por enquanto -->
 			
-			<div id="filtro_Principal">
-				<div id="filtro_Estudio"><p>Estudio</p></div>
-				<div id="filtro_Luthier"><p>Luthier</p></div>			
-			</div>
-		
-			<div id ="listausuarios">
-				<table>
-					<thead>
-					   <tr>
-						<th>Id</th>
-						<th>Nome</th>
-					   </tr>
-					</thead>
-					<tbody>
-						<tr th:each="usuario: ${usuarios}">
-		    				<td th:text="${usuario.idmaster}" />
-		   					<td th:text="${usuario.nome}" />
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-
-			<!-- aqui no th:each tem que passar todos os usuarios menos musicos -->
-			<div id="listausuarios" th:each="usuario : ${usuarios}">
-				<form id="form" action="/maestrino-0.0.1-SNAPSHOT/perfil" method="get">
-			<!--TODO esta dando erro no como a imagem vem para a tela rever isso -->
-<!-- 				<div id="imgCover"> -->
-<!-- 					<img id="img" th:src="${usuario.fotoperfil}"> -->
-<!-- 				</div> -->
-				<span id="nome" th:text="${usuario.nome}"></span>
+			
+			 -->
+			<!-- teste com paranetros ***terminar de implementar apos outros itens do usuario estarem prontos -->
+			<form action="/maestrino-0.0.1-SNAPSHOT/pesquisa" method="post">
+				<div id="pesquisa">
+					<!-- passar o texto da pesquisa para a consulta -->
+					<img src="images/lupa.png">
+					<input id="buscar" type="text" name="pesquisa" onclick="pesquisaAvancada()" placeholder="buscar" />
+					<div id="pesquisaAvancada" style='display: none;'>
+						<input id="tipoEstudio" type="checkbox" name="tipo" value="tipoEstudio">
+						<label for="tipoEstudio">Estudio</label>
+					</div>
+				</div>
+			</form>
 				
-				<span id="descricao" th:text="${usuario.descricao}"></span>
-				<span id="nota"></span> 
+			<div id="filtro_Principal">
+				
+					<!--<a href="/maestrino-0.0.1-SNAPSHOT/principalEstudio">
+						<p>Estudio</p>
+					</a> -->
+				<form th:action="@{/Estudios}" method="post" id="form-estudio">
+					<button type="submit" class="filtro">
+						<div id="filtro_Estudio">
+							<p>Estudios</p>
+						</div>
+					</button>
+				</form>
+				<form th:action="@{/Luthiers}" method="post" id="form-luthier">
+					<button type="submit" class="filtro">
+					<div id="filtro_Luthier">
+						<p>Luthiers</p>
+					</div>
+					</button>
+				</form>			
+			</div>
 
-				<span id="idUsuario" th:text="${usuario.idmaster}"></span>
-			<!--vai receber o código do perfil pra quando clicar em sobre receber ele populado na aba do perfil -->
-<!-- 				<form action="/perfilMusico" method="get"> -->
-					
-						
-<!-- 					<button id="sobre" type="submit" onclick="perfilUrl()">Sobre</button> -->
-<!-- 					</form>				 -->
-<!-- 				 </form> -->
+			<div id="listausuarios" th:each="usuario : ${usuarios}">
+					<div id="imgCover">
+						<img id="img" th:src="${usuario.fotoPerfil}">
+					</div>
+					<div id="nome" th:text="${usuario.nome}"></div>			
+					<div id="tipoUsuario" th:text="${usuario.tipoUsuario}"></div>					
+					<span id="descricao" th:text="${usuario.descricao}"></span>			
+					<span id="nota"></span> 
+					<div id="sobre"><a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">Sobre</a></div>
+					<!-- <div id="sobre"><a th:href="@{/perfil/{tipoUsuario}(tipoUsuario=${usuario.tipoUsuario})}">Sobre</a></div> -->
 			</div>
 		</div>
 	</main>
-<!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
+	
 	<script type="text/javascript">
-		function perfilUrl() {
-			var htmlNome = document.getElementById("nome").text;
-			var htmlPerfil = "perfil?nome=" + htmlNome;
+		function pesquisaAvancada() {
+			var x = document.getElementById("pesquisaAvancada");
+			  if (x.style.display === "none") {
+			    x.style.display = "block";
+			  } else {
+			    x.style.display = "none";
+			  }
+		}
+	</script>
+	
+<!-- SCRIPT PRA PEGAR O URL ----- TEM QUE CORRIGIR AINDA-->
+	<!-- 
+	<script type="text/javascript">
+			function perfilUrl() {
+			var htmlId = document.getElementById("idUsuario").value;
+			alert("valor: " + idid);
+			var htmlPerfil = "perfilwww?User=" + htmlId;
 			document.getElementById("form").action = htmlPerfil;  
 		}
 	</script> 
-
+	 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 </body>

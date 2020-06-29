@@ -27,17 +27,23 @@ public class MasterTela implements Serializable{
 	public File fotoPerfil;
 	@Getter @Setter
 	private String tipoUsuario;
+	//@Getter @Setter
+	//private Instrumento[] instrumentos;
+	//@Getter @Setter
+	//private EstiloMusical[] estiloMusical;
 	@Getter @Setter
-	private Instrumento[] instrumentos;
+	public String instrumentos;
 	@Getter @Setter
-	private EstiloMusical[] estiloMusical;
+	public String estiloMusical;
+	@Getter @Setter
+	public String localizacao;
 	
 	public MasterTela() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MasterTela(String nome, String email, String senha, String linkFb, String linkIg, String descricao,
-			File fotoPerfil, String tipoUsuario, Instrumento[] instrumentos, EstiloMusical[] estiloMusical) {
+			File fotoPerfil, String tipoUsuario, /*Instrumento[] instrumentos, EstiloMusical[] estiloMusical*/ String instrumentos, String estiloMusical, String localizacao) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -49,5 +55,6 @@ public class MasterTela implements Serializable{
 		this.tipoUsuario = tipoUsuario;
 		this.instrumentos = instrumentos;
 		this.estiloMusical = estiloMusical;
+		this.localizacao = localizacao;
 	}	
 }

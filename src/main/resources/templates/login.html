@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html xmlns:th="http://thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Login</title>
@@ -8,17 +8,17 @@
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
 </head>
 <body>
-	<form action="logar" method="post">
+	<form th:action="login" method="post">
 		<div id="caixa">
 				<h1>LOGIN</h1>
 				<li>
 					<ul>
-						<input id="email" type="mail" name="email" placeholder="email" required="true"  
+						<input id="email" type="nome" name="username" placeholder="nome" required="true"  
 					oninvalid="this.setCustomValidity('Login nao pode ser vazio')"
  					oninput="setCustomValidity('')">
 					</ul>
 					<ul>
-						<input id="senha" type="password" name="senha" placeholder="senha" required="true"  
+						<input id="senha" type="password" name="password" placeholder="senha" required="true"  
 					oninvalid="this.setCustomValidity('Senha nao pode ser vazio')"
  					oninput="setCustomValidity('')">
 					</ul>

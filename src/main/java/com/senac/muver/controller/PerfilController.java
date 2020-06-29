@@ -4,9 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -16,6 +19,7 @@ import com.senac.muver.model.Luthier;
 import com.senac.muver.model.Musico;
 import com.senac.muver.services.EstudioService;
 import com.senac.muver.services.LuthierService;
+import com.senac.muver.services.MasterService;
 import com.senac.muver.services.MusicoService;
 
 @Controller
@@ -53,7 +57,49 @@ public class PerfilController {
 		return mv;
 	 }
 	
-    
+	
+	 @PostMapping("/editar/{tipoUsuario}/{nome}")
+	 public ModelAndView editarPerfil(@PathVariable String tipoUsuario, @PathVariable String nome, HttpServletRequest request, Model model) {
+			ModelAndView mv = new ModelAndView("/editar");
+			switch (tipoUsuario) {
+				case "musico":{
+					Musico m = serviceMusico.perfilPorNomeMusico(nome);
+					mv.addObject("usuarios", convert.converteMusicoEmMasterTela(m));
+					String[] instrumentos = {
+							"Violao", "Baixo", "Guitarra"	
+						};
+						
+						model.addAttribute("instrumentos", instrumentos);
+						
+						String[] estilo = {
+								"Bossa", "Rock", "Funk"	
+							};
+							
+							model.addAttribute("estilo", estilo);
+					break;
+				}
+				case "estudio":{
+					Estudio e = serviceEstudio.perfilPorNomeEstudio(nome);
+					mv.addObject("usuarios", convert.converteEstudioEmMasterTela(e));
+					break;
+				}
+				case "luthier":{
+					Luthier l = serviceLuthier.perfilPorNomeLuthier(nome);
+					mv.addObject("usuarios", convert.converteLuthierEmMasterTela(l));
+					String[] instrumentos = {
+							"Violao", "Baixo", "Guitarra"	
+						};
+						
+						model.addAttribute("instrumentos", instrumentos);
+					break;
+				}
+			}
+			return mv;
+		 }
+	 
+	 
+	 
+	
     @RequestMapping("/facebook.com/{linkFb}")
     public RedirectView faceRedirect(@PathVariable String linkFb) {
         RedirectView redirectView = new RedirectView();
@@ -67,4 +113,10 @@ public class PerfilController {
         redirectView.setUrl("http://instagram.com.br/" + linkIg);
         return redirectView;
     }
+
+    
+   
+	
+
+
 }

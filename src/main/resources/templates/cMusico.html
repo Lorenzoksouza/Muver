@@ -5,6 +5,10 @@
 	<title>cadastrar musico</title>
 	<link href="css/cMusico.css" rel="stylesheet" />
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 </head>
 <body>
 	<form action="cadastrarMusico" method="post" enctype="multipart/form-data">
@@ -23,22 +27,24 @@
 					<input type="password" name="senha" placeholder="senha" minlength="6" required="true">
 				</li>
 				<li>
-					<!--por enquanto vamos trabalhar com selecao unica, se der tudo certo, vamos pra mais de uma -->
-					<select id="estilo" name="estilo" required="true">
+					<select id="estilo" name="estilo" required="true" multiple class="chosen-select">
 						<option value="" disabled selected>Escolher estilos musicais...</option>
-						<option value="Bossa">Bossa</option>
-						<option value="Rock">Rock</option>
-						<option value="Funk">Funk</option>
+						<option th:text="${estilo[0]}"></option>
+						<option th:text="${estilo[1]}"></option>
+						<option th:text="${estilo[2]}"></option>
+						
 					</select>
 				</li>
+				 
 				<li>
-					<select id="instrumentos" name="instrumentos" required="true">
+					<select id="instrumentos" name="instrumentos" required="true"  multiple class="chosen-select2">
 						<option value="" disabled selected>Escolher instrumentos...</option>
-						<option value="Violao">Violão</option>
-						<option value="Guitarra">Guitarra</option>
-						<option value="Bateria">Bateria</option>
+						<option th:text="${instrumentos[0]}"></option>
+						<option th:text="${instrumentos[1]}"></option>
+						<option th:text="${instrumentos[2]}"></option>
 					</select>
 				</li>
+				 
 				<li><input type="text" name="localizacao" placeholder="localizacao"></li>
 				<li><input type="file" id="fotoPerfil" name="fotoPerfil"></li>
 				<li><input type="text" name="linkFb" placeholder="link do facebook"></li>
@@ -48,6 +54,19 @@
 			<button id="cadastrar" type="submit">Cadastrar</button>		
 		</div>
 	</form>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+	
+	<script type="text/javascript">
+	$(".chosen-select").chosen({
+		  no_results_text: "Não foram encontrados valores"
+		})
+	</script>
+	
+	<script type="text/javascript">
+	$(".chosen-select2").chosen({
+		  no_results_text: "Não foram encontrados valores"
+		})
+	</script>
+	
 </body>
 </html>

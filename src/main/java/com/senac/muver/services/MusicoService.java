@@ -43,5 +43,16 @@ public class MusicoService {
 		repositorio.delete(musico);
 	}
 
+	public void alterar(String nome, String email, String senhaCriptografada, byte[] fotoPerfilByte,
+			String linkFb, String linkIg, String descricao) {
+		repositorio.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
+		
+	}
+
+	public void alterarMusico(String instrumentos, String estilosMusicais, String nome) {
+		repositorio.alterarMusico(instrumentos, estilosMusicais, nome);
+		
+	}
+
 	
 }

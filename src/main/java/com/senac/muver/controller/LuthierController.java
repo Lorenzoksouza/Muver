@@ -2,11 +2,13 @@ package com.senac.muver.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senac.muver.util.ConvertMasterTela;
-import com.senac.muver.model.Instrumento;
 import com.senac.muver.model.Luthier;
 import com.senac.muver.model.MasterTela;
 import com.senac.muver.services.LuthierService;
@@ -62,7 +63,8 @@ public class LuthierController {
 	}
 	
 	@RequestMapping(value = "cadastrarLuthier", method = RequestMethod.POST)
-	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("instrumentos") String[] instrumentos,
+	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, /*@RequestParam("instrumentos") String[] instrumentos,*/
+		@RequestParam("instrumentos") String[] instrumento,
 		@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, 
 		@RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
 		
@@ -76,14 +78,26 @@ public class LuthierController {
 			e.printStackTrace();
 		}
 		
+		
+		
+		String instrumentos = Arrays.toString(instrumento)
+				.replace(",", "")
+				.replace("[", "")
+				.replace("]", "")
+				;
+		
+		/*
 		Instrumento[] instrumentosArray = new Instrumento[instrumentos.length];
 		for(int i = 0; i < instrumentos.length; i++) {
 			Instrumento instrumento = new Instrumento();
 			instrumento.setNome(instrumentos[i]);
 			instrumentosArray[i] = instrumento;
 		}
+		*/
+		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
 		
-		Luthier novoLuthier =  new Luthier(nome, email, senha, instrumentosArray, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"luthier");
+		
+		Luthier novoLuthier =  new Luthier(nome, email, senhaCriptografada,/* instrumentosArray,*/instrumentos, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"luthier");
 		service.salvar(novoLuthier);
 		
 		return "/cSucesso";
@@ -101,22 +115,47 @@ public class LuthierController {
 	}
 	
 	
+	/*
+	 * @RequestMapping(value = "excluirLuthier") public String
+	 * excluir(@RequestParam("luthier") Luthier luthier, Model model) {
+	 * 
+	 * service.excluir(luthier);
+	 * 
+	 * return "index";
+	 * 
+	 * }
+	 */
 	
-	@RequestMapping(value = "excluirLuthier")
-	public String excluir(@RequestParam("luthier") Luthier luthier, Model model) {
-		
-		service.excluir(luthier);
-		
-		return "index";
-		
-	}
 	
 	@RequestMapping(value = "alterarLuthier")
-	public String alterar(@RequestParam("luthier") Luthier luthier, Model model) {
+	public String alterar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
+			@RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, 
+			@RequestParam("descricao") String descricao, @RequestParam("instrumentos") String[] instrumento, HttpServletRequest request, Model model) {
 		
-		service.alterar(luthier);
 		
-		return "index";
+		
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
+		
+		byte[] fotoPerfilByte = null;
+		
+		try {
+			fotoPerfilByte = multipartFile.getBytes();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String instrumentos = Arrays.toString(instrumento)
+				.replace(",", "")
+				.replace("[", "")
+				.replace("]", "")
+				;
+		
+		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
+		
+		service.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
+		service.alterarLuthier(localizacao, instrumentos, nome);
+		return "editar";
 		
 	}
 }

@@ -38,6 +38,19 @@ main {
 }
 /*margem pra desconsiderar o menu lateral nos calculos dos outros itens no site */
 
+input, button, submit { border:none; } 
+
+.navbar button{
+	width: 100%;
+	border: none;
+	background: none;
+	
+}
+
+.navbar button span{
+	font-size: 25px;
+	font-family: 'Varela Round';
+}
 
 /*configs barra lateral*/
 .navbar {
@@ -135,7 +148,11 @@ main {
 .navbar:hover .logo img {
 	transform: rotate(-360deg);
 }
+
+
 /*configs barra lateral*/
+
+
 
 #caixa{
 	text-align: center;
@@ -185,21 +202,38 @@ main {
 	height: auto;
 	width: 70%;
 	margin: auto;
+	display: flex;
+	
 }
+
 
 #filtro_Estudio, #filtro_Luthier{
 	margin: 10px 1px;
 	border-radius: 15px;
 	background-color: black;
 	height: 100px;
-	width: auto;
+	width:auto;
 	padding: 0 200px; 
 	text-align: center;
 
 }
 
+.filtro {
+
+	border: none;
+	background: none;
+	background-color: white;
+}
+
+
+
+
 #filtro_Principal p{
 	padding-top: 50px;
+	color: white;
+	font-family: 'Varela Round';
+	font-weight: bold;
+	font-size: 20px;
 }
 /*
 #filtro_Estudio, #filtro_Luthier span{
@@ -220,6 +254,13 @@ main {
 	float: right;
 }
 
+form-estudio{
+	float: left;
+}
+
+form-luthier{
+	float: right;
+}
 
 /*filtro principal*/
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:"http://www.thymeleaf.org/">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Maestrino</title>
+	<!--<link href="css/login.css" rel="stylesheet" />-->
+	<link th:href="@{/css/perfil.css}" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+</head>
+<body>
+	<div id="caixa" th:each="usuario : ${usuarios}">
+		<main th:if="${#authentication.getPrincipal().getUsername() == usuario.nome}">
+		<!-- TALVEZ N"AO PRECISE DESSE MAIN, JA QUE REQUISICAO POST NAO PASSA PELO BROWSER -->
+		<!-- aqui no th:each tem que passar o usuario de acordo com o botao sobre da tela principal -->
+		
+			<form th:action="@{/principal}" method="post">
+					<button type="submit"><img alt="img_voltar" th:src="@{/images/arrow.png}">Voltar</button>
+			</form>
+			
+			
+			<!-- PERFIL LUTHIER -->
+			<main th:if="${usuario.tipoUsuario == 'luthier'}">
+								
+					<div id="imagem">
+						<!-- <img th:src="@{'/images/photos/avatar.png'}" -->
+						<img id="img" th:src="${usuario.fotoPerfil}">
+					</div>
+					
+					<span id="nome" th:text="${usuario.nome}">teste</span>
+					
+					<span id="facebook"><a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
+					
+					<span id="instagram"><a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
+	
+					<!--<span id="nota" th:text="${usuario.nota}"></span>-->
+	
+					<span id="Chat"><a th:href="'mailto:' + ${usuario.email}">Conversar</a></span>
+					
+					<span id="descricao" th:text="${usuario.descricao}">teste</span>
+	
+					<div id="instrumentos">
+						<span>Instrumentos:</span>
+						<span th:text=${usuario.instrumentos}></span>
+					</div>
+	
+					<div id="Disponibilidade">
+						<span>Disponibilidade:</span>
+					</div>
+	
+					<!--ver como fazer as analises-->	
+					<div id="analises">
+						<span>Analises:</span>
+						<span></span>
+					</div>
+	
+					<!--integracao maps ou url-->
+					<div id="gMaps">
+						<span>Mapa:</span>
+					</div>
+										
+			</main>
+			<!-- PERFIL LUTHIER -->
+			
+			<!-- PERFIL ESTUDIO -->
+			<main th:if="${usuario.tipoUsuario == 'estudio'}">
+				<form action="alterarEstudio" method="post">
+					<div id="imagem">
+						<img id="img" th:src="${usuario.fotoPerfil}">
+					</div>
+				
+					<input id="nome" type="text" name="nome" placeholder="nome" minlength="5" required="true" th:value="${usuario.nome}">
+					
+					<span id="facebook"><a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
+					
+					<span id="instagram"><a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
+	
+					<!--<span id="nota" th:text="${usuario.nota}"></span>-->
+	
+					<span id="Chat"><a th:href="'mailto:' + ${usuario.email}">Conversar</a></span>
+					
+					<span id="descricao" th:text="${usuario.descricao}">teste</span>
+					
+					<div id="Disponibilidade">
+						<span>Disponibilidade:</span>
+					</div>
+	
+					<!--ver como fazer as analises-->	
+					<div id="analises">
+						<span>Analises:</span>
+						<span></span>
+					</div>
+	
+					<!--integracao maps ou url-->
+					<div id="gMaps">
+						<span>Mapa:</span>
+					</div>
+				</form>	
+			</main>
+			<!-- PERFIL ESTUDIO -->
+			
+	
+	
+		
+		</main>
+	</div>
+	<!-- nao sei se e bom validar na tela, o ideal e verificar no back, mas em todo caso, fica aqui se precisar-->
+	
+	<script type="text/javascript">
+		function verificaId(){
+			/*if id igual ao id do perfil entao botao edicao aparece*/
+			/*se o ID do usuario logado for igual ao ID do usuario do perfil, entao mostra o botao de editar perfil*/
+			
+		}
+	</script>
+	
+
+	<!-- precisa de um javaSCRIPT pra verificar se o id do usuario logado e o mesmo do usuario do perfil, se sim, fazer aparecer um botao de edicao -->
+
+</body>
+</html>

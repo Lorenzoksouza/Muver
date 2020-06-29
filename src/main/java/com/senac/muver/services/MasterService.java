@@ -29,6 +29,14 @@ public class MasterService {
 	public ArrayList<Master> listaUsuariosSemMusico() {
 		return repositorio.listaUsuariosSemMusico();
 	}
+	
+	public ArrayList<Master> listaUsuariosEstudios() {
+		return repositorio.listaUsuariosEstudios();
+	}
+	
+	public ArrayList<Master> listaUsuariosLuthiers() {
+		return repositorio.listaUsuariosLuthiers();
+	}
 
 	public ArrayList<Master> pesquisaNome(String nome) {
 		return repositorio.pesquisaNome(nome);
@@ -37,6 +45,11 @@ public class MasterService {
 	public ArrayList<Master> pesquisaTipoEstudio(String nome) {
 		return repositorio.pesquisaTipoEstudio(nome);
 	}
+	
+	Master findByLogin(String nome) {
+		return repositorio.findByLogin(nome);
+	}
+
 	
 	//public ArrayList<Master> listaPesquisa(String pesquisa) {
 	//	return repositorio.listaPesquisa(pesquisa);

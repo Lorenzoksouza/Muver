@@ -43,13 +43,26 @@ public class EstudioService {
 			repositorio.save(estudio);
 		}
 		
-		public void excluir(Estudio estudio) {
+		public void excluir(String nome) {
 			
-			repositorio.delete(estudio);
+			repositorio.excluir(nome);
 		}
 
-		public void alterar(Estudio estudio) {
+		/*
+		 * public void alterar(Estudio estudio) {
+		 * 
+		 * repositorio.alterar(estudio); }
+		 * 
+		 */
+		
+		public void alterar(String nome, String email, String senhaCriptografada, byte[] fotoPerfilByte, String linkFb,
+				String linkIg, String descricao) {
+			repositorio.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
+			
+		}
 
-			repositorio.save(estudio);
+		public void alterarEstudio(String localizacao, String nome) {
+			// TODO Auto-generated method stub
+			repositorio.alterarEstudio(localizacao, nome);
 		}
 }

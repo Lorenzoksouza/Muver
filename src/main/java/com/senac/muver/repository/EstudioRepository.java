@@ -34,7 +34,7 @@ public interface EstudioRepository extends CrudRepository<Estudio, Integer> {
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM Master m WHERE m.nome = :nome and m.idmaster= :idmaster")
-	void excluir(String nome);
+	void excluir(String nome, Integer idmaster);
 	
 	
 }

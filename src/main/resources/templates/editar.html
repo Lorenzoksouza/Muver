@@ -66,7 +66,7 @@
 			
 			<button id="alterar" type="submit">Alterar</button>
 		</form>
-		<form th:action="@{excluir}" method="post">
+		<form th:action="@{/excluirEstudio}" method="post">
 			<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}">
 			<button id="excluir" type="submit">Excluir</button>
 		</form>

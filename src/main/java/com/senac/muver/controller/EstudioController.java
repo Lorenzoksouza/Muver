@@ -92,12 +92,14 @@ public class EstudioController {
 	}
 	
 	
-	@RequestMapping(value = "excluirEstudio")
-	 public String excluirPerfil(@RequestParam("nome") String nome, HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/excluirEstudio", method = RequestMethod.POST)
+	 public String excluirPerfil(@RequestParam("nome") String nome, @RequestParam("id") Integer id, HttpServletRequest request, Model model) {
+		
+		String nome1 = "Estudio3";
+		Integer id1 = 25;
+		service.excluir(nome1, id1);
 		 
-		 service.excluir(nome);
-		 
-		 return "editar";
+		return "editar";
 	 }
 	
 	/*

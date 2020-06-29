@@ -27,7 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.csrf().disable()
 		.authorizeRequests()
-		.antMatchers("/", "/login", "/cadastrar", "/cEstudio", "/cLuthier", "/cMusico", "/cSucesso", "/luthier/**", "/perfil/**", "/static/**").permitAll()
+		.antMatchers("/", "/login", "/cadastrar", "/cEstudio", "/cLuthier", "/cMusico", "/cSucesso", "/luthier/**", "/perfil/**", "/static/**", 
+				"/cadastrarEstudio", "/cadastrarEstudio**", "/cadastrarLuthier", "/cadastrarLuthier**", "/cadastrarMusico", "/cadastrarMusico**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -64,5 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    handler.setUseReferer(true);
 	    return handler;
 	}
-
+	
+	
+	
 }

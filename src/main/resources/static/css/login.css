@@ -1,3 +1,6 @@
+
+
+
 * {
 padding:0;
 margin:0;
@@ -12,8 +15,12 @@ html {
 
 
 body{
-	/* background: url("../images/bg_guitar.jpg");  */
-	background-size: 100%;
+	background: url("../images/bg_guitar.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #222831;
 }
 
 li{
@@ -31,21 +38,29 @@ input{
 	margin: 20px 0;
 }
 
-h1{
+
+#titulo{
+	padding-top: 80px;
+	padding-bottom: 80px;
+	text-align: center;
+	color: white;
+}
+
+#tlogin{
 	font-weight: lighter;
 	font-size: 3em;
 	margin: 3% 0;
 }
 
+
 #caixa{
-	text-align: center;
-  	width: 50%;
-  	position: absolute;
-	top: 30%;
-	left: 25%;
-  	padding: 10px;
 	background-color: white;
+	text-align: center;
+	padding: 10px;
 	border-radius: 20px;
+	
+	margin: auto;
+	width: 70%;
 }
 
 #login{
@@ -56,3 +71,38 @@ h1{
 	border-radius: 10px;
 	margin: 50px 0;
 }
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    /*Insert your tablet CSS in here!*/
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	body{
+	background: none;
+	background-color: white;
+	}
+	
+	#titulo{
+	padding-top: 30px;
+	padding-bottom: 0px;
+	text-align: center;
+	color: black;
+	}
+	
+	#tlogin{
+	font-weight: lighter;
+	font-size: 2em;
+	margin: 3% 0;
+	}
+	
+	#caixa{
+		width: 100%;
+		
+	}
+}
+

@@ -41,9 +41,9 @@ public class LuthierService {
 				repositorio.save(luthier);
 			}
 			
-			public void excluir(Luthier luthier) {
+			public void excluir(String nome) {
 				
-				repositorio.delete(luthier);
+				repositorio.excluir(nome);
 			}
 
 

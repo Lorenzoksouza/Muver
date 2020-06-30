@@ -97,9 +97,9 @@ public class EstudioController {
 		
 		String nome1 = "Estudio3";
 		Integer id1 = 25;
-		service.excluir(nome1, id1);
+		service.excluir(nome);
 		 
-		return "editar";
+		return "cSucesso";
 	 }
 	
 	/*

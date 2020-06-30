@@ -43,45 +43,37 @@ li{
 
 }
 
-h1{
-	font-weight: lighter;
-	font-size: 3em;
-	padding-right: 130px;
-	margin-bottom: 50px;
-}
-
-#img_voltar{
-	height: 40px;
-	width: auto;
-	float: left;
-	margin-right: 10px;
-	margin-left: 20px;
-}
-
 #voltar{
-	letter-spacing: 0.2em;
-	font-weight: bold;
+	margin-right:-40px;
+	color:black;
 	margin-top: 10px;
-	text-decoration: none;
 	float: left;
-	text-align: left;
+	text-decoration: none;
 }
 
-#voltar p{
-	margin-top: 10px;
-	float: right;
+#titulo{
+	padding-top: 30px;
+	padding-bottom: 80px;
+	text-align: center;
+	color: white;
 }
 
 #caixa{
-	text-align: center;
-  	width: 70%;
-  	position: absolute;
-	top: 10%;
-	left: 15%;
-  	padding: 10px;
 	background-color: white;
+	text-align: center;
+	padding: 10px;
 	border-radius: 20px;
-	padding-bottom: 40px;
+	
+	margin: auto;
+	width: 70%;
+}
+
+#tcadastro{
+	
+	font-weight: lighter;
+	font-size: 3em;
+	text-align: center;
+	margin-bottom: 50px;
 }
 
 #cadastrar{
@@ -92,4 +84,68 @@ h1{
 	background-color: #222831;
 	border-radius: 10px;
 	margin: 50px 0;
+}
+
+.invisible{
+	 visibility: visible !important;
+}
+
+.visible{
+	 visibility: hidden !important;
+}
+
+
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    /*Insert your tablet CSS in here!*/
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	body{
+	background: none;
+	background-color: white;
+	}
+	
+	#voltar_mobile{
+	position: absolute;
+	color:black;
+	margin-left:20px;
+	margin-top: 40px;
+	float: left;
+	text-decoration: none;
+	}
+	
+	#titulo{
+	padding-top: 30px;
+	padding-bottom: 0px;
+	color: black;
+	
+	}
+	
+	#tcadastro{
+	padding-top:20px;
+	padding-right:10px;
+	font-weight: lighter;
+	font-size: 2em;
+	text-align: center;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	}
+	
+	#caixa{
+		width: 100%;
+	}
+	
+	.invisible{
+	 visibility: hidden !important;
+	}
+	
+	.visible{
+	 visibility: visible !important;
+	}
 }

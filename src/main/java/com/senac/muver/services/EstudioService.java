@@ -43,9 +43,9 @@ public class EstudioService {
 			repositorio.save(estudio);
 		}
 		
-		public void excluir(String nome,Integer idmaster) {
+		public void excluir(String nome) {
 			
-			repositorio.excluir(nome, idmaster);
+			repositorio.excluir(nome);
 		}
 
 		/*

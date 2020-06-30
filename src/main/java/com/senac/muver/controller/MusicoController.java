@@ -148,6 +148,15 @@ public class MusicoController {
 	}
 	
 
+
+	@RequestMapping(value = "/excluirMusico", method = RequestMethod.POST)
+	 public String excluirPerfil(@RequestParam("nome") String nome, HttpServletRequest request, Model model) {
+		
+		service.excluir(nome);
+		 
+		return "cSucesso";
+	 }
+	
 	/*
 	 * @RequestMapping(value = "excluir") public String
 	 * excluir(@RequestParam("musico") Musico musico, Model model) {

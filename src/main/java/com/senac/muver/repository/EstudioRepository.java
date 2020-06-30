@@ -30,11 +30,10 @@ public interface EstudioRepository extends CrudRepository<Estudio, Integer> {
 	@Query("UPDATE estudio e SET e.localizacao= :localizacao where e.nome = :nome")
 	void alterarEstudio(String localizacao, String nome);
 
-
 	@Transactional
-	@Modifying
-	@Query("DELETE FROM Master m WHERE m.nome = :nome and m.idmaster= :idmaster")
-	void excluir(String nome, Integer idmaster);
+	@Modifying(clearAutomatically = true)
+	@Query("DELETE FROM Master m WHERE m.nome = :nome")
+	void excluir(String nome);
 	
 	
 }

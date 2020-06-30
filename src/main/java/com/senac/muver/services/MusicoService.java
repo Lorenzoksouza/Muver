@@ -38,9 +38,9 @@ public class MusicoService {
 		repositorio.save(musico);
 	}
 	
-	public void excluir(Musico musico) {
+	public void excluir(String nome) {
 		
-		repositorio.delete(musico);
+		repositorio.excluir(nome);
 	}
 
 	public void alterar(String nome, String email, String senhaCriptografada, byte[] fotoPerfilByte,

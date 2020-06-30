@@ -1,0 +1,66 @@
+/*referencias e configs principais*/
+:root {
+	font-size: 16px;
+	font-family: 'Varela Round';
+	--text-primary: #b6b6b6;
+	--text-secondary: #ececec;
+	--bg-primary: #222831;
+	--bg-secondary: #00FFBB;
+	--transition-speed: 600ms;
+}
+
+* {
+padding:0;
+margin:0;
+border:0;
+}
+
+html {
+	font-family: varela round;
+	-webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body{
+	background-color: #30475e;
+}
+
+/*referencias e configs principais*/
+
+
+
+/*botao voltar*/
+
+
+.invisible{
+	 visibility: visible !important;
+}
+
+.visible{
+	 visibility: hidden !important;
+}
+/*botao voltar*/
+
+#caixa{
+	text-align: left;
+  	width: 65%;
+	top: 5%;
+	left: 15%;
+	bottom: -100px;
+  	padding: 10px;
+	background-color: white;
+	border-radius: 20px;
+	overflow: hidden;
+	position: relative;
+
+}
+
+#alterar{
+	color:white;
+	background-color: orange;
+}
+
+#excluir{
+	color:white;
+	background-color: red;
+}

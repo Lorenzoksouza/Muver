@@ -1,37 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>cadastro</title>
-	<link href="css/cadastrar.css" rel="stylesheet" />
-	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
-</head>
-<body>
-	<div id="caixa">
-		<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/login"><img id="img_voltar" src="images/arrow.png"/><p>Voltar</a>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>cadastro</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link href="css/cadastrar.css" rel="stylesheet" />
+		<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+	</head>
+	<body>
+			<a id="voltar_mobile" href="/maestrino-0.0.1-SNAPSHOT/login" class="visible">
+				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	 				<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+	  				<path fill-rule="evenodd" d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
+	  				<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
+				</svg>
+			</a>
+			
+		<h1 id="titulo">MAESTRINO</h1>
+		<div id="caixa" class="container">
 		
-		<h1>Cadastro</h1>
-
-		<label>TIPO DO PERFIL:</label>
-		
-		<select id="perfis" onchange="tipoUsuario()">
-			<option value="" disabled selected>Escolha uma opção...</option>
-			<option value="/maestrino-0.0.1-SNAPSHOT/cMusico" >Musico</option>
-			<option value="/maestrino-0.0.1-SNAPSHOT/cLuthier">Luthier</option>
-			<option value="/maestrino-0.0.1-SNAPSHOT/cEstudio">Estudio</option>
-		</select>
-		</br>
-		</br>		
-
-		<button><a id="selecao" href="#">CADASTRAR</a></button>
+			
+			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/login" class="invisible">
+				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	 				<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+	  				<path fill-rule="evenodd" d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
+	  				<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
+				</svg>
+				<p >Voltar</p>
+			</a>
+			
+			<h1 id="tcadastro">Cadastro</h1>
 	
-		<script type="text/javascript">
-			function tipoUsuario() {
-				var e = document.getElementById("perfis");
-				var result = e.options[e.selectedIndex].value;
-				document.getElementById("selecao").href = result;
-			}
-		</script>
-	</div>
-</body>
+			<label>TIPO DO PERFIL:</label>
+			
+			<select id="perfis" class="form-control form-control-lg" onchange="tipoUsuario()">
+				<option value="" disabled selected>Escolha uma opção...</option>
+				<option value="/maestrino-0.0.1-SNAPSHOT/cMusico" >Musico</option>
+				<option value="/maestrino-0.0.1-SNAPSHOT/cLuthier">Luthier</option>
+				<option value="/maestrino-0.0.1-SNAPSHOT/cEstudio">Estudio</option>
+			</select>
+			</br>
+			</br>		
+	
+			<button><a id="selecao" href="#">CADASTRAR</a></button>
+		
+			<script type="text/javascript">
+				function tipoUsuario() {
+					var e = document.getElementById("perfis");
+					var result = e.options[e.selectedIndex].value;
+					document.getElementById("selecao").href = result;
+				}
+			</script>
+		</div>
+	
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	</body>
 </html>

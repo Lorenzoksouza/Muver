@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/", "/login", "/cadastrar", "/cEstudio", "/cLuthier", "/cMusico", "/cSucesso", "/luthier/**", "/perfil/**", "/static/**", 
-				"/cadastrarEstudio", "/cadastrarEstudio**", "/cadastrarLuthier", "/cadastrarLuthier**", "/cadastrarMusico", "/cadastrarMusico**").permitAll()
+				"/cadastrarEstudio", "/cadastrarEstudio**", "/cadastrarLuthier", "/cadastrarLuthier**", "/cadastrarMusico", "/cadastrarMusico**", "/css/**", "/images/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()

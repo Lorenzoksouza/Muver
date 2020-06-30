@@ -27,6 +27,11 @@ public interface MusicoRepository extends CrudRepository<Musico, Integer> {
 	@Query(value = "UPDATE musico m SET m.instrumento= :instrumentos, m.estilo_musical= :estilosMusicais where l.nome = :nome", nativeQuery = true)
 	void alterarMusico(String instrumentos, String estilosMusicais, String nome);
 	
+	@Transactional
+	@Modifying(clearAutomatically = true)
+	@Query("DELETE FROM Master m WHERE m.nome = :nome")
+	void excluir(String nome);
+	
 	
 	
 }

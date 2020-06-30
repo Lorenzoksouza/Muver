@@ -29,4 +29,10 @@ public interface LuthierRepository extends CrudRepository<Luthier, Integer> {
 	@Query("UPDATE luthier l SET l.localizacao= :localizacao, l.instrumento= :instrumentos where l.nome = :nome")
 	void alterarLuthier(String localizacao, String instrumentos, String nome);
 
+	
+	@Transactional
+	@Modifying(clearAutomatically = true)
+	@Query("DELETE FROM Master m WHERE m.nome = :nome")
+	void excluir(String nome);
+
 }

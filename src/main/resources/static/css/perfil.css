@@ -133,6 +133,16 @@ main {
 /*configs barra lateral*/
 
 /*botao voltar*/
+
+
+.invisible{
+	 visibility: visible !important;
+}
+
+.visible{
+	 visibility: hidden !important;
+}
+
 #img_voltar{
 	height: 20px;
 	width: auto;

@@ -115,6 +115,14 @@ public class LuthierController {
 	}
 	
 	
+	@RequestMapping(value = "/excluirLuthier", method = RequestMethod.POST)
+	 public String excluirPerfil(@RequestParam("nome") String nome, HttpServletRequest request, Model model) {
+		
+		service.excluir(nome);
+		 
+		return "cSucesso";
+	 }
+	
 	/*
 	 * @RequestMapping(value = "excluirLuthier") public String
 	 * excluir(@RequestParam("luthier") Luthier luthier, Model model) {

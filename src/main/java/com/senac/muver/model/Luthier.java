@@ -30,6 +30,11 @@ public class Luthier extends Master implements Serializable {
 	//@OrderColumn
 	//private Instrumento[] instrumentos;
 	@Getter @Setter
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "luthier_nota", joinColumns = @JoinColumn(name = "idluthier"), inverseJoinColumns = @JoinColumn(name = "idnota"))
+	@OrderColumn
+	private Nota[] nota;
+	@Getter @Setter
 	private String localizacao;
 	
 	public Luthier(String nome, String email, String senha, /*Instrumento[] instrumentos,*/String instrumento, String localizacao, byte[] fotoPerfil, String linkFb, String linkIg,

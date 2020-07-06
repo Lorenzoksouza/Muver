@@ -40,7 +40,7 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	
 	@Transactional
 	@Modifying
-	@Query(value = "UPDATE Master m SET m.nota = :nota where m.nome = ' :nome ' ", nativeQuery = true)
+	@Query(value = "UPDATE Master m SET m.nota = :nota where m.nome = :nome ", nativeQuery = true)
 	void alterarNota(double nota, String nome);
 	
 	//@Query("SELECT m FROM Master m where m.nome = %:nome%")

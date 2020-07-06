@@ -119,7 +119,7 @@ public class PerfilController {
     }
 
     
-   @RequestMapping(value = "nota", method = RequestMethod.GET)
+   @GetMapping(value = "/avaliar")
    public String alterarNota(@RequestParam("notaAtual") double notaAtual, @RequestParam("nota") String nota, @RequestParam("nome") String nome, HttpServletRequest request, Model model){  
 	  
 	   double notaDouble = Double.parseDouble(nota);

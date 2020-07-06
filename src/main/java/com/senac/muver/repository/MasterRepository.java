@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -18,7 +20,7 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m")
 	Master listarUsuario();
 
-	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier'")
+	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio' or m.tipoUsuario = 'luthier' ORDER BY nota DESC")
 	ArrayList<Master> listaUsuariosSemMusico();
 	
 	@Query("SELECT m FROM Master m where m.tipoUsuario = 'estudio'")
@@ -36,7 +38,10 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m WHERE m.nome = :nome")
 	Master findByLogin(String nome);
 	
-	
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE Master m SET m.nota = :nota where m.nome = ' :nome ' ", nativeQuery = true)
+	void alterarNota(double nota, String nome);
 	
 	//@Query("SELECT m FROM Master m where m.nome = %:nome%")
 	//ArrayList<Master> listaPesquisa(String pesquisa);

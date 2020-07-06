@@ -95,6 +95,18 @@ li{
 }
 
 
+#localizacao{
+	margin-right: -90px;
+	
+	
+}
+
+#tooltip-localizacao{
+	float: right;
+	margin-top: 30px;
+	margin-right: 40px; 
+}
+
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {}

@@ -1,189 +1,452 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:"http://www.thymeleaf.org/">
+<html xmlns:th="http://thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Maestrino</title>
 	<!--<link href="css/login.css" rel="stylesheet" />-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link th:href="@{/css/perfil.css}" rel="stylesheet" />
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+
 </head>
 <body>
 
 	<main>
 	
-		<!-- aqui no th:each tem que passar o usuario de acordo com o botao sobre da tela principal -->
+		<a id="voltar_mobile" href="/maestrino-0.0.1-SNAPSHOT/principal" class="visible">
+				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	 				<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+	  				<path fill-rule="evenodd" d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
+	  				<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
+				</svg>
+			</a>
+		
+		<h1 id="titulo">
+			<a href="/maestrino-0.0.1-SNAPSHOT/principal">
+				MAESTRINO
+			</a>
+		</h1>
 		<div id="caixa" th:each="usuario : ${usuarios}">
-			
-			<!-- <form th:action="@{/principal}" method="post">
-					<button type="submit"><img alt="img_voltar" th:src="@{/images/arrow.png}">Voltar</button>
-			</form>
-			 -->
-			<a href="/maestrino-0.0.1-SNAPSHOT/principal"><img alt="img_voltar" th:src="@{/images/arrow.png}">voltar</a>
-			<!-- PERFIL LUTHIER -->
-			<main th:if="${usuario.tipoUsuario == 'luthier'}">
-								
-					<div id="imagem">
-						<!-- <img th:src="@{'/images/photos/avatar.png'}" -->
-						<img id="img" th:src="${usuario.fotoPerfil}">
-					</div>
-					
-					<span id="nome" th:text="${usuario.nome}">teste</span>
-					
-					<div>
-						<img alt="" th:src="@{/images/arrow.png}">
-						<span id="nota" >5,0</span>
-					</div>
-					
-					<span id="facebook"><a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
-					
-					<span id="instagram"><a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
-					
-					
-					
-					<span id="Chat"><a th:href="'mailto:' + ${usuario.email}">Conversar</a></span>
-					
-					<span id="descricao" th:text="${usuario.descricao}">teste</span>
-	
-					<div id="instrumentos">
-						<span>Instrumentos:</span>
-						<span th:text=${usuario.instrumentos}></span>
-					</div>
-	
-					<div id="Disponibilidade">
-						<span>Disponibilidade:</span>
-					</div>
-	
-					
-	
-					<!--ver como fazer as analises-->	
-					<div id="analises">
-						<span>Analises:</span>
-						<span></span>
-					</div>
-	
-					<!--integracao maps ou url-->
-					<div id="gMaps">
-						<span>Mapa:</span>
-					</div>
-									
-										<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-					  Launch demo modal
-					</button>
-					
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-					<!-- 
-					<img id="img" th:src="${usuario_especifico.img}">
-					<span id="nome" th:text="${usuario_especifico.nome}"></span>-->
-					<!-- nota ainda n'ao precisa -->
-					<!-- <span id="nota" th:text="${usuario_especifico.nota}">Nota 5,0</span> -->
-					<!--
-					<span id="text" th:text="${usuario_especifico.text}"></span>
-					
-					<div id="mapa">
-						<p id="texto_mapa">Mapa:</p>				
-						<span id="url_mapa" th:text="${usuario_especifico.urlmapa}"></span>
-					</div>  -->
-					<!-- botão só pode aparecer se tiver o mesmo id ou algo que identifique o mesmo usuario com o do perfil logado -->
-					<!-- levar para tela de cadastro com os campos preenchidos -->
-			</main>
-			<!-- PERFIL LUTHIER -->
-			
-			<!-- PERFIL ESTUDIO -->
-			<main th:if="${usuario.tipoUsuario == 'estudio'}">
+			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/principal" class="invisible">
+					<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+		 				<path fill-rule="evenodd" d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
+		 				<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
+					</svg>
+					<p>voltar</p>
+				</a>
+			<div id="perfil">
 				
-					<span id="nome" th:text="${usuario.nome}">teste</span>
-					
-					<span id="facebook"><a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}"><img id="img_voltar" th:src="@{/images/facebook.png}"/></a></span>
-					
-					<span id="instagram"><a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}"><img id="img_voltar" th:src="@{/images/instagram.png}"/></a></span>
-	
-					<!--<span id="nota" th:text="${usuario.nota}"></span>-->
-	
-					<span id="Chat"><a th:href="'mailto:' + ${usuario.email}">Conversar</a></span>
-					
-					<span id="descricao" th:text="${usuario.descricao}">teste</span>
-					
-					
-	
-					<div id="Disponibilidade">
-						<span>Disponibilidade:</span>
-					</div>
-	
-					<div id="imagem">
-						<img id="img" th:src="${usuario.fotoPerfil}">
-					</div>
-	
-					<!--ver como fazer as analises-->	
-					<div id="analises">
-						<span>Analises:</span>
-						<span></span>
-					</div>
-	
-					<!--integracao maps ou url-->
-					<div id="gMaps">
-						<span>Mapa:</span>
-					</div>
-					
+				<!-- PERFIL LUTHIER -->
+				<main th:if="${usuario.tipoUsuario == 'luthier'}">		
+					<div class="container">
+						<div class="esquerda">
+							<ul id="flutuar">
+								<li>
+									<div id="nome">
+										<span id="nome-span" th:text="${usuario.nome}">
+											teste
+										</span>
+									</div>
+								</li>
+								<li id="grupo">
+									<div id="gnota">
+										<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+											 width="1.5em" height="3em" viewBox="0 0 640.000000 1280.000000"
+											 preserveAspectRatio="xMidYMid meet">									
+											<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+											fill="#000000" stroke="none">
+											<path d="M4128 12781 c-166 -53 -386 -249 -543 -482 -83 -123 -238 -429 -314
+											-622 -167 -425 -246 -822 -258 -1307 -9 -350 13 -649 88 -1209 39 -293 40
+											-305 22 -321 -10 -9 -112 -96 -228 -192 -829 -692 -1259 -1160 -1574 -1715
+											-183 -323 -306 -697 -352 -1068 -16 -126 -16 -417 0 -555 44 -391 178 -789
+											374 -1115 138 -230 375 -500 587 -669 400 -318 859 -520 1292 -567 127 -14
+											488 -5 608 14 47 8 87 13 88 11 2 -1 42 -285 89 -631 l85 -628 2 -235 c1 -249
+											-5 -311 -51 -475 -106 -384 -378 -636 -766 -710 -103 -20 -326 -19 -439 0
+											-191 34 -347 104 -443 199 l-60 60 105 8 c315 25 509 136 615 351 52 106 68
+											196 62 352 -9 227 -71 380 -212 520 -89 89 -157 133 -267 173 -66 24 -86 27
+											-213 27 -111 0 -151 -4 -195 -19 -242 -83 -419 -260 -499 -501 -43 -128 -55
+											-219 -48 -360 21 -408 258 -772 627 -963 111 -58 213 -94 354 -124 132 -28
+											450 -31 590 -5 411 78 705 256 893 543 202 308 250 656 169 1239 -86 627 -167
+											1237 -164 1239 2 2 39 15 83 30 298 105 598 308 790 537 313 373 455 839 416
+											1366 -23 312 -79 530 -197 768 -113 229 -270 418 -469 568 -101 76 -308 183
+											-430 222 -183 60 -417 91 -582 79 -91 -6 -92 -6 -97 17 -3 13 -22 146 -41 294
+											-20 149 -58 436 -86 640 l-50 370 28 24 c91 77 389 360 514 487 506 518 752
+											1038 834 1764 57 512 60 849 9 1215 -68 493 -208 904 -401 1177 -133 189 -202
+											225 -345 179z m284 -1129 c100 -44 172 -142 204 -279 19 -82 21 -275 4 -388
+											-40 -274 -185 -663 -344 -925 -147 -240 -434 -586 -662 -795 -164 -151 -264
+											-238 -268 -234 -4 4 -25 147 -46 312 -51 406 -25 763 84 1139 132 451 309 792
+											526 1008 108 107 171 149 270 177 60 17 173 10 232 -15z m-1043 -4513 l77
+											-577 -56 -17 c-229 -71 -507 -257 -672 -449 -251 -293 -390 -635 -405 -996
+											-15 -383 122 -753 372 -1006 143 -146 306 -238 477 -272 71 -14 79 -14 102 2
+											30 19 34 56 10 81 -9 9 -44 30 -78 47 -249 125 -411 349 -462 641 -73 415 180
+											878 579 1062 67 31 234 82 242 73 1 -1 77 -563 168 -1248 113 -848 162 -1247
+											155 -1251 -6 -4 -56 -14 -112 -23 -284 -43 -581 -46 -780 -6 -408 81 -848 336
+											-1099 639 -305 366 -448 745 -448 1183 0 237 31 425 106 653 139 424 366 769
+											795 1208 265 272 942 878 949 849 2 -9 38 -276 80 -593z m596 -1415 c166 -32
+											355 -114 487 -214 95 -72 235 -224 291 -317 135 -225 184 -429 174 -728 -12
+											-391 -132 -688 -367 -909 -107 -101 -313 -226 -411 -251 l-25 -6 -27 203 c-15
+											112 -54 401 -87 643 -173 1284 -210 1562 -210 1582 0 21 3 22 48 17 26 -3 83
+											-12 127 -20z"/>
+											</g>
+										</svg>
+										<span id="nota" th:text="${usuario.nota}">	
+										</span>
+										
+										<!-- Modal -->
+										<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+										  <div class="modal-dialog modal-dialog-centered" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLongTitle">Avaliação</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										    <form th:action=nota target="frame" method="get"> 
+										      	<div class="modal-body">
+													<div class="form-check">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="1.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    1,0
+													  </label>
+													</div>
+										        	<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="2.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    2,0
+													  </label>
+													</div>
+													<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="3.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    3,0
+													  </label>
+													</div>
+													<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="4.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    4,0
+													  </label>
+													</div>
+													<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="5.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    5,0
+													  </label>
+													</div>
+													<div class="input-group">
+													  <div class="input-group-prepend">
+													    <div class="input-group-text">
+													    <input type="radio" aria-label="Radio button for following text input" name="nota" id="exampleRadios3">
+													    </div>
+													  </div>
+													  <input type="number" class="form-control" aria-label="Text input with radio button" min="1" max="5" step="0.1">
+													</div>
+										      	</div>
+												<iframe name="frame" style="display: none;"></iframe>
+										      <div class="modal-footer">
+										      	<input type="hidden" name="notaAtual" th:value="${usuario.nota}">
+										      	<input type="hidden" name="nome" th:value="${usuario.nome}">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+										        <button type="submit" class="btn btn-primary">Enviar</button>
+										      </div>
+										   </form>     
+										    </div>
+										  </div>
+										</div>
+										<!-- Modal -->
+										
+										<button id="btn_analises" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+											Avaliar
+										</button>
+									</div>
+									<div id="gsocial">
+										<a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}">
+											<img id="icon_face" class="social" th:src="@{/images/facebook.png}"/>
+										</a>
+										<a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}">
+											<img id="icon_ig" class="social" th:src="@{/images/instagram.png}"/>
+										</a>
+									</div>
+									<div id="chat">
+										<a id="btn_chat"  class="btn btn-primary" th:href="'mailto:' + ${usuario.email}">
+											Enviar email
+										</a>
+									</div>
+								</li>
+								<li>
+									<p id="descricao" th:text="${usuario.descricao}">
+										teste
+									</p>
+								<li>
+									<div id="Disponibilidade">
+										<span>Disponibilidade:</span>
+									</div>
+								</li>
+								<li id="dis">
+								<!-- temporario -->
+									<div class="invisible">
+										<iframe id="disp" th:src="${usuario.disponibilidade}"></iframe>
+													<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
+													<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+														Edite seu perfil para invluir as horas
+													</div>
+									</div>			
+									<div id="disp_mobile" class="visible">
+										<p>
+											<button id="btn_c" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#colapso" aria-expanded="false" aria-controls="colapso">
+		   										 Exibir calendario
+		  									</button>
+										</p>
+										<div class="collapse" id="colapso">	
+											<div class="card card-body">
+												<iframe id="disp_c_mobile" src="https://calendar.google.com/calendar/embed?src=0tjgnhtktruveieei1qha84da0%40group.calendar.google.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+														<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
+														<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+															Edite seu perfil para invluir as horas
+														</div>
+											</div>		
+										</div>	
+									</div>			
+								</li>
+							</ul>
+						</div>
+						<div class="direita">
+							<div id="imagem">
+								<img id="img" th:src="@{'/images/photos/' + ${usuario.nome} + '.png'}">
+							</div>
 							
-					<!-- 
-					<img id="img" th:src="${usuario_especifico.img}">
-					<span id="nome" th:text="${usuario_especifico.nome}"></span>-->
-					<!-- nota ainda n'ao precisa -->
-					<!-- <span id="nota" th:text="${usuario_especifico.nota}">Nota 5,0</span> -->
-					<!--
-					<span id="text" th:text="${usuario_especifico.text}"></span>
-					
-					<div id="mapa">
-						<p id="texto_mapa">Mapa:</p>				
-						<span id="url_mapa" th:text="${usuario_especifico.urlmapa}"></span>
-					</div>  -->
-					<!-- botão só pode aparecer se tiver o mesmo id ou algo que identifique o mesmo usuario com o do perfil logado -->
-					<!-- levar para tela de cadastro com os campos preenchidos -->
-			</main>
-			<!-- PERFIL ESTUDIO -->
-			
-			
+							<ul id="flutuar_d">
+								<li>
+									<div id="instrumentos">
+										<span id="tag_instrumentos">
+											Instrumentos:
+										</span>
+										<span id="texto_instrumentos" th:text=${usuario.instrumentos}>
+										</span>
+									</div>
+								</li>
+								<li id="localizacao">
+									<!--integracao maps ou url-->
+									<div id="gMaps">
+										<span>Endereço:</span>
+									</div>
+								</li>
+								<li id="texto_localizacao">
+									<iframe id="end" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr" 
+									th:src="*{usuario.localizacao}?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr'"></iframe>
+								</li>
+							</ul>
+						</div>	
+					</div>	
+				</main>
+				<!-- PERFIL LUTHIER -->
+				
+				<!-- PERFIL ESTUDIO -->
+				<main th:if="${usuario.tipoUsuario == 'estudio'}">
+					<div class="container">
+						<div class="esquerda">
+							<ul id="flutuar">
+								<li>
+									<div id="nome">
+										<span id="nome-span" th:text="${usuario.nome}">
+											teste
+										</span>
+									</div>
+								</li>
+								<li id="grupo">
+									<div id="gnota">
+										<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+											 width="1.5em" height="3em" viewBox="0 0 640.000000 1280.000000"
+											 preserveAspectRatio="xMidYMid meet">									
+											<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+											fill="#000000" stroke="none">
+											<path d="M4128 12781 c-166 -53 -386 -249 -543 -482 -83 -123 -238 -429 -314
+											-622 -167 -425 -246 -822 -258 -1307 -9 -350 13 -649 88 -1209 39 -293 40
+											-305 22 -321 -10 -9 -112 -96 -228 -192 -829 -692 -1259 -1160 -1574 -1715
+											-183 -323 -306 -697 -352 -1068 -16 -126 -16 -417 0 -555 44 -391 178 -789
+											374 -1115 138 -230 375 -500 587 -669 400 -318 859 -520 1292 -567 127 -14
+											488 -5 608 14 47 8 87 13 88 11 2 -1 42 -285 89 -631 l85 -628 2 -235 c1 -249
+											-5 -311 -51 -475 -106 -384 -378 -636 -766 -710 -103 -20 -326 -19 -439 0
+											-191 34 -347 104 -443 199 l-60 60 105 8 c315 25 509 136 615 351 52 106 68
+											196 62 352 -9 227 -71 380 -212 520 -89 89 -157 133 -267 173 -66 24 -86 27
+											-213 27 -111 0 -151 -4 -195 -19 -242 -83 -419 -260 -499 -501 -43 -128 -55
+											-219 -48 -360 21 -408 258 -772 627 -963 111 -58 213 -94 354 -124 132 -28
+											450 -31 590 -5 411 78 705 256 893 543 202 308 250 656 169 1239 -86 627 -167
+											1237 -164 1239 2 2 39 15 83 30 298 105 598 308 790 537 313 373 455 839 416
+											1366 -23 312 -79 530 -197 768 -113 229 -270 418 -469 568 -101 76 -308 183
+											-430 222 -183 60 -417 91 -582 79 -91 -6 -92 -6 -97 17 -3 13 -22 146 -41 294
+											-20 149 -58 436 -86 640 l-50 370 28 24 c91 77 389 360 514 487 506 518 752
+											1038 834 1764 57 512 60 849 9 1215 -68 493 -208 904 -401 1177 -133 189 -202
+											225 -345 179z m284 -1129 c100 -44 172 -142 204 -279 19 -82 21 -275 4 -388
+											-40 -274 -185 -663 -344 -925 -147 -240 -434 -586 -662 -795 -164 -151 -264
+											-238 -268 -234 -4 4 -25 147 -46 312 -51 406 -25 763 84 1139 132 451 309 792
+											526 1008 108 107 171 149 270 177 60 17 173 10 232 -15z m-1043 -4513 l77
+											-577 -56 -17 c-229 -71 -507 -257 -672 -449 -251 -293 -390 -635 -405 -996
+											-15 -383 122 -753 372 -1006 143 -146 306 -238 477 -272 71 -14 79 -14 102 2
+											30 19 34 56 10 81 -9 9 -44 30 -78 47 -249 125 -411 349 -462 641 -73 415 180
+											878 579 1062 67 31 234 82 242 73 1 -1 77 -563 168 -1248 113 -848 162 -1247
+											155 -1251 -6 -4 -56 -14 -112 -23 -284 -43 -581 -46 -780 -6 -408 81 -848 336
+											-1099 639 -305 366 -448 745 -448 1183 0 237 31 425 106 653 139 424 366 769
+											795 1208 265 272 942 878 949 849 2 -9 38 -276 80 -593z m596 -1415 c166 -32
+											355 -114 487 -214 95 -72 235 -224 291 -317 135 -225 184 -429 174 -728 -12
+											-391 -132 -688 -367 -909 -107 -101 -313 -226 -411 -251 l-25 -6 -27 203 c-15
+											112 -54 401 -87 643 -173 1284 -210 1562 -210 1582 0 21 3 22 48 17 26 -3 83
+											-12 127 -20z"/>
+											</g>
+										</svg>
+										<span id="nota" th:text="${usuario.nota}">	
+										</span>
+										
+										<!-- Modal -->
+										<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+										  <div class="modal-dialog modal-dialog-centered" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLongTitle">Avaliação</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										    <form th:action=nota target="frame" method="get"> 
+										      	<div class="modal-body">
+													<div class="form-check">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="1.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    1,0
+													  </label>
+													</div>
+										        	<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="2.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    2,0
+													  </label>
+													</div>
+													<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="3.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    3,0
+													  </label>
+													</div>
+													<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="4.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    4,0
+													  </label>
+													</div>
+													<div class="form-check ">
+													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="5.0" >
+													  <label class="form-check-label" for="exampleRadios3">
+													    5,0
+													  </label>
+													</div>
+													<div class="input-group">
+													  <div class="input-group-prepend">
+													    <div class="input-group-text">
+													    <input type="radio" aria-label="Radio button for following text input" name="nota" id="exampleRadios3">
+													    </div>
+													  </div>
+													  <input type="number" class="form-control" aria-label="Text input with radio button" min="1" max="5" step="0.1">
+													</div>
+										      	</div>
+												<iframe name="frame" style="display: none;"></iframe>
+										      <div class="modal-footer">
+										      	<input type="hidden" name="tipoUsuario" th:value="${usuario.tipoUsuario}">
+										      	<input type="hidden" name="notaAtual" th:value="${usuario.nota}">
+										      	<input type="hidden" name="nome" th:value="${usuario.nome}">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+										        <button type="submit" class="btn btn-primary">Enviar</button>
+										      </div>
+										   </form>     
+										    </div>
+										  </div>
+										</div>
+										<!-- Modal -->
+										
+										<button id="btn_analises" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+											Avaliar
+										</button>
+									</div>
+									<div id="gsocial">
+										<a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}">
+											<img id="icon_face" class="social" th:src="@{/images/facebook.png}"/>
+										</a>
+										<a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}">
+											<img id="icon_ig" class="social" th:src="@{/images/instagram.png}"/>
+										</a>
+									</div>
+									<div id="chat">
+										<a id="btn_chat"  class="btn btn-primary" th:href="'mailto:' + ${usuario.email}">
+											Enviar email
+										</a>
+									</div>
+								</li>
+								<li>
+									<p id="descricao" th:text="${usuario.descricao}">
+										teste
+									</p>
+								<li>
+									<div id="Disponibilidade">
+										<span>Disponibilidade:</span>
+									</div>
+								</li>
+								<li id="dis">
+								<!-- temporario -->
+									<div class="invisible">
+										<iframe id="disp" th:src="${usuario.disponibilidade}"></iframe>
+													<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
+													<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+														Edite seu perfil para invluir as horas
+													</div>
+									</div>			
+									<div id="disp_mobile" class="visible">
+										<p>
+											<button id="btn_c" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#colapso" aria-expanded="false" aria-controls="colapso">
+		   										 Exibir calendario
+		  									</button>
+										</p>
+										<div class="collapse" id="colapso">	
+											<div class="card card-body">
+												<iframe id="disp_c_mobile" src="https://calendar.google.com/calendar/embed?src=0tjgnhtktruveieei1qha84da0%40group.calendar.google.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+														<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
+														<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+															Edite seu perfil para invluir as horas
+														</div>
+											</div>		
+										</div>	
+									</div>			
+								</li>
+							</ul>
+						</div>
+						<div class="direita">
+							<div id="imagem">
+								<img id="img" th:src="@{'/images/photos/' + ${usuario.nome} + '.png'}">
+							</div>
+							
+							<ul id="flutuar_d">
+								
+								<li id="localizacao">
+									<!--integracao maps ou url-->
+									<div id="gMaps">
+										<span>Endereço:</span>
+									</div>
+								</li>
+								<li id="texto_localizacao">
+									<iframe id="end" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr" 
+									th:src="*{usuario.localizacao}?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr'"></iframe>
+								</li>
+							</ul>
+						</div>	
+					</div>	
+				</main>
+			</div>
 		</div>
-	
-	
-	
-	</main>
-
-	<!-- nao sei se e bom validar na tela, o ideal e verificar no back, mas em todo caso, fica aqui se precisar-->
-	
-	<script type="text/javascript">
-		function verificaId(){
-			/*if id igual ao id do perfil entao botao edicao aparece*/
-			/*se o ID do usuario logado for igual ao ID do usuario do perfil, entao mostra o botao de editar perfil*/
-			
-		}
-	</script>
-	
-
-	<!-- precisa de um javaSCRIPT pra verificar se o id do usuario logado e o mesmo do usuario do perfil, se sim, fazer aparecer um botao de edicao -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+		$('.collapse').collapse()
+		</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>

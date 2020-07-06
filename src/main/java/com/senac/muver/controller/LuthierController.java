@@ -65,7 +65,7 @@ public class LuthierController {
 	@RequestMapping(value = "cadastrarLuthier", method = RequestMethod.POST)
 	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, /*@RequestParam("instrumentos") String[] instrumentos,*/
 		@RequestParam("instrumentos") String[] instrumento,
-		@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, 
+		@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao,@RequestParam("disponibilidade") String disponibilidade, @RequestParam("linkFb") String linkFb, 
 		@RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
 		
 		
@@ -96,8 +96,14 @@ public class LuthierController {
 		*/
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
 		
+		String gmaps = localizacao.replace("<iframe ", "").replace("src=\"", "").replace("></iframe>", "");
 		
-		Luthier novoLuthier =  new Luthier(nome, email, senhaCriptografada,/* instrumentosArray,*/instrumentos, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"luthier");
+		//String gmaps = localizacao.substring(13).replace("></iframe>", "");
+		
+		String calendar = disponibilidade.replace("<iframe ", "").replace("src=\"", "").replace("></iframe>", "");
+
+		
+		Luthier novoLuthier =  new Luthier(nome, email, senhaCriptografada,/* instrumentosArray,*/instrumentos, gmaps, fotoPerfilByte, linkFb, linkIg, descricao,"luthier", calendar, 5.0);
 		service.salvar(novoLuthier);
 		
 		return "/cSucesso";
@@ -161,8 +167,10 @@ public class LuthierController {
 		
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
 		
+		String gmaps = localizacao.substring(13).replace("></iframe>", "");
+		
 		service.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
-		service.alterarLuthier(localizacao, instrumentos, nome);
+		service.alterarLuthier(gmaps, instrumentos, nome);
 		return "editar";
 		
 	}

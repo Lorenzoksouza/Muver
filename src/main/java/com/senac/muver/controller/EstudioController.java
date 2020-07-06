@@ -2,25 +2,33 @@ package com.senac.muver.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.senac.muver.util.ConvertMasterTela;
 import com.senac.muver.model.Estudio;
 import com.senac.muver.model.Luthier;
+import com.senac.muver.model.Master;
 import com.senac.muver.model.MasterTela;
 import com.senac.muver.services.EstudioService;
 
@@ -62,12 +70,35 @@ public class EstudioController {
 		return mv;
 	}
 	
+	
+	@RequestMapping(value = "/cEstudio", method = RequestMethod.GET)
+	public String cEstudio() { 
+	
+		return "cEstudio"; 
+	}
+	
+	@RequestMapping(value = "cadastrarEstudio", method = RequestMethod.GET)
+	public String teste() {
+		return "cEstudio";
+	}
+	
 	@RequestMapping(value = "cadastrarEstudio", method = RequestMethod.POST)
-	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
-			@RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, 
+	public String salvar(@Valid Estudio estudio, BindingResult result, RedirectAttributes attributes,@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
+			@RequestParam("localizacao") String localizacao,@RequestParam("disponibilidade") String disponibilidade,  @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, 
 			@RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
 		
 		//REQUISITAR A IMG E VERIFICAR SE ESTA NULL, SE ESTIVER PASSAR A IMAGEM PADRAO
+		if(result.hasErrors()) {
+			
+			attributes.addFlashAttribute("mensagem", "verifica campo");
+			
+			List<ObjectError> erro = result.getAllErrors();
+			System.out.println(erro);
+			
+			return "redirect:/cEstudio";
+			
+		}
+		
 		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
@@ -80,10 +111,15 @@ public class EstudioController {
 			e.printStackTrace();
 		}
 		
+		String gmaps = localizacao.replace("<iframe ", "").replace("src=\"", "").replace("></iframe>", "");
+		
+		String calendar = disponibilidade.replace("<iframe ", "").replace("src=\"", "").replace("></iframe>", "");
+		
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
+	
 		
 		//insere no estudio os dados vindo do formulário
-		Estudio novoEstudio =  new Estudio(nome, email, senhaCriptografada, localizacao, fotoPerfilByte, linkFb, linkIg, descricao,"estudio");
+		Estudio novoEstudio =  new Estudio(nome, email, senhaCriptografada, gmaps, fotoPerfilByte, linkFb, linkIg, descricao,"estudio", calendar, 5.0);
 		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
 		service.salvar(novoEstudio);
 		
@@ -94,9 +130,6 @@ public class EstudioController {
 	
 	@RequestMapping(value = "/excluirEstudio", method = RequestMethod.POST)
 	 public String excluirPerfil(@RequestParam("nome") String nome, @RequestParam("id") Integer id, HttpServletRequest request, Model model) {
-		
-		String nome1 = "Estudio3";
-		Integer id1 = 25;
 		service.excluir(nome);
 		 
 		return "cSucesso";
@@ -131,8 +164,10 @@ public class EstudioController {
 		
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
 		
+		String gmaps = localizacao.substring(13).replace("></iframe>", "");
+		
 		service.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
-		service.alterarEstudio(localizacao, nome);
+		service.alterarEstudio(gmaps, nome);
 		return "editar";
 		
 	}

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,15 @@ public class MasterController {
 	@Autowired
 	private MasterService service;
 	private ConvertMasterTela convert = new ConvertMasterTela();
+	
+	
+	@RequestMapping("/sobre")
+	public String Sobre() {
+		
+		
+		return "/sobre";
+	}
+	
 	
 	@RequestMapping("/principal")
 	public ModelAndView listaUsuariosLogin() {

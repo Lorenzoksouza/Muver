@@ -3,6 +3,8 @@ package com.senac.muver.services;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.senac.muver.model.Master;
@@ -50,7 +52,12 @@ public class MasterService {
 		return repositorio.findByLogin(nome);
 	}
 
-	
+	public void alterarNota(double nota, String nome) {
+		repositorio.alterarNota(nota, nome);
+		
+	}
+
+
 	//public ArrayList<Master> listaPesquisa(String pesquisa) {
 	//	return repositorio.listaPesquisa(pesquisa);
 	//}

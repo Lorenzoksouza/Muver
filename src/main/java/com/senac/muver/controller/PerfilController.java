@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -24,7 +26,9 @@ import com.senac.muver.services.MusicoService;
 
 @Controller
 public class PerfilController {
-
+	
+	@Autowired
+	private MasterService serviceMaster;
 	@Autowired
 	private MusicoService serviceMusico;
 	@Autowired
@@ -115,7 +119,17 @@ public class PerfilController {
     }
 
     
-   
+   @RequestMapping(value = "nota", method = RequestMethod.GET)
+   public String alterarNota(@RequestParam("notaAtual") double notaAtual, @RequestParam("nota") String nota, @RequestParam("nome") String nome, HttpServletRequest request, Model model){  
+	  
+	   double notaDouble = Double.parseDouble(nota);
+	   
+	   double calcNota = (notaAtual + notaDouble) / 2;
+	   
+	   
+	   serviceMaster.alterarNota(calcNota, nome);
+	   return "redirect: /principal";
+   } 
 	
 
 

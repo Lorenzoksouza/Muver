@@ -10,10 +10,34 @@
 }
 
 * {
+box-sizing: border-box;
 padding:0;
 margin:0;
 border:0;
+
 }
+
+.container {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 10px;
+}
+
+.esquerda {
+  width: 50%;
+  height: 200px;
+  float: left;
+
+}
+
+.direita {
+	
+  margin-left: 15%;
+  height: 200px;
+
+}
+
 
 html {
 	font-family: varela round;
@@ -25,116 +49,57 @@ body{
 	background-color: #30475e;
 }
 
+input, button, submit { border:none; } 
+
+a{
+	color: white;
+	text-decoration: none;
+}
+
+/* unvisited link */
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: white;
+  text-decoration: none;
+}
+
 /*referencias e configs principais*/
 
-
-/*margem pra desconsiderar o menu lateral nos calculos dos outros itens no site */
 main {
 	margin-left: 5rem;
 }
-/*margem pra desconsiderar o menu lateral nos calculos dos outros itens no site */
 
-/*configs barra lateral*/
-.navbar {
-	z-index: 9999;
-	width: 5rem;
-	height: 100vh;
-	position: fixed;
-	background-color: var(--bg-primary);
-	transition: width 200ms ease;
+#perfil{
+	height: auto;
 }
 
-.navbar-nav{
-	list-style: none;
-	padding: 0;
-	margin:0;
-	display: flex;
-	flex-direction: column;
-	align-items: center; 
-}
-
-.nav-item{
-	width: 100%;
-}
-
-
-.nav-link {
-	display: flex;
-	align-items: center;
-	height: 5rem;
-	color: var(--text-primary);
-	text-decoration: none;
-	filter: grayscale(100%) opacity(0.7);
-	transition: var(--transition-speed);
-}
-
-.nav-link:hover{
-	filter: grayscale(0%) opacity(1);
-	background: #f2a365;
-	color: white;
-}
-
-.link-text {
-	display: none;
-	margin-left: 1rem;
-}
-
-.nav-link img{
-	width: 2rem;
-	min-width: 2rem;
-	margin: 0 1.5rem;
-}
-
-.navbar:hover{
-	width: 16rem;
-}
-
-.navbar:hover .link-text{
-	display: block;
-}
-
-.fa-primary{
-	color: #ff7eee;
-}
-
-
-.fa-secondary{
-	color: #00b38f;
-}
-
-.fa-primary,
-.fa-secondary{
-	transition: var(--transition-speed);
-}
-
-
-.logo{
-	font-weight: bold;
-	text-transform: uppercase;
-	margin-bottom: 1rem;
+#titulo{
+	margin: 0;
+	padding-top: 80px;
+	padding-bottom: 80px;
 	text-align: center;
-	color: var(--text-secondary);
-	background: var(--bg-primary);
-	font-size: 1.5rem;
-	letter-spacing: 0.3ch; 
-	width: 100%;
+	color: #ffffff;
+	font-size: 40px;
 }
-
-.logo img{
-	height: 2.5rem;
-	width: 4.5rem;
-	transform: rotate(0deg);
-	transition: transform var(--transition-speed);
-}
-
-.navbar:hover .logo img {
-	transform: rotate(-360deg);
-}
-/*configs barra lateral*/
 
 /*botao voltar*/
-
-
 .invisible{
 	 visibility: visible !important;
 }
@@ -143,42 +108,34 @@ main {
 	 visibility: hidden !important;
 }
 
-#img_voltar{
-	height: 20px;
-	width: auto;
-	float: left;
-	margin-right: 10px;
-}
 
 #voltar{
-	letter-spacing: 0.2em;
-	font-weight: bold;
+	margin-right:-40px;
+	color:black;
 	margin-top: 10px;
-	text-decoration: none;
 	float: left;
-	text-align: left;
+	text-decoration: none;
 }
 
-#voltar p{
-	margin-top: 10px;
-	float: right;
-}
+
 /*botao voltar*/
 
+/*caixa que envolve todo o perfil*/
 #caixa{
-	text-align: left;
-  	width: 65%;
-	top: 5%;
-	left: 15%;
-	bottom: -100px;
-  	padding: 10px;
-	background-color: white;
-	border-radius: 20px;
 	overflow: hidden;
-	position: relative;
-
+	background-color: white;
+	text-align: center;
+	padding: 10px;
+	border-radius: 20px;
+	margin: auto;
+	width: 60%;
+	height: auto;
+	
 }
 
+/*caixa que envolve todo o perfil*/
+
+/*imgaem do perfil*/
 #img{
 	float: right;
 	top: -9999px;
@@ -188,150 +145,398 @@ main {
 	height: 200px;
 	margin: auto;
 }
+/*imgaem do perfil*/
 
-#texto_mapa{
-	float: right;
+
+#flutuar{
+	margin-left: -20px;
+	float: left;
+	text-decoration: none;
+	list-style-type: none;
 }
 
+/*nome*/
 #nome{
+	font-size: 40px;
 	float: left;
-	display: inline-block;
-	font-size: 80px;
-	margin-left: 20px;
+	text-align: left;
+	max-width: 800px;
+	word-wrap: break-word;
+	margin-bottom: 20px;
+	
+	
+}
+
+/*nome*/
+
+#grupo{
+	width: 100%;
+}
+
+/*nota*/
+#gnota {
+	width: 100%;
+	float: left;
+	text-align: left;
 }
 
 #nota{
+	font-size: 25px;
+	font-weight: bold;
+}
+/*nota*/
+
+/*social*/
+#gsocial{
 	float: left;
-	display: inline-block;
-	font-size: 30px;
-	clear: left;
-	margin-left: 115px;
+	margin: 10px;	
 }
 
-#imagem{
-	float: right;
-	position: relative;
-	right: 178px;
-	bottom: 200px;
+.social{
+	max-height: 20px;
+}
+/*social*/
+
+/*chat*/
+#chat{
+	width: 30%;
 }
 
-#imagem img{
-	float: right;
-	position: absolute;
-	top: -9999px;
-	left: -9999px;
-	right: -9999px;
-	bottom: -9999px;
-	height: 250px;
-	margin: auto;
+#btn_chat{
+	color: white;
+	float: rigth;	
+
 }
 
+#btn_chat:link {
+	color: white;
+	text-decoration: none;
+}
+
+/* visited link */
+#btn_chat:visited {
+	color: white;
+	text-decoration: none;
+}
+
+/* mouse over link */
+#btn_chat:hover {
+	color: white;
+	text-decoration: none;
+}
+
+/* selected link */
+#btn_chat:active {
+	color: white;
+	text-decoration: none;
+}
+
+/*chat*/
+
+
+/*descricao*/
 #descricao{
 	margin-top: 10px;
-	margin-bottom: 20px;
+	width: 100%;
 	float: left;
-	display: inline-block;
-	font-size: 15px;
-	clear: left;
-	margin-left: 40px;
+	font-size: 20px;
+	text-align: left;
+	white-space: pre-wrap;      /* CSS3 */   
+	white-space: -moz-pre-wrap; /* Firefox */    
+	white-space: -pre-wrap;     /* Opera <7 */   
+	white-space: -o-pre-wrap;   /* Opera 7 */    
+	word-wrap: break-word;      /* IE */
 }
+/*descricao*/
 
+/*instrumentos*/
 #instrumentos{
-	margin-top: 40px;
 	float: left;
-	display: inline-block;
-	font-size: 15px;
-	clear: left;
-	margin-left: 115px;
+	margin-bottom: 10px;
+	width: 100%;
 }
 
-#instrumentos span{
+#tag_instrumentos{
+	text-align: left;
+	display: block;
 	float: left;
-	clear: left;
+	width: 100%;
+	height: auto;
 }
 
-#instrumentos img{
-	margin-top: 10px;
+#texto_instrumentos{
 	float: left;
-	display: inline-block;
-	font-size: 15px;
-	clear: left;
-	margin-left: 10px;
-	height: 30px;
+	display: block;
 }
+/*instrumentos*/
 
-#instrumentos #nomes{
-	margin-top: 10px;
-	margin-left: 5px;
-}
+/*disponibilidade*/
 
 #Disponibilidade{
-	margin-top: 80px;
+	margin-top: -10px;
 	float: left;
-	clear: left;
-	display: inline-block;
-	margin-left: 115px;
-	margin-bottom: 20px;
+	width: 100%;
+	text-align: left;
 }
 
-#Disponibilidade span{
-	float: left;
-	clear: left;
-}
-
-#Disponibilidade img{
+#disp{
 	margin-top: 20px;
+	height: 422px;
+	width: 450px;
+	max-height: 422px;
+	max-width: 450px;
+}
+
+#dis{
+	margin-right: 400px;
+}
+/*disponibilidade*/
+
+
+
+#flutuar_d{
+	margin-top: 20px;
+	float: right;
+	width:60%;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+/*analises*/
+#analises{
 	float: left;
-	clear: left;
-	display: inline-block;
-	height: 300px;
-}
-
-#analises {
-	margin-top: -80px;
-	margin-right: 340px;
-	float: right;
-	clear: right;
-}
-
-#analises span{
-	margin: 10px;
-	padding-right: 10px;
-	float: right;
-	clear: right;
+	text-align: left;
+	width: 100%;
 }
 
 
-#analises img{
-	height: 40px;
-	margin-right: 12px;
-	float: right;
-	clear: right;
+#banalise{
+	width: 100%;
+}
+
+
+#btn_analises{
+	margin-left: 36px;
+	width: 13%;
+}
+/*analises*/
+
+
+/* localizacao */
+#localizacao{
+	width: 100%;
+	float: left;
 }
 
 #gMaps{
-	float: right;
-	clear: right;
+	
+	float: left;
+	text-align: left;
+}
+
+#texto_localizacao{
+	margin-top: 10px;
+	width: 100%;
+	float: left;
+	text-align: left;
+	margin-right: 20px;
+	
+}
+
+#end{
+	border-radius: 5px;
+	margin-top: 20px;
+	height: 400px;
+	width: 500px;;
+	max-height: 400px;
+	max-width: 500px;
+}
+/* localizacao */
+
+
+
+@media only screen and (max-width: 479px) {
+	.invisible{
+		visibility: hidden !important;
+	}
+	
+	.visible{
+		visibility: visible !important;
+	}
+	
+	
+	main {
+		margin-left: 0;
+	}
+	
+	
+	.container {
+		width: 100%;
+		height: auto;
+		margin: auto;
+		padding: 10px;
+	}
+
+	.esquerda {
+		width: 100%;
+		height: auto;
+		float: none;
+	
+	}
+		
+	.direita {
+		width: 100%;
+		margin-left: 0%;
+		height: auto;
+		float:none;
+		margin-top: 220px;
+		
+	}
+	
+	
+	#voltar_mobile{
+	position: absolute;
+	color:white;
+	margin-left:20px;
 	margin-top: 40px;
-	margin-right: 80px;
-}
-
-#gMaps span{
-	float: right;
-	clear: right;
-	margin-right: 300px;
-}
-
-#gMaps img{
-	margin-top: 30px;
-	float: right;
-	clear: right;
-	height: 300px;
-	margin-bottom: 40px;
-}
-
-#facebook{
-	font-size: 20px;
-	height: 200px;
-	width: auto;
+	float: left;
+	text-decoration: none;
+	}
+	
+	#titulo{
+		padding-top: 30px;
+		padding-bottom: 0px;
+		color: black;
+		text-align: center;
+	}
+	
+	#caixa{
+		width: 100%;
+		margin-top: 20px;
+	}
+	
+	#img {
+		display: none;
+	}
+	
+	ul{
+		width: 100%;
+    	margin: auto;
+	}
+	
+	#flutuar {
+		text-align: center;
+		margin-left: 0;
+		float: none;
+		text-decoration: none;
+		list-style-type: none;
+	}
+	
+	
+	
+	#nome{
+		
+		font-size: 40px;
+		float: none;
+		text-align: center;
+		width: auto;
+		margin-bottom: 20px;
+		
+	}
+	#nome-span{
+		text-align: center;
+		width: auto;
+	}
+	
+	#grupo{
+		text-align: center
+	}
+	
+	#gnota{
+		margin-left: 20px;
+		width: 50%;
+	}
+	
+	#gsocial{
+		width: 30%;
+		margin: 5px 10px;
+	}
+	
+	#chat{
+		float: right;
+		width: 100%;
+	}
+	
+	#btn_chat{
+		margin-top: 10px;
+		width: 100%;
+	}
+	
+	#descricao{
+		width: 100%;
+	}
+	
+	#Disponibilidade{
+		width: 100%;
+		text-align: center;
+	}
+	
+	#disp{
+		display: none;
+	}
+	
+	#disp_mobile{
+		width: 320px;
+		float: left;
+		text-align: center;
+		
+	}
+	
+	#btn_c{
+		width: 100%;
+	}
+	
+	.btn btn-primary collapsed{
+		width: 100%;
+	}
+	
+	#disp_c_mobile{
+		height: 400px;
+		width: 300px;
+	}
+	
+	#flutuar_d{
+		float: left;
+	}
+	
+	#analises{
+		text-align: center;
+		width: 320px;
+		float: none;
+	}
+	
+	#banalise{
+		text-align: center;
+		width: 320px;
+		float: none;
+	}
+	
+	#btn_analises{
+		margin-top: 0;
+		width: 50%;
+		margin-left:0 ;
+	}
+	
+	#gMaps{
+		margin-top: 20px;
+		text-align: center;
+		width: 320px;
+		float: none;
+	}
+	
+	#texto_localizacao{
+		margin-left: -20px;
+		height: 400px;
+		width: 60px;
+	}
 }

@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +25,7 @@ import lombok.Setter;
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"nome","email"})})
 public /*abstract*/ class Master implements Serializable, UserDetails{
 	
 	@Id
@@ -31,6 +35,8 @@ public /*abstract*/ class Master implements Serializable, UserDetails{
 	public Integer idmaster;
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
+	@Size(min=2, max=30)
+	@Column(name = "nome")
 	public String nome;
 	@Getter @Setter
 	private String email;
@@ -43,18 +49,22 @@ public /*abstract*/ class Master implements Serializable, UserDetails{
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
 	public String descricao;
+	
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
 	public byte[] fotoPerfil;
 	@Getter @Setter
 	private String tipoUsuario;
 	
+	@Getter @Setter
+	public double nota;
+	
 	public Master() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Master(String nome, String email, String senha, String linkFb, String linkIg, String descricao,
-			byte[] fotoPerfil, String tipoUsuario) {
+			byte[] fotoPerfil, String tipoUsuario, double nota) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -64,6 +74,7 @@ public /*abstract*/ class Master implements Serializable, UserDetails{
 		this.descricao = descricao;
 		this.fotoPerfil = fotoPerfil;
 		this.tipoUsuario = tipoUsuario;
+		this.nota = nota;
 	}
 	
 	@Override
@@ -107,6 +118,5 @@ public /*abstract*/ class Master implements Serializable, UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
-
 		
 }

@@ -29,20 +29,32 @@ public class Luthier extends Master implements Serializable {
 	//@JoinTable(name = "luthier_instrumento", joinColumns = @JoinColumn(name = "idluthier"), inverseJoinColumns = @JoinColumn(name = "idinstrumento"))
 	//@OrderColumn
 	//private Instrumento[] instrumentos;
+	
+	/*
+	 * @Getter @Setter
+	 * 
+	 * @ManyToMany(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinTable(name = "luthier_nota", joinColumns = @JoinColumn(name =
+	 * "idluthier"), inverseJoinColumns = @JoinColumn(name = "idnota"))
+	 * 
+	 * @OrderColumn private Nota[] nota;
+	 */
 	@Getter @Setter
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "luthier_nota", joinColumns = @JoinColumn(name = "idluthier"), inverseJoinColumns = @JoinColumn(name = "idnota"))
-	@OrderColumn
-	private Nota[] nota;
+	public String localizacao;
+	
 	@Getter @Setter
-	private String localizacao;
+	private String disponibilidade;
+
+	
 	
 	public Luthier(String nome, String email, String senha, /*Instrumento[] instrumentos,*/String instrumento, String localizacao, byte[] fotoPerfil, String linkFb, String linkIg,
-			String descricao, String tipoUsuario) {
-		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario);
+			String descricao, String tipoUsuario, String disponibilidade, double nota) {
+		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario, nota);
 		this.instrumento = instrumento;
 		//this.instrumentos = instrumentos;
 		this.localizacao = localizacao;
+		this.disponibilidade = disponibilidade;
 	}
 
 	public Luthier() {

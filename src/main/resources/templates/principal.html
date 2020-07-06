@@ -2,55 +2,45 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Maestrino</title>
 	<!-- PROJETO <link href="css/login.css" rel="stylesheet" /> -->
 	<!-- LOCAL <link href="../resources/static/css/login.css" rel="stylesheet" /> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link href="css/principal.css" rel="stylesheet" />
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
 </head>
 <body>
 
-	<nav class="navbar">
+	<nav class="navbar-maestrino invisible">
 			<ul class="navbar-nav">
 				<li class="logo">
 					<!-- testar href apnes com /principal-->
 					<form th:action="@{/principal}" method="post">
 						<button type="submit" class="nav-link">
-							<span class="link-text" th:text="${#authentication.getPrincipal().getUsername()}">MAESTRINO</span>
-							<img th:src="'images/photos/' + ${#authentication.getPrincipal().getUsername()} + '.png'"> 
+							<span class="link-text-p">MAESTRINO</span>
+							<img src="images/logo-maestrino.png">
 						</button>
 					</form>
-					
 				</li>
-
+				
 				<li class="nav-item">
-					<!--precisa receber uma verificação se tem ou nao usuario cadastrado, se tiver, tem que abrir a tela de cadastro se não, abrir a tela do perfil-->
-					<!-- 
-					<div id="sobre"><a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">Sobre</a></div>
-					
-					<a th:href="@{'/editar/' + ${#authentication.getPrincipal().getTipoUsuario()} + '/' + ${#authentication.getPrincipal().getUsername()}}" class="nav-link">
-						<img src="images/edit.png">
-						<span class="link-text" id="username">Editar perfil</span>
-					</a> 
-					
-					-->
-					<!-- 
-					
-					 -->
+					<div class="nav-link">
+						<img th:src="'images/photos/' + ${#authentication.getPrincipal().getUsername()} + '.png'"> 
+						<span class="link-text" th:text="${#authentication.getPrincipal().getUsername()}">Convidado</span>
+					</div>
+				</li>
+				
+				<li class="nav-item">
 					<form th:action="@{'/editar/' + ${#authentication.getPrincipal().getTipoUsuario()} + '/' + ${#authentication.getPrincipal().getUsername()}}" method="post">
 						<button type="submit" class="nav-link">
 							<img src="images/edit.png">
 							<span class="link-text">Editar perfil</span>
 						</button>
-					</form>
-					 
+					</form> 
 				</li>
 
 				<li class="nav-item">
-					<!-- <a href="/maestrino-0.0.1-SNAPSHOT/login" class="nav-link">
-						<img src="images/logout.png">
-						<span class="link-text">Logout</span>
-					</a> -->
 					<form th:action="@{/logout}" method="post">
 						<button type="submit" class="nav-link">
 							<img src="images/logout.png">
@@ -58,53 +48,109 @@
 						</button>
 					</form>
 				</li>
-				
-				<li class="nav-item">
-					<a href="/maestrino-0.0.1-SNAPSHOT/sobre" class="nav-link">
-						<img src="images/sobre.png">
-						<span class="link-text">Sobre</span>
-					</a>
+				 <li class="nav-item">
+						<a href="/maestrino-0.0.1-SNAPSHOT/sobre" class="nav-link">
+							<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+							  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+							  <circle cx="8" cy="4.5" r="1"/>
+							</svg>
+							<span class="link-text">Sobre</span>
+						</a>
 				</li>
-				
-			</ul>
-			
-			
+			</ul>	
 	</nav>
 
-	<main>
-		<div id="caixa">
-			<!-- ainda tentando entender a melhor pratica pra esse campo de pesquisa-->
-			
-			<!-- 
-				pesquisa basica padrao
-				
-			<form action="/maestrino-0.0.1-SNAPSHOT/pesquisa" method="post">
-				<div id="pesquisa">
-					<img src="images/lupa.png">
-					<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
-				</div>
+	<!--Navbar-->
+	<nav class="navbar navbar-light amber lighten-4 mb-4 visible">
+	
+	  <!-- Navbar brand -->
+	 
+	
+	  <!-- Collapse button -->
+	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+	    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation"> <a id="titulo-menu">MAESTRINO</a>
+	    <div class="animated-icon1"><span></span><span></span><span></span></div>
+	  </button>
+	
+	  <!-- Collapsible content -->
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+	
+	    <!-- Links -->
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <span class="nav-link" th:text="${#authentication.getPrincipal().getUsername()}" style="pointer-events:none;">Convidado</span>
+	      </li>
+	      <li class="nav-item">
+	       <form th:action="@{'/editar/' + ${#authentication.getPrincipal().getTipoUsuario()} + '/' + ${#authentication.getPrincipal().getUsername()}}" method="post">
+				<button  type="submit" class="nav-link">
+					<span>Editar perfil</span>
+				</button>
+			</form> 
+	      </li>
+	      <li class="nav-item">
+	        <form th:action="@{/logout}" method="post">
+				<button type="submit" class="nav-link">
+					<span>Logout</span>
+				</button>
 			</form>
-			
-			
-			 -->
-			<!-- teste com paranetros ***terminar de implementar apos outros itens do usuario estarem prontos -->
+	      </li>
+	      <li class="nav-item">
+			 <form action="/sobre">
+				<a href="/maestrino-0.0.1-SNAPSHOT/sobre" class="nav-link">
+					<span>Sobre</span>
+				</a>
+			</form>	
+		</li>
+	    </ul>
+	    <!-- Links -->
+	
+	  </div>
+	  <!-- Collapsible content -->
+	
+	</nav>
+	<!--/.Navbar-->
+	
+	
+	
+	<main>
+		<h1 id="titulo">
+			<a href="/maestrino-0.0.1-SNAPSHOT/principal">
+				MAESTRINO
+			</a>
+		</h1>
+		<div id="caixa">
+		
 			<form action="/maestrino-0.0.1-SNAPSHOT/pesquisa" method="post">
-				<div id="pesquisa">
-					<!-- passar o texto da pesquisa para a consulta -->
-					<img src="images/lupa.png">
-					<input id="buscar" type="text" name="pesquisa" onclick="pesquisaAvancada()" placeholder="buscar" />
-					<div id="pesquisaAvancada" style='display: none;'>
-						<input id="tipoEstudio" type="checkbox" name="tipo" value="tipoEstudio">
-						<label for="tipoEstudio">Estudio</label>
+				<div id="pesquisa" >
+					<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
+					<input id="click-buscar" type="image" src="images/lupa.png" alt="Submit">
+					<span id="mais" onclick="pesquisaAvancada()">Filtros avançados:</span>
+					<div id="pesquisaAvancada" >
+							<input id="tipoEstudio" type="checkbox" name="tipo" value="tipoEstudio">
+							<label for="tipoEstudio">
+								Estudio
+							</label>
+							<input id="tipoLuthier" type="checkbox" name="tipo" value="tipoLuthier">
+							<label for="tipoLuthier">
+								Luthier
+							</label>
+							
 					</div>
 				</div>
 			</form>
 				
 			<div id="filtro_Principal">
-				
-					<!--<a href="/maestrino-0.0.1-SNAPSHOT/principalEstudio">
-						<p>Estudio</p>
-					</a> -->
+				<div style="float: left; width: 30%;">
+				<form th:action="@{/principal}" method="post" id="form-todos">
+					<button type="submit" class="filtro">
+						<div id="filtro_todos">
+							<p>Todos</p>
+						</div>
+					</button>
+				</form>
+				</div>
+				<div style="float: left; width: 30%;">
 				<form th:action="@{/Estudios}" method="post" id="form-estudio">
 					<button type="submit" class="filtro">
 						<div id="filtro_Estudio">
@@ -112,13 +158,16 @@
 						</div>
 					</button>
 				</form>
+				</div>
+				<div style="float: left; width: 30%;">
 				<form th:action="@{/Luthiers}" method="post" id="form-luthier">
 					<button type="submit" class="filtro">
-					<div id="filtro_Luthier">
-						<p>Luthiers</p>
-					</div>
+						<div id="filtro_Luthier">
+							<p>Luthiers</p>
+						</div>
 					</button>
-				</form>			
+				</form>	
+				</div>	
 			</div>
 
 			<div id="listausuarios" th:each="usuario : ${usuarios}">
@@ -128,26 +177,90 @@
 					<div id="nome" th:text="${usuario.nome}"></div>			
 					<div id="tipoUsuario" th:text="${usuario.tipoUsuario}"></div>					
 					<span id="descricao" th:text="${usuario.descricao}"></span>			
-					<span id="nota"></span> 
-					<div id="sobre"><a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">Sobre</a></div>
-					<!-- <div id="sobre"><a th:href="@{/perfil/{tipoUsuario}(tipoUsuario=${usuario.tipoUsuario})}">Sobre</a></div> -->
+					<div id="nota">
+						<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+											 width="1.5em" height="1.8em" viewBox="0 0 640.000000 1280.000000"
+											 preserveAspectRatio="xMidYMid meet">									
+											<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+											fill="#000000" stroke="none" style="color: white; fill: currentColor;">
+											<path d="M4128 12781 c-166 -53 -386 -249 -543 -482 -83 -123 -238 -429 -314
+											-622 -167 -425 -246 -822 -258 -1307 -9 -350 13 -649 88 -1209 39 -293 40
+											-305 22 -321 -10 -9 -112 -96 -228 -192 -829 -692 -1259 -1160 -1574 -1715
+											-183 -323 -306 -697 -352 -1068 -16 -126 -16 -417 0 -555 44 -391 178 -789
+											374 -1115 138 -230 375 -500 587 -669 400 -318 859 -520 1292 -567 127 -14
+											488 -5 608 14 47 8 87 13 88 11 2 -1 42 -285 89 -631 l85 -628 2 -235 c1 -249
+											-5 -311 -51 -475 -106 -384 -378 -636 -766 -710 -103 -20 -326 -19 -439 0
+											-191 34 -347 104 -443 199 l-60 60 105 8 c315 25 509 136 615 351 52 106 68
+											196 62 352 -9 227 -71 380 -212 520 -89 89 -157 133 -267 173 -66 24 -86 27
+											-213 27 -111 0 -151 -4 -195 -19 -242 -83 -419 -260 -499 -501 -43 -128 -55
+											-219 -48 -360 21 -408 258 -772 627 -963 111 -58 213 -94 354 -124 132 -28
+											450 -31 590 -5 411 78 705 256 893 543 202 308 250 656 169 1239 -86 627 -167
+											1237 -164 1239 2 2 39 15 83 30 298 105 598 308 790 537 313 373 455 839 416
+											1366 -23 312 -79 530 -197 768 -113 229 -270 418 -469 568 -101 76 -308 183
+											-430 222 -183 60 -417 91 -582 79 -91 -6 -92 -6 -97 17 -3 13 -22 146 -41 294
+											-20 149 -58 436 -86 640 l-50 370 28 24 c91 77 389 360 514 487 506 518 752
+											1038 834 1764 57 512 60 849 9 1215 -68 493 -208 904 -401 1177 -133 189 -202
+											225 -345 179z m284 -1129 c100 -44 172 -142 204 -279 19 -82 21 -275 4 -388
+											-40 -274 -185 -663 -344 -925 -147 -240 -434 -586 -662 -795 -164 -151 -264
+											-238 -268 -234 -4 4 -25 147 -46 312 -51 406 -25 763 84 1139 132 451 309 792
+											526 1008 108 107 171 149 270 177 60 17 173 10 232 -15z m-1043 -4513 l77
+											-577 -56 -17 c-229 -71 -507 -257 -672 -449 -251 -293 -390 -635 -405 -996
+											-15 -383 122 -753 372 -1006 143 -146 306 -238 477 -272 71 -14 79 -14 102 2
+											30 19 34 56 10 81 -9 9 -44 30 -78 47 -249 125 -411 349 -462 641 -73 415 180
+											878 579 1062 67 31 234 82 242 73 1 -1 77 -563 168 -1248 113 -848 162 -1247
+											155 -1251 -6 -4 -56 -14 -112 -23 -284 -43 -581 -46 -780 -6 -408 81 -848 336
+											-1099 639 -305 366 -448 745 -448 1183 0 237 31 425 106 653 139 424 366 769
+											795 1208 265 272 942 878 949 849 2 -9 38 -276 80 -593z m596 -1415 c166 -32
+											355 -114 487 -214 95 -72 235 -224 291 -317 135 -225 184 -429 174 -728 -12
+											-391 -132 -688 -367 -909 -107 -101 -313 -226 -411 -251 l-25 -6 -27 203 c-15
+											112 -54 401 -87 643 -173 1284 -210 1562 -210 1582 0 21 3 22 48 17 26 -3 83
+											-12 127 -20z"/>
+											</g>
+										</svg>
+						<span id="valor-nota" th:text="${usuario.nota}"></span> 
+					</div>
+					<div id="sobre">
+						<a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">
+							Sobre
+						</a>
+					</div>
 			</div>
 		</div>
 	</main>
 	
+	
+	
 	<script type="text/javascript">
 		function pesquisaAvancada() {
 			var x = document.getElementById("pesquisaAvancada");
-			  if (x.style.display === "none") {
+			if (x.style.display == "none") {
 			    x.style.display = "block";
-			  } else {
+			  }  else {
 			    x.style.display = "none";
-			  }
-		}
+			  }}
 	</script>
 
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	$(document).ready(function () {
+
+		  $('.first-button').on('click', function () {
+
+		    $('.animated-icon1').toggleClass('open');
+		  });
+		  $('.second-button').on('click', function () {
+
+		    $('.animated-icon2').toggleClass('open');
+		  });
+		  $('.third-button').on('click', function () {
+
+		    $('.animated-icon3').toggleClass('open');
+		  });
+		});
+	</script>
 </body>
 </html>

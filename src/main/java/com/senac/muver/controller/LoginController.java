@@ -32,12 +32,10 @@ public class LoginController {
 	 * @RequestMapping(value="/cLuthier", method=RequestMethod.GET) public String
 	 * cLuthier(){ return "/cLuthier"; }
 	 */
-
-	@RequestMapping(value = "/cEstudio", method = RequestMethod.GET)
-	public String cEstudio() {
-		return "/cEstudio";
-	}
-
+	/*
+	 * @RequestMapping(value = "/cEstudio", method = RequestMethod.GET) public
+	 * String cEstudio() { return "/cEstudio"; }
+	 */
 	/*
 	 * @RequestMapping("/login") public String loginForm() { return "/login"; }
 	 */

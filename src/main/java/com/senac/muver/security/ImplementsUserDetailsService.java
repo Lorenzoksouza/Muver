@@ -17,8 +17,8 @@ public class ImplementsUserDetailsService implements UserDetailsService{
 	private MasterRepository mr;
 	
 	@Override
-	public UserDetails loadUserByUsername(String nome) throws UsernameNotFoundException {
-		Master usuario = mr.findByLogin(nome);
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Master usuario = mr.findByLogin(email);
 		
 		if(usuario == null) {
 			throw new UsernameNotFoundException("Usuario nao encontrado!");

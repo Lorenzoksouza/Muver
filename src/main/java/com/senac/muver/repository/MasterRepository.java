@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -35,8 +33,8 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario = 'estudio'")
 	ArrayList<Master> pesquisaTipoEstudio(String nome);
 	
-	@Query("SELECT m FROM Master m WHERE m.nome = :nome")
-	Master findByLogin(String nome);
+	@Query("SELECT m FROM Master m WHERE m.email = :email")
+	Master findByLogin(String email);
 	
 	@Transactional
 	@Modifying

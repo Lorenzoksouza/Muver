@@ -52,9 +52,12 @@ public class MasterService {
 		return repositorio.findByLogin(nome);
 	}
 
-	public void alterarNota(double nota,int numeroAvaliacoes, double nSoma, String nome) {
-		repositorio.alterarNota(nota, numeroAvaliacoes,nSoma,nome);
-		
+	public void alterarNota(double nota,int numeroAvaliacoes, double nSoma, String email) {
+		repositorio.alterarNota(nota, numeroAvaliacoes,nSoma,email);
+	}
+
+	public Master procurarNota(String email) {
+		return repositorio.procurarNota(email);
 	}
 
 

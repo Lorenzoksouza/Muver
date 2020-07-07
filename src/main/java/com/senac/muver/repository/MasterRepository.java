@@ -40,8 +40,11 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	
 	@Transactional
 	@Modifying
-	@Query(value = "UPDATE Master m SET m.nota = :nota, m.numero_avaliacoes = :numeroAvaliacoes, m.nota_soma = :nSoma where m.nome = :nome ", nativeQuery = true)
-	void alterarNota(double nota,int numeroAvaliacoes,double nSoma, String nome);
+	@Query(value = "UPDATE Master m SET m.nota = :nota, m.numero_avaliacoes = :numeroAvaliacoes, m.nota_soma = :nSoma where m.email = :email", nativeQuery = true)
+	void alterarNota(double nota,int numeroAvaliacoes,double nSoma, String email);
+
+	@Query("SELECT m FROM Master m WHERE m.email = :email")
+	Master procurarNota(String email);
 	
 	//@Query("SELECT m FROM Master m where m.nome = %:nome%")
 	//ArrayList<Master> listaPesquisa(String pesquisa);

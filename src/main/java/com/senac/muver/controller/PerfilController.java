@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.senac.muver.util.ConvertMasterTela;
 import com.senac.muver.model.Estudio;
 import com.senac.muver.model.Luthier;
+import com.senac.muver.model.Master;
 import com.senac.muver.model.Musico;
 import com.senac.muver.services.EstudioService;
 import com.senac.muver.services.LuthierService;
@@ -120,19 +121,21 @@ public class PerfilController {
 
     
    @GetMapping(value = "/avaliar")
-   public String alterarNota(@RequestParam("notaAtual") double notaAtual, @RequestParam("nota") String nota, @RequestParam("nome") String nome, @RequestParam("numeroAvaliacoes") int numeroAvaliacoes, @RequestParam("notaSoma") double notaSoma, HttpServletRequest request, Model model){  
-	  
+   public String alterarNota(@RequestParam("notaAtual") double notaAtual, @RequestParam("nota") String nota, 
+		   @RequestParam("email") String email, @RequestParam("numeroAvaliacoes") int numeroAvaliacoes, 
+		   @RequestParam("notaSoma") double notaSoma, HttpServletRequest request, Model model){  
 	   
-	   int nAvaliacoes = numeroAvaliacoes+1;
+	   Master m = serviceMaster.procurarNota(email);
+	   
+	   int nAvaliacoes = m.getNumeroAvaliacoes() + 1;
 	   
 	   double notaDouble = Double.parseDouble(nota);
 	   
-	   double nSoma = notaSoma + notaDouble;
+	   double nSoma = m.getNotaSoma() + notaDouble;
 	   
 	   double calcNota = nSoma / nAvaliacoes;
 	   
-	   
-	   serviceMaster.alterarNota(calcNota, nAvaliacoes, nSoma, nome);
+	   serviceMaster.alterarNota(calcNota, nAvaliacoes, nSoma, email);
 	   return "redirect: /principal";
    } 
 	

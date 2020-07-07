@@ -37,8 +37,8 @@ public class Estudio extends Master implements Serializable {
 	 * @OrderColumn private Nota[] nota;
 	 */
 	public Estudio(String nome, String email, String senha, String localizacao, byte[] fotoPerfil, String linkFb, String linkIg,
-			String descricao, String tipoUsuario, String disponibilidade, double nota) {
-		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario, nota);
+			String descricao, String tipoUsuario, String disponibilidade, double nota, int numeroAvaliacoes, double notaSoma) {
+		super(nome, email, senha, linkFb, linkIg, descricao, fotoPerfil, tipoUsuario, nota, numeroAvaliacoes, notaSoma);
 		this.localizacao = localizacao;
 		this.disponibilidade = disponibilidade;
 	}

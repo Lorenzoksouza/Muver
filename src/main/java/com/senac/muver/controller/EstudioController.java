@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,11 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -72,60 +75,47 @@ public class EstudioController {
 	
 	
 	@RequestMapping(value = "/cEstudio", method = RequestMethod.GET)
-	public String cEstudio() { 
+	public String cEstudio(Estudio estudio) { 
 	
 		return "cEstudio"; 
 	}
 	
-	@RequestMapping(value = "cadastrarEstudio", method = RequestMethod.GET)
-	public String teste() {
-		return "cEstudio";
-	}
-	
-	@RequestMapping(value = "cadastrarEstudio", method = RequestMethod.POST)
-	public String salvar(@Valid Estudio estudio, BindingResult result, RedirectAttributes attributes,@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
-			@RequestParam("localizacao") String localizacao,@RequestParam("disponibilidade") String disponibilidade,  @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, 
-			@RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
+	  @RequestMapping(value = "cadastrarEstudio", method = RequestMethod.GET)
+	  public String teste() { return "cEstudio"; }
+	 
 		
-		//REQUISITAR A IMG E VERIFICAR SE ESTA NULL, SE ESTIVER PASSAR A IMAGEM PADRAO
-		if(result.hasErrors()) {
-			
-			attributes.addFlashAttribute("mensagem", "verifica campo");
-			
-			List<ObjectError> erro = result.getAllErrors();
-			System.out.println(erro);
-			
-			return "redirect:/cEstudio";
-			
-		}
-		
-		
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
-		
-		byte[] fotoPerfilByte = null;
-		
-		try {
-			fotoPerfilByte = multipartFile.getBytes();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		String gmaps = localizacao.replace("<iframe ", "").replace("src=\"", "").replace("></iframe>", "");
-		
-		String calendar = disponibilidade.replace("<iframe ", "").replace("src=\"", "").replace("></iframe>", "");
-		
-		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
-	
-		
-		//insere no estudio os dados vindo do formulário
-		Estudio novoEstudio =  new Estudio(nome, email, senhaCriptografada, gmaps, fotoPerfilByte, linkFb, linkIg, descricao,"estudio", calendar, 5.0);
-		//chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
-		service.salvar(novoEstudio);
-		
-		return "/cSucesso";
-		
-	}
+	  @RequestMapping(value = "cadastrarEstudio", method = RequestMethod.POST)
+	  public String salvar(@RequestParam("nome") String nome,  @RequestParam("email") String email, @RequestParam("senha") String senha,
+	  @RequestParam("localizacao") String localizacao,@RequestParam("disponibilidade") String disponibilidade, @RequestParam("linkFb") String
+	  linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
+	  
+	  MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
+	  MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
+	  
+	  byte[] fotoPerfilByte = null;
+	  
+	  try { fotoPerfilByte = multipartFile.getBytes(); } catch (IOException e) {
+	  e.printStackTrace(); }
+	  
+	  String gmaps = localizacao.replace("<iframe ", "").replace("src=\"",
+	  "").replace("></iframe>", "");
+	  
+	  String calendar = disponibilidade.replace("<iframe ", "").replace("src=\"",
+	  "").replace("></iframe>", "");
+	  
+	  String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
+	  
+	  
+	  //insere no estudio os dados vindo do formulário 
+	  Estudio
+	  novoEstudio = new
+	  Estudio(nome, email, senhaCriptografada, gmaps, fotoPerfilByte, linkFb,
+	  linkIg, descricao,"estudio", calendar, 0, 0, 0); 
+	  //chama a nossa camada de serviços que foi injetada acima, acionando o método salvar
+	  service.salvar(novoEstudio); System.out.println(linkFb); return "/cSucesso";
+	  
+	  }
+	 
 	
 	
 	@RequestMapping(value = "/excluirEstudio", method = RequestMethod.POST)

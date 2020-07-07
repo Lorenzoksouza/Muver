@@ -52,8 +52,8 @@ public class MasterService {
 		return repositorio.findByLogin(nome);
 	}
 
-	public void alterarNota(double nota, String nome) {
-		repositorio.alterarNota(nota, nome);
+	public void alterarNota(double nota,int numeroAvaliacoes, double nSoma, String nome) {
+		repositorio.alterarNota(nota, numeroAvaliacoes,nSoma,nome);
 		
 	}
 

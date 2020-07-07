@@ -11,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -36,12 +38,13 @@ public /*abstract*/ class Master implements Serializable, UserDetails{
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
 	@Size(min=2, max=30)
-	@Column(name = "nome")
+	@Column(name = "nome", unique = true)
 	public String nome;
 	@Getter @Setter
 	private String email;
 	@Getter @Setter
 	private String senha;
+
 	@Getter @Setter
 	public String linkFb;
 	@Getter @Setter
@@ -52,19 +55,28 @@ public /*abstract*/ class Master implements Serializable, UserDetails{
 	
 	@Getter @Setter
 	//mudei pra public pra conseguir aparecer na tela, investigar isso
+	
 	public byte[] fotoPerfil;
+	
+	//public byte[] fotoPerfil;
 	@Getter @Setter
 	private String tipoUsuario;
 	
 	@Getter @Setter
 	public double nota;
 	
+	@Getter @Setter
+	public int numeroAvaliacoes;
+	
+	@Getter @Setter
+	public double notaSoma;
+	
 	public Master() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Master(String nome, String email, String senha, String linkFb, String linkIg, String descricao,
-			byte[] fotoPerfil, String tipoUsuario, double nota) {
+			byte[] fotoPerfil, String tipoUsuario, double nota, int numeroAvaliacoes, double notaSoma) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -75,6 +87,8 @@ public /*abstract*/ class Master implements Serializable, UserDetails{
 		this.fotoPerfil = fotoPerfil;
 		this.tipoUsuario = tipoUsuario;
 		this.nota = nota;
+		this.numeroAvaliacoes = numeroAvaliacoes;
+		this.notaSoma = notaSoma;
 	}
 	
 	@Override

@@ -104,7 +104,7 @@
 										          <span aria-hidden="true">&times;</span>
 										        </button>
 										      </div>
-										    <form th:action=nota target="frame" method="get"> 
+										    <form th:action=@{/avaliar} target="frame" method="get"> 
 										      	<div class="modal-body">
 													<div class="form-check">
 													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="1.0" >
@@ -135,14 +135,6 @@
 													  <label class="form-check-label" for="exampleRadios3">
 													    5,0
 													  </label>
-													</div>
-													<div class="input-group">
-													  <div class="input-group-prepend">
-													    <div class="input-group-text">
-													    <input type="radio" aria-label="Radio button for following text input" name="nota" id="exampleRadios3">
-													    </div>
-													  </div>
-													  <input type="number" class="form-control" aria-label="Text input with radio button" min="1" max="5" step="0.1">
 													</div>
 										      	</div>
 												<iframe name="frame" style="display: none;"></iframe>
@@ -181,7 +173,7 @@
 										teste
 									</p>
 								<li>
-									<div id="Disponibilidade">
+									<div id="Disponibilidade" style="margin-top: 40px;">
 										<span>Disponibilidade:</span>
 									</div>
 								</li>
@@ -310,7 +302,7 @@
 										          <span aria-hidden="true">&times;</span>
 										        </button>
 										      </div>
-										    <form th:action="@{/avaliar}" target="frame" method="get"> 
+										    <form th:action="@{/avaliar}" target="frame" method="get" onsubmit="return confirm('Você quer mesmo enviar esta nota?');"> 
 										      	<div class="modal-body">
 													<div class="form-check">
 													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="1.0" >
@@ -342,17 +334,11 @@
 													    5,0
 													  </label>
 													</div>
-													<div class="input-group">
-													  <div class="input-group-prepend">
-													    <div class="input-group-text">
-													    <input type="radio" aria-label="Radio button for following text input" name="nota" id="exampleRadios3">
-													    </div>
-													  </div>
-													  <input type="number" class="form-control" aria-label="Text input with radio button" min="1" max="5" step="0.1">
-													</div>
 										      	</div>
 												<iframe name="frame" style="display: none;"></iframe>
 										      <div class="modal-footer">
+										      	<input type="hidden"name="notaSoma" th:value="${usuario.notaSoma}">
+										      	<input type="hidden" name="numeroAvaliacoes" th:value="${usuario.numeroAvaliacoes}">
 										      	<input type="hidden" name="tipoUsuario" th:value="${usuario.tipoUsuario}">
 										      	<input type="hidden" name="notaAtual" th:value="${usuario.nota}">
 										      	<input type="hidden" name="nome" th:value="${usuario.nome}">

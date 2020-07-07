@@ -103,7 +103,7 @@ public class LuthierController {
 		String calendar = disponibilidade.replace("<iframe ", "").replace("src=\"", "").replace("></iframe>", "");
 
 		
-		Luthier novoLuthier =  new Luthier(nome, email, senhaCriptografada,/* instrumentosArray,*/instrumentos, gmaps, fotoPerfilByte, linkFb, linkIg, descricao,"luthier", calendar, 5.0);
+		Luthier novoLuthier =  new Luthier(nome, email, senhaCriptografada,/* instrumentosArray,*/instrumentos, gmaps, fotoPerfilByte, linkFb, linkIg, descricao,"luthier", calendar, 0, 0, 0);
 		service.salvar(novoLuthier);
 		
 		return "/cSucesso";

@@ -39,7 +39,7 @@
 			</a>
 		
 		<main th:if="${usuario.tipoUsuario == 'luthier'}">
-		<form th:action=@{/alterarLuthier} method="post" enctype="multipart/form-data">	
+		<form th:action=@{/alterarLuthier} method="post" enctype="multipart/form-data" onsubmit="return confirm('Você quer mesmo alterar esta conta?');">	
 			 <div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
 				<div class="col-sm-10">
@@ -79,14 +79,14 @@
 			
 			<button id="alterar" type="submit" class="form-control">Alterar</button>
 		</form>
-		<form th:action="@{/excluirLuthier}" method="post">
+		<form th:action="@{/excluirLuthier}" method="post" onsubmit="return confirm('Você quer mesmo excluir esta conta?');">
 			<input type="hidden" name="nome" th:value="${#authentication.getPrincipal().getUsername()}">
 			<button id="excluir" type="submit" class="form-control">Excluir</button>
 		</form>
 		</main>
 		
 		<main th:if="${usuario.tipoUsuario == 'estudio'}">
-		<form th:action=@{/alterarEstudio} method="post" enctype="multipart/form-data">
+		<form th:action=@{/alterarEstudio} method="post" enctype="multipart/form-data" onsubmit="return confirm('Você quer mesmo alterar esta conta?');">
 			<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}" class="form-control">
 			
 			<input id="email" type="text" name="email" placeholder="email" th:value="${usuario.email}" class="form-control">
@@ -115,29 +115,29 @@
 			
 			<button id="alterar" type="submit" class="form-control">Alterar</button>
 		</form>
-		<form th:action="@{/excluirEstudio}" method="post">
+		<form th:action="@{/excluirEstudio}" method="post" onsubmit="return confirm('Você quer mesmo excluir esta conta?');">
 			<input type="hidden" name="nome" th:value="${#authentication.getPrincipal().getUsername()}">
 			<button id="excluir" type="submit" class="form-control">Excluir</button>
 		</form>
 		</main>
 		
 		<main th:if="${usuario.tipoUsuario == 'musico'}">
-		<form th:action=@{/alterarMusico} method="post" enctype="multipart/form-data">
+		<form th:action=@{/alterarMusico} method="post" enctype="multipart/form-data" onsubmit="return confirm('Você quer mesmo alterar esta conta?');">
 			<div class="form-row">
 				 <div class="col-md-4 mb-3">
 					<label>Nome</label>
 					<span id="nome"  class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:text="${#authentication.getPrincipal().getUsername()}" ></span>
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="validationDefault02">email</label>
-					<input id="email" type="text" name="email" placeholder="email" th:value="${usuario.email}" class="form-control">
+					<label for="validationDefault02">Email</label>
+					<input id="email" type="text" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="validationDefault03">senha</label>
-					<input id="senha" type="password" name="senha" placeholder="senha" th:value="${usuario.senha}" class="form-control">
+					<label for="validationDefault03">Senha</label>
+					<input id="senha" type="password" name="senha" placeholder="Senha" th:value="${usuario.senha}" class="form-control">
 				</div>
 				<div class="col-md-6 mb-3">
-					<label for="validationDefault04">instrumentos</label>	
+					<label for="validationDefault04">Instrumentos</label>	
 					<br>
 					<select id="instrumentos" name="instrumentos"  multiple class="chosen-select">
 								<option value="" disabled selected>Escolher instrumentos...</option>
@@ -147,7 +147,7 @@
 					</select>
 				</div>	
 				<div class="col-md-6 mb-3">
-					<label for="validationDefault05">estilo</label>		
+					<label for="validationDefault05">Estilo</label>		
 					<select id="estilo" name="estilo" multiple class="chosen-select">
 								<option value="" disabled selected>Escolher estilos musicais...</option>
 								<option th:text="${estilo[0]}"></option>
@@ -157,7 +157,7 @@
 				</div>
 				<div id="espaco-localizacao" class="col-md-12 mb-3">
 					<label for="validationDefault06">
-						localizacao
+						Localizacao
 						<small>
 							 <a target="_blank" href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do maps, caso não saiba, clique nesse icone e visualize as intruções de: INCORPORAR UM MAPA OU ROTAS">
 			  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +176,7 @@
 				        <div class="input-group-prepend">
 				          <span class="input-group-text" id="inputGroupPrepend2">facebook.com/</span>
 				        </div>
-						<input id="linkFb" type="text" name="linkFb" placeholder="linkFb" th:value="${usuario.linkFb}" class="form-control">
+						<input id="linkFb" type="text" name="linkFb" placeholder="link do facebook" th:value="${usuario.linkFb}" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6 mb-3">
@@ -185,21 +185,21 @@
 				        <div class="input-group-prepend">
 				          <span class="input-group-text" id="inputGroupPrepend2">instagram.com/</span>
 				        </div>		
-						<input id="linkIg" type="text" name="linkIg" placeholder="linkIg" th:value="${usuario.linkIg}" class="form-control">
+						<input id="linkIg" type="text" name="linkIg" placeholder="link do instagram" th:value="${usuario.linkIg}" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6 mb-3">
-					<label for="validationDefault05">estilo</label>			
-					<input id="descricao" type="text" name="descricao" placeholder="descricao" th:value="${usuario.descricao}" class="form-control">
+					<label for="validationDefault05">Descrição</label>			
+					<input id="descricao" type="text" name="descricao" placeholder="Descrição" th:value="${usuario.descricao}" class="form-control">
 				</div>
 				<div class="col-md-6 mb-3">
-					<label for="validationDefault05">estilo</label>		
-					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="fotoPerfil" th:value="${usuario.fotoPerfil}" class="form-control"> 
+					<label for="validationDefault05">Foto do perfil</label>		
+					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="Foto do perfil" th:value="${usuario.fotoPerfil}" class="form-control"> 
 				</div>
 			</div>
 			<button id="alterar" type="submit" class="btn btn-primary">Alterar</button>
 		</form>
-		<form th:action="@{/excluirMusico}" method="post">
+		<form th:action="@{/excluirMusico}" method="post" onsubmit="return confirm('Você quer mesmo excluir esta conta?');">
 			<input type="hidden" name="nome" th:value="${#authentication.getPrincipal().getUsername()}">
 			<button id="excluir" type="submit" class="btn btn-primary">Excluir</button>
 		</form>

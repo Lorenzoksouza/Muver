@@ -41,14 +41,18 @@ public class MasterTela implements Serializable{
 	public String disponibilidade;
 	@Getter @Setter
 	public double nota;
+	@Getter @Setter
+	public int numeroAvaliacoes;
 	
+	@Getter @Setter
+	public double notaSoma;
 	
 	public MasterTela() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MasterTela(String nome, String email, String senha, String linkFb, String linkIg, String descricao,
-			File fotoPerfil, String tipoUsuario, /*Instrumento[] instrumentos, EstiloMusical[] estiloMusical*/ String instrumentos, String estiloMusical, String localizacao, String disponibilidade, double nota) {
+			File fotoPerfil, String tipoUsuario, /*Instrumento[] instrumentos, EstiloMusical[] estiloMusical*/ String instrumentos, String estiloMusical, String localizacao, String disponibilidade, double nota, int numeroAvaliacoes, double notaSoma) {
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -63,5 +67,7 @@ public class MasterTela implements Serializable{
 		this.localizacao = localizacao;
 		this.disponibilidade = disponibilidade;
 		this.nota = nota;
+		this.numeroAvaliacoes = numeroAvaliacoes;
+		this.notaSoma =  notaSoma;
 	}	
 }

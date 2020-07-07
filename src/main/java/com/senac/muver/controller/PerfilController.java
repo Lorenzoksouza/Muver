@@ -120,14 +120,19 @@ public class PerfilController {
 
     
    @GetMapping(value = "/avaliar")
-   public String alterarNota(@RequestParam("notaAtual") double notaAtual, @RequestParam("nota") String nota, @RequestParam("nome") String nome, HttpServletRequest request, Model model){  
+   public String alterarNota(@RequestParam("notaAtual") double notaAtual, @RequestParam("nota") String nota, @RequestParam("nome") String nome, @RequestParam("numeroAvaliacoes") int numeroAvaliacoes, @RequestParam("notaSoma") double notaSoma, HttpServletRequest request, Model model){  
 	  
+	   
+	   int nAvaliacoes = numeroAvaliacoes+1;
+	   
 	   double notaDouble = Double.parseDouble(nota);
 	   
-	   double calcNota = (notaAtual + notaDouble) / 2;
+	   double nSoma = notaSoma + notaDouble;
+	   
+	   double calcNota = nSoma / nAvaliacoes;
 	   
 	   
-	   serviceMaster.alterarNota(calcNota, nome);
+	   serviceMaster.alterarNota(calcNota, nAvaliacoes, nSoma, nome);
 	   return "redirect: /principal";
    } 
 	

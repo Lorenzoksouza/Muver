@@ -113,7 +113,8 @@ public class LuthierController {
 	@GetMapping("cLuthier")
 	public String arrayController (Model model) {
 		String[] instrumentos = {
-			"Violao", "Baixo", "Guitarra"	
+			
+			"Baixo", "Banjo", "Bateria", "Cavaquinho", "Clarinete", "Flauta", "Guitarra", "Piano", "Sanfona", "Saxofone", "Trombone", "Violão", "Violino", "Outros"
 		};
 		
 		model.addAttribute("instrumentos", instrumentos);

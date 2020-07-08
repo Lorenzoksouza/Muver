@@ -29,91 +29,183 @@
 			</a>
 		</h1>
 		<div id="caixa" th:each="usuario : ${usuarios}">
+		<div style="width: 5%;">
 		<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/principal" class="invisible">
 				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	 				<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 	  				<path fill-rule="evenodd" d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
 	  				<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
 				</svg>
-				<p >Voltar</p>
+				<p  style="width: 20%;">Voltar</p>
 			</a>
-		
+		</div>
 		<main th:if="${usuario.tipoUsuario == 'luthier'}">
 		<form th:action=@{/alterarLuthier} method="post" enctype="multipart/form-data" onsubmit="return confirm('Você quer mesmo alterar esta conta?');">	
-			 <div class="form-group row">
-				<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-				<div class="col-sm-10">
-					<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}"  class="form-control">
+			<div class="form-row">
+				 <div class="col-md-4 mb-3">
+					<label>Nome</label>
+					<span id="nome"  class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:text="${#authentication.getPrincipal().getUsername()}" ></span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="validationDefault02">Email</label>
+					<input id="email" type="text" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="validationDefault03">Senha</label>
+					<input id="senha" type="password" name="senha" placeholder="Senha" th:value="${usuario.senha}" class="form-control">
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault04">Instrumentos</label>	
+					<br>
+					<select id="instrumentos" name="instrumentos" th:value="${usuario.instrumentos}" multiple class="chosen-select">
+								<option value="" disabled selected>Escolher instrumentos...</option>
+								<option th:text="${instrumentos[0]}"></option>
+								<option th:text="${instrumentos[1]}"></option>
+								<option th:text="${instrumentos[3]}"></option>
+								<option th:text="${instrumentos[4]}"></option>
+								<option th:text="${instrumentos[5]}"></option>
+								<option th:text="${instrumentos[6]}"></option>
+								<option th:text="${instrumentos[7]}"></option>
+								<option th:text="${instrumentos[8]}"></option>
+								<option th:text="${instrumentos[9]}"></option>
+								<option th:text="${instrumentos[10]}"></option>
+								<option th:text="${instrumentos[11]}"></option>
+								<option th:text="${instrumentos[12]}"></option>
+								<option th:text="${instrumentos[13]}"></option>
+					</select>
+				</div>	
+			
+				<div id="espaco-localizacao" class="col-md-12 mb-3">
+					<label for="validationDefault06">
+						Localizacao
+						<small>
+							 <a target="_blank" href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do maps, caso não saiba, clique nesse icone e visualize as intruções de: INCORPORAR UM MAPA OU ROTAS">
+			  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+									  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+									  <circle cx="8" cy="4.5" r="1"/>
+									</svg>
+							</a>
+						</small>
+					</label>			
+					<input id="localizacao" type="text" name="localizacao" placeholder="localizacao"  th:value="${usuario.localizacao}" class="form-control">
+				</div>	
+				<div id="espaco-localizacao" class="col-md-12 mb-3">
+					<label for="validationDefault06">
+						Disponibilidade
+						<small>
+							 <a target="_blank" href="https://support.google.com/calendar/answer/41207?hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do calendar, caso não saiba ou tenha duvidas, clique nesse icone e visualize as intruções de: INCORPORAR UMA AGENDA NO SITE">
+			  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+									  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+									  <circle cx="8" cy="4.5" r="1"/>
+									</svg>
+							</a>
+						</small>
+					</label>			
+					<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" th:value="${usuario.disponibilidade}" class="form-control">
+				</div>	
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault02">Facebook</label>
+					<div class="input-group">
+				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend2">facebook.com/</span>
+				        </div>
+						<input id="linkFb" type="text" name="linkFb" placeholder="link do facebook" th:value="${usuario.linkFb}" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault02">Instagram</label>
+					<div class="input-group">
+				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend2">instagram.com/</span>
+				        </div>		
+						<input id="linkIg" type="text" name="linkIg" placeholder="link do instagram" th:value="${usuario.linkIg}" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault05">Descrição</label>			
+					<input id="descricao" type="text" name="descricao" placeholder="Descrição" th:value="${usuario.descricao}" class="form-control">
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault05">Foto do perfil</label>		
+					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="Foto do perfil" th:value="${usuario.fotoPerfil}" class="form-control"> 
 				</div>
 			</div>
-			<div class="form-group row">
-			<input id="email" type="text" name="email" placeholder="email" th:value="${usuario.email}" class="form-control">
-			</div>
-			<input id="senha" type="password" name="senha" placeholder="senha" th:value="${usuario.senha}" class="form-control">
-			
-			<select id="instrumentos" name="instrumentos" required="true"  multiple class="chosen-select" >
-						<option value="" disabled selected>Escolher instrumentos...</option>
-						<option th:text="${instrumentos[0]}"></option>
-						<option th:text="${instrumentos[1]}"></option>
-						<option th:text="${instrumentos[2]}"></option>
-			</select>
-			
-			<input id="linkFb" type="text" name="linkFb" placeholder="linkFb" th:value="${usuario.linkFb}" class="form-control">
-			
-			<input id="linkIg" type="text" name="linkIg" placeholder="linkIg" th:value="${usuario.linkIg}" class="form-control">
-			
-			<input id="descricao" type="text" name="descricao" placeholder="descricao" th:value="${usuario.descricao}" class="form-control">
-			
-			<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="fotoPerfil" th:value="${usuario.fotoPerfil}" class="form-control">
-			
-			<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" class="form-control">
-					<div id="tooltip-localizacao" >
-						<a target="_blank" href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do maps, caso não saiba, clique nesse icone e visualize as intruções de: INCORPORAR UM MAPA OU ROTAS">
-	  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-							  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
-							  <circle cx="8" cy="4.5" r="1"/>
-							</svg>
-						</a>
-					</div>	
-			
-			<button id="alterar" type="submit" class="form-control">Alterar</button>
+			<button id="alterar" type="submit" class="btn btn-primary">Alterar</button>
 		</form>
+		<!-- <div style="width: 20%;">
+		<a style="margin-left: 20px;" class="btn btn-primary" th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${usuario.tipoUsuario}, nome=${usuario.nome})}">
+			Sobre
+		</a>
+		</div>
+		 -->
 		<form th:action="@{/excluirLuthier}" method="post" onsubmit="return confirm('Você quer mesmo excluir esta conta?');">
 			<input type="hidden" name="nome" th:value="${#authentication.getPrincipal().getUsername()}">
-			<button id="excluir" type="submit" class="form-control">Excluir</button>
+			<button id="excluir" type="submit" class="btn btn-primary">Excluir</button>
 		</form>
 		</main>
 		
 		<main th:if="${usuario.tipoUsuario == 'estudio'}">
 		<form th:action=@{/alterarEstudio} method="post" enctype="multipart/form-data" onsubmit="return confirm('Você quer mesmo alterar esta conta?');">
-			<input id="nome" type="text" name="nome" placeholder="nome" th:value="${usuario.nome}" class="form-control">
+			<div class="form-row">
+				 <div class="col-md-4 mb-3">
+					<label>Nome</label>
+					<span id="nome"  class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:text="${#authentication.getPrincipal().getUsername()}" ></span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="validationDefault02">Email</label>
+					<input id="email" type="text" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="validationDefault03">Senha</label>
+					<input id="senha" type="password" name="senha" placeholder="Senha" th:value="${usuario.senha}" class="form-control">
+				</div>
 			
-			<input id="email" type="text" name="email" placeholder="email" th:value="${usuario.email}" class="form-control">
+			<div id="espaco-localizacao" class="col-md-12 mb-3">
+					<label for="validationDefault06">
+						Localizacao
+						<small>
+							 <a target="_blank" href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do maps, caso não saiba, clique nesse icone e visualize as intruções de: INCORPORAR UM MAPA OU ROTAS">
+			  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+									  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+									  <circle cx="8" cy="4.5" r="1"/>
+									</svg>
+							</a>
+						</small>
+					</label>			
+					<input id="localizacao" type="text" name="localizacao" placeholder="localizacao"  th:value="${usuario.localizacao}" class="form-control">
+				</div>		
 			
-			<input id="senha" type="password" name="senha" placeholder="senha" th:value="${usuario.senha}" class="form-control">
-			
-			<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" class="form-control">
-					<div id="tooltip-localizacao" >
-						<a target="_blank" href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do maps, caso não saiba, clique nesse icone e visualize as intruções de: INCORPORAR UM MAPA OU ROTAS">
-	  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-							  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
-							  <circle cx="8" cy="4.5" r="1"/>
-							</svg>
-						</a>
-					</div>	
-			
-			<input id="linkFb" type="text" name="linkFb" placeholder="linkFb" th:value="${usuario.linkFb}" class="form-control">
-			
-			<input id="linkIg" type="text" name="linkIg" placeholder="linkIg" th:value="${usuario.linkIg}" class="form-control">
-			
-			<input id="descricao" type="text" name="descricao" placeholder="descricao" th:value="${usuario.descricao}" class="form-control">
-			
-			<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="fotoPerfil" th:value="${usuario.fotoPerfil}" class="form-control">
-			
-			
-			<button id="alterar" type="submit" class="form-control">Alterar</button>
+			<div class="col-md-6 mb-3">
+					<label for="validationDefault02">Facebook</label>
+					<div class="input-group">
+				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend2">facebook.com/</span>
+				        </div>
+						<input id="linkFb" type="text" name="linkFb" placeholder="link do facebook" th:value="${usuario.linkFb}" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault02">Instagram</label>
+					<div class="input-group">
+				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend2">instagram.com/</span>
+				        </div>		
+						<input id="linkIg" type="text" name="linkIg" placeholder="link do instagram" th:value="${usuario.linkIg}" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault05">Descrição</label>			
+					<input id="descricao" type="text" name="descricao" placeholder="Descrição" th:value="${usuario.descricao}" class="form-control">
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault05">Foto do perfil</label>		
+					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="Foto do perfil" th:value="${usuario.fotoPerfil}" class="form-control"> 
+				</div>
+			</div>
+			<button id="alterar" type="submit" class="btn btn-primary">Alterar</button>
 		</form>
 		<form th:action="@{/excluirEstudio}" method="post" onsubmit="return confirm('Você quer mesmo excluir esta conta?');">
 			<input type="hidden" name="nome" th:value="${#authentication.getPrincipal().getUsername()}">
@@ -143,7 +235,17 @@
 								<option value="" disabled selected>Escolher instrumentos...</option>
 								<option th:text="${instrumentos[0]}"></option>
 								<option th:text="${instrumentos[1]}"></option>
-								<option th:text="${instrumentos[2]}"></option>
+								<option th:text="${instrumentos[3]}"></option>
+								<option th:text="${instrumentos[4]}"></option>
+								<option th:text="${instrumentos[5]}"></option>
+								<option th:text="${instrumentos[6]}"></option>
+								<option th:text="${instrumentos[7]}"></option>
+								<option th:text="${instrumentos[8]}"></option>
+								<option th:text="${instrumentos[9]}"></option>
+								<option th:text="${instrumentos[10]}"></option>
+								<option th:text="${instrumentos[11]}"></option>
+								<option th:text="${instrumentos[12]}"></option>
+								<option th:text="${instrumentos[13]}"></option>
 					</select>
 				</div>	
 				<div class="col-md-6 mb-3">
@@ -152,25 +254,16 @@
 								<option value="" disabled selected>Escolher estilos musicais...</option>
 								<option th:text="${estilo[0]}"></option>
 								<option th:text="${estilo[1]}"></option>
-								<option th:text="${estilo[2]}"></option>		
+								<option th:text="${estilo[3]}"></option>
+								<option th:text="${estilo[4]}"></option>
+								<option th:text="${estilo[5]}"></option>
+								<option th:text="${estilo[6]}"></option>
+								<option th:text="${estilo[7]}"></option>
+								<option th:text="${estilo[8]}"></option>
+								<option th:text="${estilo[9]}"></option>
 					</select>
 				</div>
-				<div id="espaco-localizacao" class="col-md-12 mb-3">
-					<label for="validationDefault06">
-						Localizacao
-						<small>
-							 <a target="_blank" href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do maps, caso não saiba, clique nesse icone e visualize as intruções de: INCORPORAR UM MAPA OU ROTAS">
-			  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-									  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
-									  <circle cx="8" cy="4.5" r="1"/>
-									</svg>
-							</a>
-						</small>
-					</label>			
-					<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" class="form-control">
-				</div>	
-				<div class="col-md-6 mb-3">
+				<!-- <div class="col-md-6 mb-3">
 					<label for="validationDefault02">Facebook</label>
 					<div class="input-group">
 				        <div class="input-group-prepend">
@@ -191,7 +284,7 @@
 				<div class="col-md-6 mb-3">
 					<label for="validationDefault05">Descrição</label>			
 					<input id="descricao" type="text" name="descricao" placeholder="Descrição" th:value="${usuario.descricao}" class="form-control">
-				</div>
+				</div> -->
 				<div class="col-md-6 mb-3">
 					<label for="validationDefault05">Foto do perfil</label>		
 					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="Foto do perfil" th:value="${usuario.fotoPerfil}" class="form-control"> 

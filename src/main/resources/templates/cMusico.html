@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
-	<title>cadastrar musico</title>
+	<title>cadastrar músico</title>
 	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	
@@ -23,7 +23,7 @@
  				<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
 		</svg>
 	</a>
-	
+	<h1 id="titulo">MAESTRINO</h1>
 	<form action="cadastrarMusico" method="post" enctype="multipart/form-data">
 		<div id="caixa">
 			<a id="voltar" href="/maestrino-0.0.1-SNAPSHOT/cadastrar" class="invisible">
@@ -34,39 +34,55 @@
 				</svg>
 				<p>voltar</p>
 			</a>
-			<h1 id="tcadastro">Cadastrar Musico</h1>
+			<h1 id="tcadastro">Cadastrar Músico</h1>
 			<ul>
 				<li>
-					<input type="text" name="nome" placeholder="nome" minlength="5" required="true">
+					<input type="text" name="nome" placeholder="Nome" minlength="5" maxlength="30" required="true">
  				</li>
 				<li>
-					<input type="email" name="email" placeholder="email" required="true">
+					<input type="email" name="email" placeholder="Email" required="true">
  				</li>
 				<li>
-					<input type="password" name="senha" placeholder="senha" minlength="6" required="true">
+					<input type="password" name="senha" placeholder="Senha" minlength="6" maxlength="18" required="true">
 				</li>
 				<li>
 					<select id="estilo" name="estilo" required="true" multiple class="chosen-select">
 						<option value="" disabled selected>Escolher estilos musicais...</option>
 						<option th:text="${estilo[0]}"></option>
 						<option th:text="${estilo[1]}"></option>
-						<option th:text="${estilo[2]}"></option>
-						
+						<option th:text="${estilo[3]}"></option>
+						<option th:text="${estilo[4]}"></option>
+						<option th:text="${estilo[5]}"></option>
+						<option th:text="${estilo[6]}"></option>
+						<option th:text="${estilo[7]}"></option>
+						<option th:text="${estilo[8]}"></option>
+						<option th:text="${estilo[9]}"></option>
 					</select>
 				</li>
-				 
+				 <br>
 				<li>
 					<select id="instrumentos" name="instrumentos" required="true"  multiple class="chosen-select2">
 						<option value="" disabled selected>Escolher instrumentos...</option>
 						<option th:text="${instrumentos[0]}"></option>
 						<option th:text="${instrumentos[1]}"></option>
-						<option th:text="${instrumentos[2]}"></option>
+						<option th:text="${instrumentos[3]}"></option>
+						<option th:text="${instrumentos[4]}"></option>
+						<option th:text="${instrumentos[5]}"></option>
+						<option th:text="${instrumentos[6]}"></option>
+						<option th:text="${instrumentos[7]}"></option>
+						<option th:text="${instrumentos[8]}"></option>
+						<option th:text="${instrumentos[9]}"></option>
+						<option th:text="${instrumentos[10]}"></option>
+						<option th:text="${instrumentos[11]}"></option>
+						<option th:text="${instrumentos[12]}"></option>
+						<option th:text="${instrumentos[13]}"></option>
 					</select>
 				</li>
 				<li><input type="file" id="fotoPerfil" name="fotoPerfil"></li>
-				<li><input type="text" name="linkFb" placeholder="link do facebook"></li>
+				<!-- <li><input type="text" name="linkFb" placeholder="link do facebook"></li>
 				<li><input type="text" name="linkIg" placeholder="link do instagram"></li>
-				<li><input type="text" name="descricao" placeholder="fale um pouco de voce..."></li>
+				<li><input type="text" name="descricao" placeholder="fale um pouco de você..."></li>
+			 -->
 			</ul>
 			<button id="cadastrar" type="submit">Cadastrar</button>		
 		</div>

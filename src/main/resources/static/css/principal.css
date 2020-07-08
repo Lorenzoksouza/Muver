@@ -201,6 +201,7 @@ input, button, submit { border:none; }
 	margin: auto;
 	width: 70%;
 	height: auto;
+	min-height: 230px;
 }
 
 /* barra de pesquisa*/
@@ -247,6 +248,8 @@ input, button, submit { border:none; }
 	font-weight: bold;
 	padding-left: 20px;
 	cursor: pointer;
+	width: 100%;
+    text-align: left;
 }
 
 #pesquisaAvancada {
@@ -307,12 +310,12 @@ input, button, submit { border:none; }
 
 
 #filtro_Estudio{
-	background: url("../images/bg_guitar.jpg");
+	background: url("../images/estudio.jpg");
 	background-size: 100%;
 }
 
 #filtro_Luthier{
-	background: url("../images/bg_guitar.jpg");
+	background: url("../images/luthier.jpg");
 	background-size: 100%;
 }
 
@@ -346,14 +349,16 @@ form-luthier{
 /*img perfil*/
 #imgCover{
 	top: 100px;
-	right: 120px;
 	height: auto;
-	width: 45%;
+	width: 450px;
 	position: relative;
+	left: -120px;
+	text-align: right;
+	
 }
 
 #img{
-	float: left;
+	float: right;
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
@@ -361,7 +366,6 @@ form-luthier{
 	bottom: -9999px;
 	height: 300px;
 	margin: auto;
-	padding-right:100px;
 	padding-top: 40px;
 }
 /*img perfil*/
@@ -450,6 +454,36 @@ a:active {
 .visible{
 	visibility: hidden !important;
 }
+
+#filtro_mobile {
+	display: none;
+}
+
+
+#buscar_localidade{
+	width: 20%;
+	float: left;
+	text-align: left;
+	border: none;
+	border: 0;
+	font-size: 1em;
+	background-color: #CCC;
+	padding-left: 20px;	
+}
+
+#buscar_localidade:focus{
+	outline: none;
+	border-bottom: 1px solid;
+}
+
+#click-buscar-localidade {
+	padding-bottom: 5px;
+	float: left;
+	height: 30px;
+	width: auto;
+}
+
+
 
 
 @media only screen and (max-width: 479px) {
@@ -784,6 +818,20 @@ a:active {
 	cursor: pointer;
 	outline: inherit;
 	}
-		
+	
+	#filtro_mobile {
+	display: inline;
+	width: 100%;
+	}	
+	
+	#filtro_T, #filtro_E, #filtro_L {
+	width: 100px;
+	margin-bottom: 10px;
+	margin-left: 18px;
+	background-color: #30475e;
+	border-color: #30475e;
+	}
+	
+	
 }
 

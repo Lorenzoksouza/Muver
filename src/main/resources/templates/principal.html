@@ -25,10 +25,22 @@
 				</li>
 				
 				<li class="nav-item">
-					<div class="nav-link">
-						<img th:src="'images/photos/' + ${#authentication.getPrincipal().getUsername()} + '.png'"> 
-						<span class="link-text" th:text="${#authentication.getPrincipal().getUsername()}">Convidado</span>
-					</div>
+						<div th:if="${#authentication.getPrincipal().getTipoUsuario()} != 'musico'">
+							<div class="nav-link">	
+								<a th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${#authentication.getPrincipal().getTipoUsuario()}, nome=${#authentication.getPrincipal().getUsername()})}">
+								<img style="float: left;" th:src="'images/photos/' + ${#authentication.getPrincipal().getUsername()} + '.png'"> 
+								<span style="float: right;" class="link-text" th:text="${#authentication.getPrincipal().getUsername()}">Convidado</span>
+								</a>
+							</div>
+						</div>
+						<div th:if="${#authentication.getPrincipal().getTipoUsuario()} == 'musico'">
+							<div class="nav-link">	
+								<a href="#">
+								<img style="float: left;" th:src="'images/photos/' + ${#authentication.getPrincipal().getUsername()} + '.png'"> 
+								<span  style="float: right;" class="link-text" th:text="${#authentication.getPrincipal().getUsername()}">Convidado</span>
+								</a>
+							</div>	
+						</div>
 				</li>
 				
 				<li class="nav-item">
@@ -63,10 +75,7 @@
 
 	<!--Navbar-->
 	<nav class="navbar navbar-light amber lighten-4 mb-4 visible">
-	
 	  <!-- Navbar brand -->
-	 
-	
 	  <!-- Collapse button -->
 	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
 	    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation"> <a id="titulo-menu">MAESTRINO</a>
@@ -79,7 +88,16 @@
 	    <!-- Links -->
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <span class="nav-link" th:text="${#authentication.getPrincipal().getUsername()}" style="pointer-events:none;">Convidado</span>
+	        <div class="nav-link" th:if="${#authentication.getPrincipal().getTipoUsuario()} != 'musico'">
+					<a style="width: 100%;" th:href="@{/perfil/{tipoUsuario}/{nome}(tipoUsuario=${#authentication.getPrincipal().getTipoUsuario()}, nome=${#authentication.getPrincipal().getUsername()})}">
+					<span th:text="${#authentication.getPrincipal().getUsername()}">Convidado</span>
+					</a>
+			</div>
+			<div class="nav-link" th:if="${#authentication.getPrincipal().getTipoUsuario()} == 'musico'">
+					<a style="width: 100%;" href="#">
+					<span th:text="${#authentication.getPrincipal().getUsername()}">Convidado</span>
+					</a>
+			</div>
 	      </li>
 	      <li class="nav-item">
 	       <form th:action="@{'/editar/' + ${#authentication.getPrincipal().getTipoUsuario()} + '/' + ${#authentication.getPrincipal().getUsername()}}" method="post">
@@ -121,24 +139,36 @@
 		</h1>
 		<div id="caixa">
 		
-			<form action="/maestrino-0.0.1-SNAPSHOT/pesquisa" method="post">
+			
 				<div id="pesquisa" >
+				<form action="/maestrino-0.0.1-SNAPSHOT/pesquisa" method="get">
 					<input id="buscar" type="text" name="pesquisa" placeholder="buscar" />
 					<input id="click-buscar" type="image" src="images/lupa.png" alt="Submit">
-					<span id="mais" onclick="pesquisaAvancada()">Filtros avançados:</span>
+				</form>				
+					<!-- <span id="mais" onclick="pesquisaAvancada()">Filtros avançados:</span>
 					<div id="pesquisaAvancada" >
+							<form action="/maestrino-0.0.1-SNAPSHOT/localidade" method="get">
+								<input id="buscar_localidade" type="text" name="pesquisa" placeholder="buscar por localidade" />
+								<input id="click-buscar-localidade" type="image" src="images/lupa.png" alt="Submit">		
+							</form>
+							
+							<form action="/maestrino-0.0.1-SNAPSHOT/instrumento" method="get">
+								<input id="buscar_localidade" type="text" name="pesquisa" placeholder="buscar por instrumento" />
+								<input id="click-buscar-localidade" type="image" src="images/lupa.png" alt="Submit">		
+							</form>
+					</div>	 -->
+					
+							<!-- 
+							
 							<input id="tipoEstudio" type="checkbox" name="tipo" value="tipoEstudio">
 							<label for="tipoEstudio">
 								Estudio
 							</label>
-							<input id="tipoLuthier" type="checkbox" name="tipo" value="tipoLuthier">
-							<label for="tipoLuthier">
-								Luthier
-							</label>
-							
-					</div>
+							 -->
+					
+					
 				</div>
-			</form>
+		
 				
 			<div id="filtro_Principal">
 				<div style="float: left; width: 30%;">
@@ -154,7 +184,7 @@
 				<form th:action="@{/Estudios}" method="post" id="form-estudio">
 					<button type="submit" class="filtro">
 						<div id="filtro_Estudio">
-							<p>Estudios</p>
+							<p>Estúdios</p>
 						</div>
 					</button>
 				</form>
@@ -163,6 +193,37 @@
 				<form th:action="@{/Luthiers}" method="post" id="form-luthier">
 					<button type="submit" class="filtro">
 						<div id="filtro_Luthier">
+							<p>Luthiers</p>
+						</div>
+					</button>
+				</form>	
+				</div>	
+			</div>
+			
+			
+			<div id="filtro_mobile">
+				<div style="float: left; width: 30%;">
+				<form th:action="@{/principal}" method="post" id="form-todos">
+					<button id="filtro_T" type="submit" class="btn btn-primary">
+						<div>
+							<p>Todos</p>
+						</div>
+					</button>
+				</form>
+				</div>
+				<div style="float: left; width: 30%;">
+				<form th:action="@{/Estudios}" method="post" id="form-estudio">
+					<button id="filtro_E" type="submit" class="btn btn-primary">
+						<div >
+							<p>Estúdios</p>
+						</div>
+					</button>
+				</form>
+				</div>
+				<div style="float: left; width: 30%;">
+				<form th:action="@{/Luthiers}" method="post" id="form-luthier">
+					<button id="filtro_L" type="submit"class="btn btn-primary">
+						<div >
 							<p>Luthiers</p>
 						</div>
 					</button>
@@ -239,28 +300,26 @@
 			    x.style.display = "none";
 			  }}
 	</script>
-
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-	$(document).ready(function () {
-
-		  $('.first-button').on('click', function () {
-
-		    $('.animated-icon1').toggleClass('open');
-		  });
-		  $('.second-button').on('click', function () {
-
-		    $('.animated-icon2').toggleClass('open');
-		  });
-		  $('.third-button').on('click', function () {
-
-		    $('.animated-icon3').toggleClass('open');
-		  });
-		});
+		$(document).ready(function () {
+	
+			  $('.first-button').on('click', function () {
+	
+			    $('.animated-icon1').toggleClass('open');
+			  });
+			  $('.second-button').on('click', function () {
+	
+			    $('.animated-icon2').toggleClass('open');
+			  });
+			  $('.third-button').on('click', function () {
+	
+			    $('.animated-icon3').toggleClass('open');
+			  });
+			});
 	</script>
 </body>
 </html>

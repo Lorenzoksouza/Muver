@@ -10,7 +10,7 @@ public class MaestrinoApplication {
 	public static void main(String[] args) {
 		System.setProperty("server.servlet.context-path", "/maestrino-0.0.1-SNAPSHOT");
 		SpringApplication.run(MaestrinoApplication.class, args);
-		System.out.println(new BCryptPasswordEncoder().encode("123"));
+		System.out.println("Sistema rodando!");
 	}
 
 }

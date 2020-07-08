@@ -353,7 +353,14 @@ main {
 }
 /* localizacao */
 
+#mensagem_oculta{
+	float: left; 
+	margin-top: 16px;
+}
 
+#mapa_oculto {
+	float: left;
+}
 
 @media only screen and (max-width: 479px) {
 	.invisible{
@@ -534,9 +541,26 @@ main {
 		float: none;
 	}
 	
+	#localizacao{
+		float: inherit;
+		width: 320px;
+	}
+	
 	#texto_localizacao{
 		margin-left: -20px;
 		height: 400px;
 		width: 60px;
 	}
+	
+	#mensagem_oculta{
+		display: none;
+	}
+	
+	#mapa_oculto {
+	float: left;
+	width:300px;	
+	text-align: left;
+	}
+	
+	
 }

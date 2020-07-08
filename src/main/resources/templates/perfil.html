@@ -104,7 +104,7 @@
 										          <span aria-hidden="true">&times;</span>
 										        </button>
 										      </div>
-										    <form th:action=@{/avaliar} target="frame" method="get"> 
+										    <form th:action=@{/avaliar} target="frame" method="get" onsubmit="Enviar()"> 
 										      	<div class="modal-body">
 													<div class="form-check">
 													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="1.0" >
@@ -139,8 +139,11 @@
 										      	</div>
 												<iframe name="frame" style="display: none;"></iframe>
 										      <div class="modal-footer">
+										      	<input type="hidden"name="notaSoma" th:value="${usuario.notaSoma}">
+										      	<input type="hidden" name="numeroAvaliacoes" th:value="${usuario.numeroAvaliacoes}">
+										      	<input type="hidden" name="tipoUsuario" th:value="${usuario.tipoUsuario}">
 										      	<input type="hidden" name="notaAtual" th:value="${usuario.nota}">
-										      	<input type="hidden" name="nome" th:value="${usuario.nome}">
+										      	<input type="hidden" name="email" th:value="${usuario.email}">
 										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										        <button type="submit" class="btn btn-primary">Enviar</button>
 										      </div>
@@ -149,10 +152,13 @@
 										  </div>
 										</div>
 										<!-- Modal -->
-										
+										<span th:if="${#authentication.getPrincipal().getUsername()} != ${usuario.nome}">
+										<span th:if="${#authentication.getPrincipal().getTipoUsuario()} == 'musico'">
 										<button id="btn_analises" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
 											Avaliar
 										</button>
+										</span>
+										</span>
 									</div>
 									<div id="gsocial">
 										<a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}">
@@ -169,8 +175,10 @@
 									</div>
 								</li>
 								<li>
-									<p id="descricao" th:text="${usuario.descricao}">
-										teste
+									<p th:if="${usuario.descricao} != ''">
+										<p id="descricao" th:text="${usuario.descricao}">
+											
+										</p>
 									</p>
 								<li>
 									<div id="Disponibilidade" style="margin-top: 40px;">
@@ -179,12 +187,19 @@
 								</li>
 								<li id="dis">
 								<!-- temporario -->
-									<div class="invisible">
+									<div class="invisible">								
+										<span  id="mensagem_oculta" th:if="${usuario.disponibilidade} == ''">
+											Este Luthier não cadastrou nenhum calendário.
+										</span>
+										<span th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+											<span style="float: left;" th:if="${usuario.disponibilidade} == ''">
+											Edite seu perfil para incluir um calendario.
+											</span>
+										</span>
+													
 										<iframe id="disp" th:src="${usuario.disponibilidade}"></iframe>
 													<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
-													<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
-														Edite seu perfil para invluir as horas
-													</div>
+													
 									</div>			
 									<div id="disp_mobile" class="visible">
 										<p>
@@ -194,11 +209,16 @@
 										</p>
 										<div class="collapse" id="colapso">	
 											<div class="card card-body">
-												<iframe id="disp_c_mobile" src="https://calendar.google.com/calendar/embed?src=0tjgnhtktruveieei1qha84da0%40group.calendar.google.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+												<span th:if="${usuario.disponibilidade} == ''">
+													Este Luthier não cadastrou nenhum calendário.
+												</span>
+												<span th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+													<span th:if="${usuario.disponibilidade} == ''">
+													Edite seu perfil para incluir um calendario.
+													</span>
+												</span>
+												<iframe id="disp_c_mobile" th:src="${usuario.disponibilidade}"></iframe>
 														<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
-														<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
-															Edite seu perfil para invluir as horas
-														</div>
 											</div>		
 										</div>	
 									</div>			
@@ -226,9 +246,23 @@
 										<span>Endereço:</span>
 									</div>
 								</li>
+								<li>
+									<div id="mapa_oculto">
+									<span id="des_oculto" th:if="${usuario.localizacao} == ''">
+											Este Luthier não cadastrou nenhum mapa.
+										</span>
+										<span id="des_oculto" th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+											<span id="des_oculto" th:if="${usuario.localizacao} == ''">
+											Edite seu perfil para incluir um mapa.
+											</span>
+										</span>
+									</div>	
+								</li>
+								
 								<li id="texto_localizacao">
-									<iframe id="end" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr" 
-									th:src="*{usuario.localizacao}?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr'"></iframe>
+										
+									
+									<iframe id="end" th:src="${usuario.localizacao}"></iframe>
 								</li>
 							</ul>
 						</div>	
@@ -291,7 +325,7 @@
 										</svg>
 										<span id="nota" th:text="${usuario.nota}">	
 										</span>
-										
+									
 										<!-- Modal -->
 										<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 										  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -302,7 +336,7 @@
 										          <span aria-hidden="true">&times;</span>
 										        </button>
 										      </div>
-										    <form th:action="@{/avaliar}" target="frame" method="get" onsubmit="return confirm('Você quer mesmo enviar esta nota?');"> 
+										    <form th:action="@{/avaliar}" target="frame" method="get" onsubmit="Enviar()"> 
 										      	<div class="modal-body">
 													<div class="form-check">
 													  <input class="form-check-input" type="radio" name="nota" id="exampleRadios3" value="1.0" >
@@ -350,18 +384,23 @@
 										  </div>
 										</div>
 										<!-- Modal -->
-										
+										<span th:if="${#authentication.getPrincipal().getUsername()} != ${usuario.nome}">
 										<button id="btn_analises" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
 											Avaliar
 										</button>
+										</span>
 									</div>
 									<div id="gsocial">
+										<span th:if="${usuario.linkFb} != ''">
 										<a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}">
 											<img id="icon_face" class="social" th:src="@{/images/facebook.png}"/>
 										</a>
+										</span>
+										<span th:if="${usuario.linkIg} != ''">
 										<a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}">
 											<img id="icon_ig" class="social" th:src="@{/images/instagram.png}"/>
 										</a>
+										</span>
 									</div>
 									<div id="chat">
 										<a id="btn_chat"  class="btn btn-primary" th:href="'mailto:' + ${usuario.email}">
@@ -381,11 +420,16 @@
 								<li id="dis">
 								<!-- temporario -->
 									<div class="invisible">
+										<span style="width: 100%;" id="mensagem_oculta" th:if="${usuario.disponibilidade} == ''">
+											Este Luthier não cadastrou nenhum calendário.
+										</span>
+										<span th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+											Edite seu perfil para incluir um calendario.
+										</span>
+										
 										<iframe id="disp" th:src="${usuario.disponibilidade}"></iframe>
 													<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
-													<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
-														Edite seu perfil para invluir as horas
-													</div>
+								
 									</div>			
 									<div id="disp_mobile" class="visible">
 										<p>
@@ -395,11 +439,15 @@
 										</p>
 										<div class="collapse" id="colapso">	
 											<div class="card card-body">
-												<iframe id="disp_c_mobile" src="https://calendar.google.com/calendar/embed?src=0tjgnhtktruveieei1qha84da0%40group.calendar.google.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+												<span  th:if="${usuario.disponibilidade} == ''">
+													Este Estudio não cadastrou nenhum calendário.
+												</span>
+												<span th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+													Edite seu perfil para incluir um calendario.
+												</span>
+												<iframe id="disp_c_mobile" th:src="${usuario.disponibilidade}"></iframe>
 														<!-- <span th:text="*{disponibilidade}?: 'não foram definidas horas'">10</span>  -->
-														<div th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
-															Edite seu perfil para invluir as horas
-														</div>
+										
 											</div>		
 										</div>	
 									</div>			
@@ -419,9 +467,19 @@
 										<span>Endereço:</span>
 									</div>
 								</li>
+								<li>
+									<div id="mapa_oculto">
+									<span style="width: 100%; text-align: left; float: left;" id="des_oculto" th:if="${usuario.localizacao} == ''">
+											Este Estudio não cadastrou nenhum mapa.
+										</span>
+										<span style="float: left; text-align: left;" id="des_oculto" th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+											Edite seu perfil para incluir um mapa.
+										</span>
+									</div>	
+								</li>
+								
 								<li id="texto_localizacao">
-									<iframe id="end" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr" 
-									th:src="*{usuario.localizacao}?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14146.14415417727!2d-48.52456235738158!3d-27.576906155606416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738f544092bf1%3A0xc9396a5fae042fd1!2sParque%20do%20Manguezal%20do%20Itacorubi%20-%20Av.%20da%20Saudade%20-%20Trindade%2C%20Florian%C3%B3polis%20-%20SC%2C%2088036-010!5e0!3m2!1spt-BR!2sbr!4v1593743549507!5m2!1spt-BR!2sbr'"></iframe>
+									<iframe id="end" th:src="${usuario.localizacao}"></iframe>
 								</li>
 							</ul>
 						</div>	
@@ -432,6 +490,18 @@
 		<script type="text/javascript">
 		$('.collapse').collapse()
 		</script>
+		
+		<script type="text/javascript">
+		function Enviar() {
+			if(confirm('Você quer mesmo enviar esta nota?')) {
+				location.reload(true);
+			} else {
+				
+			}
+			
+		}
+		</script>
+		
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

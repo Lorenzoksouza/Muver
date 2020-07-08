@@ -30,7 +30,10 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario != 'musico'")
 	ArrayList<Master> pesquisaNome(String nome);
 	
-	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario = 'estudio'")
+	@Query(value = "SELECT * FROM Master m left join Estudio e on m.idmaster = e.idestudio where e.localizacao LIKE CONCAT('%', ':local', '%')", nativeQuery = true)
+	ArrayList<Master> pesquisaLocalidade(String local);
+	
+	@Query("SELECT m FROM Master m where m.nome LIKE CONCAT('%', :nome, '%') and m.tipoUsuario != 'musico' and m.tipoUsuario != 'luthier'")
 	ArrayList<Master> pesquisaTipoEstudio(String nome);
 	
 	@Query("SELECT m FROM Master m WHERE m.nome = :nome")
@@ -43,6 +46,10 @@ public interface MasterRepository extends CrudRepository<Master, Integer> {
 
 	@Query("SELECT m FROM Master m WHERE m.email = :email")
 	Master procurarNota(String email);
+	
+	
+	@Query(value = "SELECT * FROM Master m left join luthier l on m.idmaster = l.idluthier where instrumento LIKE CONCAT('%', ':pesquisa', '%');", nativeQuery = true)
+	ArrayList<Master> pesquisaInstrumento(String pesquisa);
 	
 	//@Query("SELECT m FROM Master m where m.nome = %:nome%")
 	//ArrayList<Master> listaPesquisa(String pesquisa);

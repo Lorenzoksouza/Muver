@@ -21,7 +21,7 @@ public class ImplementsUserDetailsService implements UserDetailsService{
 		Master usuario = mr.findByLogin(nome);
 		
 		if(usuario == null) {
-			throw new UsernameNotFoundException("Usuario nao encontrado!");
+			throw new UsernameNotFoundException("Usuario não encontrado!");
 		}
 		return usuario;
 	}

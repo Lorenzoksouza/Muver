@@ -1,5 +1,7 @@
 package com.senac.muver.controller;
 
+import java.text.DecimalFormat;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,13 +73,13 @@ public class PerfilController {
 					Musico m = serviceMusico.perfilPorNomeMusico(nome);
 					mv.addObject("usuarios", convert.converteMusicoEmMasterTela(m));
 					String[] instrumentos = {
-							"Violao", "Baixo", "Guitarra"	
+							"Baixo", "Banjo", "Bateria", "Cavaquinho", "Clarinete", "Flauta", "Guitarra", "Piano", "Sanfona", "Saxofone", "Trombone", "Violão", "Violino", "Outros"
 						};
 						
 						model.addAttribute("instrumentos", instrumentos);
 						
 						String[] estilo = {
-								"Bossa", "Rock", "Funk"	
+								"Blues", "Bossa nova", "Forró", "Funk", "Hip-Hop", "Jazz", "Metal", "Pop", "Rock", "Outros" 	
 							};
 							
 							model.addAttribute("estilo", estilo);
@@ -92,7 +94,7 @@ public class PerfilController {
 					Luthier l = serviceLuthier.perfilPorNomeLuthier(nome);
 					mv.addObject("usuarios", convert.converteLuthierEmMasterTela(l));
 					String[] instrumentos = {
-							"Violao", "Baixo", "Guitarra"	
+							"Baixo", "Banjo", "Bateria", "Cavaquinho", "Clarinete", "Flauta", "Guitarra", "Piano", "Sanfona", "Saxofone", "Trombone", "Violão", "Violino", "Outros"
 						};
 						
 						model.addAttribute("instrumentos", instrumentos);
@@ -133,7 +135,11 @@ public class PerfilController {
 	   
 	   double nSoma = m.getNotaSoma() + notaDouble;
 	   
-	   double calcNota = nSoma / nAvaliacoes;
+	   DecimalFormat df = new DecimalFormat("#.#");
+	   
+	   double calculoNota = nSoma / nAvaliacoes;
+	   
+	   double calcNota = Double.parseDouble(df.format(calculoNota).replace(",", "."));
 	   
 	   serviceMaster.alterarNota(calcNota, nAvaliacoes, nSoma, email);
 	   return "redirect: /principal";

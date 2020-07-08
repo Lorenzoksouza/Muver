@@ -44,6 +44,10 @@ public class MasterService {
 		return repositorio.pesquisaNome(nome);
 	}
 	
+	public ArrayList<Master> pesquisaLocalidade(String local) {
+		return repositorio.pesquisaLocalidade(local);
+	}
+	
 	public ArrayList<Master> pesquisaTipoEstudio(String nome) {
 		return repositorio.pesquisaTipoEstudio(nome);
 	}
@@ -58,6 +62,11 @@ public class MasterService {
 
 	public Master procurarNota(String email) {
 		return repositorio.procurarNota(email);
+	}
+
+	public ArrayList<Master> pesquisaInstrumento(String pesquisa) {
+		// TODO Auto-generated method stub
+		return repositorio.pesquisaInstrumento(pesquisa);
 	}
 
 

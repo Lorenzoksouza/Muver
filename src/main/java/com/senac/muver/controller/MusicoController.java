@@ -72,9 +72,8 @@ public class MusicoController {
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha, 
 			/*@RequestParam("estilo") String[] estilosMusicais, @RequestParam("instrumentos") String[] instrumentos, */
 			@RequestParam("estilo") String[] estiloMusical, @RequestParam("instrumentos") String[] instrumento,
-			@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, 
 			HttpServletRequest request, Model model) {
-		
+		//@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, 
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("fotoPerfil");
 		
@@ -116,8 +115,9 @@ public class MusicoController {
 		}*/
 		
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
-		
-		
+		String descricao = "";
+		String linkFb = "";
+		String linkIg = "";
 		
 		//insere no musico os dados vindo do formulário
 		Musico novoMusico =  new Musico(nome,email,senhaCriptografada,/*estiloMusicalArray,instrumentosArray,*/estilosMusicais, instrumentos, fotoPerfilByte,linkFb,linkIg,descricao,"musico", 0, 0, 0);
@@ -134,13 +134,13 @@ public class MusicoController {
 	@GetMapping("cMusico")
 	public String arrayController (Model model) {
 		String[] instrumentos = {
-			"Violao", "Baixo", "Guitarra"	
+				"Baixo", "Banjo", "Bateria", "Cavaquinho", "Clarinete", "Flauta", "Guitarra", "Piano", "Sanfona", "Saxofone", "Trombone", "Violão", "Violino", "Outros"
 		};
 		
 		model.addAttribute("instrumentos", instrumentos);
 		
 		String[] estilo = {
-			"Bossa", "Rock", "Funk"	
+			"Blues", "Bossa nova", "Forró", "Funk", "Hip-Hop", "Jazz", "Metal", "Pop", "Rock", "Outros"	
 		};
 		
 		model.addAttribute("estilo", estilo);
@@ -170,9 +170,9 @@ public class MusicoController {
 
 	@RequestMapping(value = "alterarMusico")
 	public String alterar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
-			@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, 
-			@RequestParam("descricao") String descricao, @RequestParam("instrumentos") String[] instrumento,
+			 @RequestParam("instrumentos") String[] instrumento,
 			@RequestParam("estilo") String[] estiloMusical, HttpServletRequest request, Model model) {
+		//@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao,
 		
 		
 		
@@ -200,6 +200,10 @@ public class MusicoController {
 				;
 		
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
+		
+		String descricao = "";
+		String linkFb = "";
+		String linkIg = "";
 		
 		service.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
 		service.alterarMusico(instrumentos,estilosMusicais, nome);

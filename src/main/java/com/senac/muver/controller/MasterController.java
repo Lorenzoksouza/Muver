@@ -99,19 +99,9 @@ public class MasterController {
 	}
 	
 	@RequestMapping("/pesquisa")
-	public ModelAndView perfilNome( @RequestParam(required = false) String pesquisa, @RequestParam(required = false) String tipo, HttpServletRequest request) {
+	public ModelAndView perfilNome( @RequestParam(required = true) String pesquisa, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("/principal");
 		
-		if (tipo == "tipoEstudio") {
-			ArrayList<Master> usuarios = service.pesquisaTipoEstudio(pesquisa);
-			ArrayList<MasterTela> listaMt = new ArrayList<MasterTela>();
-			for (Master l : usuarios) {
-				MasterTela mt = convert.converteMasterEmMasterTela(l);
-				listaMt.add(mt);
-			}
-			mv.addObject("usuarios", listaMt);
-			
-		} else {
 			ArrayList<Master> usuarios = service.pesquisaNome(pesquisa);
 			ArrayList<MasterTela> listaMt = new ArrayList<MasterTela>();
 			for (Master l : usuarios) {
@@ -119,9 +109,38 @@ public class MasterController {
 				listaMt.add(mt);
 			}
 			mv.addObject("usuarios", listaMt);
-		}
-		
 		return mv;
-	 }
+	 } 
 	
+	@RequestMapping("/localidade")
+	public ModelAndView perfilLocal( @RequestParam(required = true) String pesquisa, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("/principal");
+			System.out.println(pesquisa);
+			ArrayList<Master> usuarios = service.pesquisaLocalidade(pesquisa);
+			ArrayList<MasterTela> listaMt = new ArrayList<MasterTela>();
+			for (Master l : usuarios) {
+				MasterTela mt = convert.converteMasterEmMasterTela(l);
+				listaMt.add(mt);
+			}
+			mv.addObject("usuarios", listaMt);
+		return mv;
+	 } 
+	
+	@RequestMapping("/instrumento")
+	public ModelAndView perfilInstrumento( @RequestParam(required = true) String pesquisa, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("/principal");
+			System.out.println(pesquisa);
+			ArrayList<Master> usuarios = service.pesquisaInstrumento(pesquisa);
+			ArrayList<MasterTela> listaMt = new ArrayList<MasterTela>();
+			for (Master l : usuarios) {
+				MasterTela mt = convert.converteMasterEmMasterTela(l);
+				listaMt.add(mt);
+			}
+			mv.addObject("usuarios", listaMt);
+		return mv;
+	 } 
+
 }
+		
+		
+	

@@ -207,4 +207,58 @@ li{
 	.visible{
 	 visibility: visible !important;
 	}
+	
+	#face{
+	display:none;
+	font-size: 1em;
+	background-color: #999999;
+	padding:8px;
+	padding-left: 0;
+	border-radius:5px;
+	margin: 20px 0;
+	padding-left: 10px;
+	font-weight: bold; 
+	outline-color: grey; 
+}
+
+#campo_face{
+	font-size: 1.5em;
+	background-color: #CCC;
+	padding:8px;
+	padding-left: 20px;
+	border-radius: 8px;
+	width:80%;
+	margin: 20px 0;
+	
+}
+
+#insta{
+	display: none;
+	font-size: 1.5em;
+	background-color: #999999;
+	padding:8px;
+	padding-left: 20px;
+	border-radius:5px;
+	margin: 20px 0;
+	font-weight: bold; 
+	outline-color: grey; 
+}
+
+#campo_insta{
+	font-size: 1.5em;
+	background-color: #CCC;
+	padding:8px;
+	padding-left: 20px;
+	border-radius: 8px;
+	width:80%;
+	margin: 20px 0;
+	
+}
+
+#instrumentos_chosen{
+	
+	width: 20%;
+}
+
+	
 }

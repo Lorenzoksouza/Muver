@@ -48,7 +48,7 @@
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationDefault02">Email</label>
-					<input id="email" type="text" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
+					<input id="email" type="email" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationDefault03">Senha</label>
@@ -103,8 +103,9 @@
 							</a>
 						</small>
 					</label>			
-					<input id="localizacao" type="text" name="localizacao" placeholder="localizacao" th:value="${usuario.disponibilidade}" class="form-control">
+					<input id="localizacao" type="text" name="disponibilidade" placeholder="disponibilidade" th:value="${usuario.disponibilidade}" class="form-control">
 				</div>	
+				
 				<div class="col-md-6 mb-3">
 					<label for="validationDefault02">Facebook</label>
 					<div class="input-group">
@@ -132,6 +133,8 @@
 					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="Foto do perfil" th:value="${usuario.fotoPerfil}" class="form-control"> 
 				</div>
 			</div>
+			<input type="hidden" name="idmaster" th:value="${usuario.idmaster}">
+			<input type="hidden" name="nome" th:value="${usuario.nome}">
 			<button id="alterar" type="submit" class="btn btn-primary">Alterar</button>
 		</form>
 		<!-- <div style="width: 20%;">
@@ -151,11 +154,11 @@
 			<div class="form-row">
 				 <div class="col-md-4 mb-3">
 					<label>Nome</label>
-					<span id="nome"  class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:text="${#authentication.getPrincipal().getUsername()}" ></span>
+					<span id="nome"   class="form-control" th:value="${#authentication.getPrincipal().getUsername()}" th:text="${#authentication.getPrincipal().getUsername()}" ></span>
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationDefault02">Email</label>
-					<input id="email" type="text" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
+					<input id="email" type="email" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationDefault03">Senha</label>
@@ -177,7 +180,21 @@
 					</label>			
 					<input id="localizacao" type="text" name="localizacao" placeholder="localizacao"  th:value="${usuario.localizacao}" class="form-control">
 				</div>		
-			
+			<div id="espaco-localizacao" class="col-md-12 mb-3">
+					<label for="validationDefault06">
+						Disponibilidade
+						<small>
+							 <a target="_blank" href="https://support.google.com/calendar/answer/41207?hl=pt-BR"  data-toggle="tooltip" data-placement="right" title="Insira o iframe do calendar, caso não saiba ou tenha duvidas, clique nesse icone e visualize as intruções de: INCORPORAR UMA AGENDA NO SITE">
+			  						<svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+									  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+									  <circle cx="8" cy="4.5" r="1"/>
+									</svg>
+							</a>
+						</small>
+					</label>			
+					<input id="localizacao" type="text" name="disponibilidade" placeholder="disponibilidade" th:value="${usuario.disponibilidade}" class="form-control">
+				</div>	
 			<div class="col-md-6 mb-3">
 					<label for="validationDefault02">Facebook</label>
 					<div class="input-group">
@@ -205,6 +222,8 @@
 					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="Foto do perfil" th:value="${usuario.fotoPerfil}" class="form-control"> 
 				</div>
 			</div>
+			<input type="hidden" name="idmaster" th:value="${usuario.idmaster}">
+			<input type="hidden" name="nome" th:value="${usuario.nome}">
 			<button id="alterar" type="submit" class="btn btn-primary">Alterar</button>
 		</form>
 		<form th:action="@{/excluirEstudio}" method="post" onsubmit="return confirm('Você quer mesmo excluir esta conta?');">
@@ -222,7 +241,7 @@
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationDefault02">Email</label>
-					<input id="email" type="text" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
+					<input id="email" type="email" name="email" placeholder="Email" th:value="${usuario.email}" class="form-control">
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationDefault03">Senha</label>
@@ -290,6 +309,8 @@
 					<input id="fotoPerfil" type="file" name="fotoPerfil" placeholder="Foto do perfil" th:value="${usuario.fotoPerfil}" class="form-control"> 
 				</div>
 			</div>
+			<input type="hidden" name="idmaster" th:value="${usuario.idmaster}">
+			<input type="hidden" name="nome" th:value="${usuario.nome}">
 			<button id="alterar" type="submit" class="btn btn-primary">Alterar</button>
 		</form>
 		<form th:action="@{/excluirMusico}" method="post" onsubmit="return confirm('Você quer mesmo excluir esta conta?');">

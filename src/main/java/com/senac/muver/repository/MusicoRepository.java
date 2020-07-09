@@ -16,16 +16,16 @@ public interface MusicoRepository extends CrudRepository<Musico, Integer> {
 	
 	@Transactional
 	@Modifying
-	@Query(value = "UPDATE Master m SET m.nome= :nome, m.email= :email, m.senha= :senhaCriptografada, "
+	@Query(value = "UPDATE Master m SET m.nome= :nome, m.email= :email, "
 			+ "m.foto_Perfil= :fotoPerfilByte, m.link_fb= :linkFb, m.link_ig= :linkIg, m.descricao= :descricao WHERE m.nome = :nome ", nativeQuery = true)
-	void alterar(String nome, String email, String senhaCriptografada, byte[] fotoPerfilByte, String linkFb,
+	void alterarM(String nome, String email, byte[] fotoPerfilByte, String linkFb,
 			String linkIg, String descricao);
 
 	
 	@Transactional
 	@Modifying
-	@Query(value = "UPDATE musico m SET m.instrumento= :instrumentos, m.estilo_musical= :estilosMusicais where l.nome = :nome", nativeQuery = true)
-	void alterarMusico(String instrumentos, String estilosMusicais, String nome);
+	@Query(value = "UPDATE musico m SET m.instrumento= :instrumentos, m.estilo_musical= :estilosMusicais where idmusico = :id", nativeQuery = true)
+	void alterarMusico(String instrumentos, String estilosMusicais, String id);
 	
 	@Transactional
 	@Modifying(clearAutomatically = true)

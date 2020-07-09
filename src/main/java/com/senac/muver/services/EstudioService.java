@@ -55,14 +55,14 @@ public class EstudioService {
 		 * 
 		 */
 		
-		public void alterar(String nome, String email, String senhaCriptografada, byte[] fotoPerfilByte, String linkFb,
+		public void alterar(String nome, String email, byte[] fotoPerfilByte, String linkFb,
 				String linkIg, String descricao) {
-			repositorio.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
+			repositorio.alterar(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
 			
 		}
 
-		public void alterarEstudio(String localizacao, String nome) {
+		public void alterarEstudio(String localizacao,String disponibilidade, int id) {
 			// TODO Auto-generated method stub
-			repositorio.alterarEstudio(localizacao, nome);
+			repositorio.alterarEstudio(localizacao,disponibilidade, id);
 		}
 }

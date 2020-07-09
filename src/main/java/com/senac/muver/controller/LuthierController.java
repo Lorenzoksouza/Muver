@@ -64,9 +64,9 @@ public class LuthierController {
 	
 	@RequestMapping(value = "cadastrarLuthier", method = RequestMethod.POST)
 	public String salvar(@RequestParam("email") String email, @RequestParam("senha") String senha, /*@RequestParam("instrumentos") String[] instrumentos,*/
-		@RequestParam("instrumentos") String[] instrumento,
-		@RequestParam("nome") String nome, @RequestParam("localizacao") String localizacao,@RequestParam("disponibilidade") String disponibilidade, @RequestParam("linkFb") String linkFb, 
-		@RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, HttpServletRequest request, Model model){
+		@RequestParam(value="instrumentos", required = false) String[] instrumento,
+		@RequestParam("nome") String nome, @RequestParam(value="localizacao", required = false) String localizacao,@RequestParam(value="disponibilidade", required = false) String disponibilidade, @RequestParam(value="linkFb", required = false) String linkFb, 
+		@RequestParam(value="linkIg", required = false) String linkIg, @RequestParam(value="descricao", required = false) String descricao, HttpServletRequest request, Model model){
 		
 		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -143,9 +143,9 @@ public class LuthierController {
 	
 	
 	@RequestMapping(value = "alterarLuthier")
-	public String alterar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
-			@RequestParam("localizacao") String localizacao, @RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, 
-			@RequestParam("descricao") String descricao, @RequestParam("instrumentos") String[] instrumento, HttpServletRequest request, Model model) {
+	public String alterar(@RequestParam("nome") String nome,@RequestParam("idmaster") int id, @RequestParam("email") String email,
+			@RequestParam(value="localizacao", required = false) String localizacao,@RequestParam(value="disponibilidade", required = false) String disponibilidade, @RequestParam(value="linkFb", required = false) String linkFb, @RequestParam(value="linkIg", required = false) String linkIg, 
+			@RequestParam(value="descricao", required = false) String descricao, @RequestParam(value="instrumentos", required = false) String[] instrumento, HttpServletRequest request, Model model) {
 		
 		
 		
@@ -166,13 +166,16 @@ public class LuthierController {
 				.replace("]", "")
 				;
 		
-		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
 		
-		String gmaps = localizacao.substring(13).replace("></iframe>", "");
+		 String gmaps = localizacao.replace("<iframe ", "").replace("src=\"",
+				  "").replace("></iframe>", "");
+				  
+		  String calendar = disponibilidade.replace("<iframe ", "").replace("src=\"",
+		  "").replace("></iframe>", "");
 		
-		service.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
-		service.alterarLuthier(gmaps, instrumentos, nome);
-		return "editar";
+		service.alterar(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
+		service.alterarLuthier(gmaps,calendar, instrumentos, id);
+		return "redirect:/principal";
 		
 	}
 }

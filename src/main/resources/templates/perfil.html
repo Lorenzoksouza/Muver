@@ -161,12 +161,16 @@
 										</span>
 									</div>
 									<div id="gsocial">
+									<span th:if="${usuario.linkFb} != ''">
 										<a target="_blank" th:href="@{/facebook.com/{linkFb}(linkFb=${usuario.linkFb})}">
 											<img id="icon_face" class="social" th:src="@{/images/facebook.png}"/>
 										</a>
+									</span>	
+									<span th:if="${usuario.linkIg} != ''">
 										<a target="_blank" th:href="@{/instagram.com/{linkIg}(linkIg=${usuario.linkIg})}">
 											<img id="icon_ig" class="social" th:src="@{/images/instagram.png}"/>
 										</a>
+									</span>	
 									</div>
 									<div id="chat">
 										<a id="btn_chat"  class="btn btn-primary" th:href="'mailto:' + ${usuario.email}">
@@ -420,10 +424,10 @@
 								<li id="dis">
 								<!-- temporario -->
 									<div class="invisible">
-										<span style="width: 100%;" id="mensagem_oculta" th:if="${usuario.disponibilidade} == ''">
-											Este Luthier não cadastrou nenhum calendário.
+										<span style="width: 100%; float: left;" id="mensagem_oculta" th:if="${usuario.disponibilidade} == ''">
+											Este Estudio não cadastrou nenhum calendário.
 										</span>
-										<span th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+										<span style="float: left;" th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
 											Edite seu perfil para incluir um calendario.
 										</span>
 										
@@ -442,7 +446,7 @@
 												<span  th:if="${usuario.disponibilidade} == ''">
 													Este Estudio não cadastrou nenhum calendário.
 												</span>
-												<span th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
+												<span  th:if="${usuario.nome} == ${#authentication.getPrincipal().getUsername()}">
 													Edite seu perfil para incluir um calendario.
 												</span>
 												<iframe id="disp_c_mobile" th:src="${usuario.disponibilidade}"></iframe>

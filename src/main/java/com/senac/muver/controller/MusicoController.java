@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,7 +72,7 @@ public class MusicoController {
 	@RequestMapping(value = "cadastrarMusico", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha, 
 			/*@RequestParam("estilo") String[] estilosMusicais, @RequestParam("instrumentos") String[] instrumentos, */
-			@RequestParam("estilo") String[] estiloMusical, @RequestParam("instrumentos") String[] instrumento,
+			@RequestParam(value="estilo", required = false) String[] estiloMusical, @RequestParam(value="instrumentos", required = false) String[] instrumento,
 			HttpServletRequest request, Model model) {
 		//@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao, 
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -154,7 +155,7 @@ public class MusicoController {
 		
 		service.excluir(nome);
 		 
-		return "cSucesso";
+		return "redirect:/login";
 	 }
 	
 	/*
@@ -169,11 +170,10 @@ public class MusicoController {
 	 */
 
 	@RequestMapping(value = "alterarMusico")
-	public String alterar(@RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("senha") String senha,
-			 @RequestParam("instrumentos") String[] instrumento,
-			@RequestParam("estilo") String[] estiloMusical, HttpServletRequest request, Model model) {
+	public String alterar(@RequestParam("nome") String nome,@RequestParam("idmaster") String id, @RequestParam("email") String email,
+			 @RequestParam(value = "instrumentos", required = false) String[] instrumento,
+			@RequestParam(value ="estilo", required = false) String[] estiloMusical, HttpServletRequest request, Model model) {
 		//@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao,
-		
 		
 		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -199,15 +199,14 @@ public class MusicoController {
 				.replace("]", "")
 				;
 		
-		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
 		
 		String descricao = "";
 		String linkFb = "";
 		String linkIg = "";
 		
-		service.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
-		service.alterarMusico(instrumentos,estilosMusicais, nome);
-		return "editar";
+		service.alterarM(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
+		service.alterarMusico(instrumentos,estilosMusicais, id);
+		return "redirect:/principal";
 		
 	}
 	

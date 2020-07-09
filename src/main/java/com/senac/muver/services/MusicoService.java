@@ -43,14 +43,14 @@ public class MusicoService {
 		repositorio.excluir(nome);
 	}
 
-	public void alterar(String nome, String email, String senhaCriptografada, byte[] fotoPerfilByte,
+	public void alterarM(String nome, String email,  byte[] fotoPerfilByte,
 			String linkFb, String linkIg, String descricao) {
-		repositorio.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
+		repositorio.alterarM(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
 		
 	}
 
-	public void alterarMusico(String instrumentos, String estilosMusicais, String nome) {
-		repositorio.alterarMusico(instrumentos, estilosMusicais, nome);
+	public void alterarMusico(String instrumentos, String estilosMusicais, String id) {
+		repositorio.alterarMusico(instrumentos, estilosMusicais, id);
 		
 	}
 

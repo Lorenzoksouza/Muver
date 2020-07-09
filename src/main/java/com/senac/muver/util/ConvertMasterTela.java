@@ -71,6 +71,7 @@ public class ConvertMasterTela {
 		mt.setEmail(usuario.getEmail());
 		mt.setNota(usuario.getNota());
 		mt.setNumeroAvaliacoes(usuario.getNumeroAvaliacoes());
+		mt.setIdmaster(usuario.getIdmaster());
 		return mt;
 	}
 	
@@ -103,6 +104,7 @@ public class ConvertMasterTela {
 		mt.setDisponibilidade(l.getDisponibilidade());
 		mt.setNota(l.getNota());
 		mt.setNumeroAvaliacoes(l.getNumeroAvaliacoes());
+		mt.setIdmaster(l.getIdmaster());
 		return mt;
 	}
 
@@ -134,6 +136,7 @@ public class ConvertMasterTela {
 		mt.setDisponibilidade(es.getDisponibilidade());
 		mt.setNota(es.getNota());
 		mt.setNumeroAvaliacoes(es.getNumeroAvaliacoes());
+		mt.setIdmaster(es.getIdmaster());
 		return mt;
 	}
 
@@ -165,6 +168,7 @@ public class ConvertMasterTela {
 		mt.setTipoUsuario(m.getTipoUsuario());
 		mt.setEmail(m.getEmail());
 		mt.setNumeroAvaliacoes(m.getNumeroAvaliacoes());
+		mt.setIdmaster(m.getIdmaster());
 		return mt;
 	}
 	

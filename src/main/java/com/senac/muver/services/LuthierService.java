@@ -47,14 +47,14 @@ public class LuthierService {
 			}
 
 
-			public void alterar(String nome, String email, String senhaCriptografada, byte[] fotoPerfilByte,
+			public void alterar(String nome, String email, byte[] fotoPerfilByte,
 					String linkFb, String linkIg, String descricao) {
-				repositorio.alterar(nome, email, senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
+				repositorio.alterar(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
 				
 			}
 
-			public void alterarLuthier(String localizacao, String instrumentos, String nome) {
-				repositorio.alterarLuthier(localizacao,instrumentos, nome);
+			public void alterarLuthier(String localizacao,String disponibilidade, String instrumentos, int id) {
+				repositorio.alterarLuthier(localizacao,disponibilidade, instrumentos, id);
 				
 			}
 }

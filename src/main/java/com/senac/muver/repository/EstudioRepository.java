@@ -21,9 +21,9 @@ public interface EstudioRepository extends CrudRepository<Estudio, Integer> {
 
 	@Transactional
 	@Modifying
-	@Query(value = "UPDATE Master m SET m.nome= :nome, m.email= :email, "
+	@Query(value = "UPDATE Master m SET m.nome= :nome, m.email= :email, m.senha= :senha, "
 			+ "m.foto_Perfil= :fotoPerfilByte, m.link_fb= :linkFb, m.link_ig= :linkIg, m.descricao= :descricao WHERE m.nome = :nome ", nativeQuery = true)
-	void alterar(String nome, String email, byte[] fotoPerfilByte, String linkFb, String linkIg, String descricao);
+	void alterar(String nome, String email, String senha, byte[] fotoPerfilByte, String linkFb, String linkIg, String descricao);
 
 	@Transactional
 	@Modifying

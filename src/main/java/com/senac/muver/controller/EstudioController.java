@@ -137,7 +137,7 @@ public class EstudioController {
 	 */
 	
 	@RequestMapping(value = "alterarEstudio")
-	public String alterar(@RequestParam("nome") String nome,@RequestParam("idmaster") int id, @RequestParam("email") String email,
+	public String alterar(@RequestParam("nome") String nome,@RequestParam("idmaster") int id, @RequestParam("email") String email, @RequestParam("senha") String senha,
 			@RequestParam(value="localizacao", required = false) String localizacao,@RequestParam(value="disponibilidade", required = false) String disponibilidade, @RequestParam(value="linkFb", required = false) String linkFb, @RequestParam(value="linkIg", required = false) String linkIg, 
 			@RequestParam(value="descricao", required = false) String descricao, HttpServletRequest request, Model model) {
 		
@@ -159,7 +159,9 @@ public class EstudioController {
 		  String calendar = disponibilidade.replace("<iframe ", "").replace("src=\"",
 		  "").replace("></iframe>", "");
 		
-		service.alterar(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
+		  String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
+		  
+		service.alterar(nome, email,senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
 		service.alterarEstudio(gmaps,calendar, id);
 		return "redirect:/principal";
 		

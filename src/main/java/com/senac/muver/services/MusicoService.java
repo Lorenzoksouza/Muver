@@ -43,9 +43,9 @@ public class MusicoService {
 		repositorio.excluir(nome);
 	}
 
-	public void alterarM(String nome, String email,  byte[] fotoPerfilByte,
+	public void alterarM(String nome, String email, String senha,  byte[] fotoPerfilByte,
 			String linkFb, String linkIg, String descricao) {
-		repositorio.alterarM(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
+		repositorio.alterarM(nome, email, senha, fotoPerfilByte, linkFb, linkIg, descricao);
 		
 	}
 

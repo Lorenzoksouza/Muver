@@ -55,9 +55,9 @@ public class EstudioService {
 		 * 
 		 */
 		
-		public void alterar(String nome, String email, byte[] fotoPerfilByte, String linkFb,
+		public void alterar(String nome, String email,String senha, byte[] fotoPerfilByte, String linkFb,
 				String linkIg, String descricao) {
-			repositorio.alterar(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
+			repositorio.alterar(nome, email, senha, fotoPerfilByte, linkFb, linkIg, descricao);
 			
 		}
 

@@ -170,7 +170,7 @@ public class MusicoController {
 	 */
 
 	@RequestMapping(value = "alterarMusico")
-	public String alterar(@RequestParam("nome") String nome,@RequestParam("idmaster") String id, @RequestParam("email") String email,
+	public String alterar(@RequestParam("nome") String nome,@RequestParam("idmaster") String id, @RequestParam("email") String email,@RequestParam("senha") String senha,
 			 @RequestParam(value = "instrumentos", required = false) String[] instrumento,
 			@RequestParam(value ="estilo", required = false) String[] estiloMusical, HttpServletRequest request, Model model) {
 		//@RequestParam("linkFb") String linkFb, @RequestParam("linkIg") String linkIg, @RequestParam("descricao") String descricao,
@@ -198,13 +198,13 @@ public class MusicoController {
 				.replace("[", "")
 				.replace("]", "")
 				;
-		
+		String senhaCriptografada = new BCryptPasswordEncoder().encode(senha);
 		
 		String descricao = "";
 		String linkFb = "";
 		String linkIg = "";
 		
-		service.alterarM(nome, email, fotoPerfilByte, linkFb, linkIg, descricao);
+		service.alterarM(nome, email,senhaCriptografada, fotoPerfilByte, linkFb, linkIg, descricao);
 		service.alterarMusico(instrumentos,estilosMusicais, id);
 		return "redirect:/principal";
 		
